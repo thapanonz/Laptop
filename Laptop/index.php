@@ -2,7 +2,7 @@
 	require "../include/connect.php";
 	//Set Path
 	$isSubfolder = true;
-	$activepage = "permission";
+	$activepage = "laptop";
 ?>
 
 <!doctype html>
@@ -22,18 +22,8 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-xs-5">						
-						<h1>จัดการสิทธิ์</h1><br>
-						
-						<h3>ชื่อผู้ใช้</h3>
-						<input type="text" name="username"><br><br>
-						
-						<h3>ประเภทผู้ใช้</h3>
-						<input type="radio" name="usertype" value="student"> นักศึกษา
-						<input type="radio" name="usertype" value="personnel"> บุคลากร<br><br>
-						
-						<h3>เวลาใช้งานล่าสุด</h3>
-						<input type="datetime-local" name="daytime">
-
+						<h1>รายการเครื่องเช่า</h1>
+						<a href="addform.php" class="btn btn-info">เพิ่มรายการ</a>
 
 					</div>
 					

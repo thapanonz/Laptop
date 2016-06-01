@@ -1,5 +1,7 @@
 <?php
 	require "include/connect.php";
+
+	$activepage = "home";
 ?>
 
 <!doctype html>
@@ -8,9 +10,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Index -</title>
-        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-        <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
-        <link rel="stylesheet" type="text/css" href="css/sidebar.css">      
+		<?php include "include/css.php" ?>
     </head>
     <body>
 		<?php include "include/banner.php"; ?>
@@ -28,8 +28,6 @@
 				</div>
 			
 		
-        <script src="js/jquery.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/sidebar.js"></script>       
+        <?php include "include/js.php" ?>      
     </body>
 </html>
