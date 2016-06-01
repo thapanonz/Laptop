@@ -21,7 +21,7 @@
 
 			<div class="container">
 				<div class="row">
-					<div class="col-md-11">						
+					<div class="col-xs-5">						
 						<h1>ป้อนรายการเครื่องเช่าใหม่</h1>
 
 					</div>
