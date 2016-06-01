@@ -22,8 +22,7 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-11">						
-						<h1>รายการเครื่องเช่า</h1>
-						<a href="addform.php" class="btn btn-info">เพิ่มรายการ</a>
+						<h1>ป้อนรายการเครื่องเช่าใหม่</h1>
 
 					</div>
 					
