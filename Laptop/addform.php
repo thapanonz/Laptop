@@ -44,13 +44,14 @@
 					    </div>
 					    <div class="form-group">
 					      <label>สถานะเครื่อง:</label>
-					      <label class="radio-inline"><input type="radio" name="rdy" checked>พร้อมใช้งาน</label>
-						  <label class="radio-inline"><input type="radio" name="notrdy">ไม่พร้อมใช้งาน</label>
-						  <label class="radio-inline"><input type="radio" name="rent">ถูกเช่า</label>
+					      <label class="radio-inline"><input type="radio" name="nbStatus" value="rdy">พร้อมใช้งาน</label>
+						  <label class="radio-inline"><input type="radio" name="nbStatus" value="notrdy">ไม่พร้อมใช้งาน</label>
+						  <label class="radio-inline"><input type="radio" name="nbStatus" value="rent">ถูกเช่า</label>
 					    </div>	
-
-					    <button type="submit" class="btn btn-success">บันทึก</button>
-					    <button type="reset" class="btn btn-primary">ยกเลิก</button>			   
+					   <div style="text-align: center">
+						    <button type="submit" class="btn btn-success">บันทึก</button>
+						    <button type="reset" class="btn btn-primary">ยกเลิก</button>	
+					   </div>		   
 					    </form>			
 					</div>					
 				</div>

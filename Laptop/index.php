@@ -20,12 +20,34 @@
 
 			<div class="container">
 				<div class="row">
-					<div class="col-xs-5" style="margin-left: 30px">						
+					<div class="col-xs-4" style="margin-left: 30px">						
 						<h1>รายการเครื่องเช่า</h1>
 						<a href="addform.php" class="btn btn-info">เพิ่มรายการ</a>
-					</div>					
-				</div>
-			</div>
+
+		<br><br><br><table class="table table-striped table-bordered">
+			<thead>
+		      <tr>
+		        <th>nbCode</th>
+		        <th>nbStatus</th>		       	        
+		      </tr>
+		    </thead>
+			<tbody>
+		<?php
+			$sql = $db->prepare("SELECT nbCode,nbStatus FROM notebook");
+			$sql->execute();
+			$result = $sql->fetchall();
+			foreach($result as $row){
+				echo "<tr>";
+                echo "<td>" .$row["nbCode"]."</td>";
+                echo "<td>" .$row["nbStatus"]."</td>";
+                echo "</tr>";
+			}
+		?>
+			</tbody>
+		</table>
+		</div>					
+	</div>
+</div>
 						
         <?php include "../include/js.php"; ?>      
     </body>
