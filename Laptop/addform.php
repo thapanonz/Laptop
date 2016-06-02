@@ -10,20 +10,21 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Index -</title>
+        <title>ป้อนรายการเครื่องเช่าใหม่</title>
 		<?php include "../include/css.php"; ?>
     </head>
     <body>
 		<?php include "../include/banner.php"; ?>
 
-		
-			<?php include "../include/menu.php"; ?>	
+		<?php include "../include/menu.php"; ?>	
 
 			<div class="container">
-				<div class="row">
-					<div class="col-xs-5">						
+				<div class="row">				
+					<div class="col-xs-5" style="margin-left: 30px">						
 						<h1>ป้อนรายการเครื่องเช่าใหม่</h1>
 						<form role="form" action="submitadd.php" method="post">
+
+						<?php $rdo="" ?>
 					    <div class="form-group">
 					      <label>หมายเลขเครื่องเช่า:</label>
 					      <input type="text" class="form-control" name="nbCode" placeholder="ตัวอย่าง: CC-000"> 
@@ -43,13 +44,14 @@
 					    </div>
 					    <div class="form-group">
 					      <label>สถานะเครื่อง:</label>
-					      <label class="radio-inline"><input type="radio" name="rdy">พร้อมใช้งาน</label>
+					      <label class="radio-inline"><input type="radio" name="rdy" checked>พร้อมใช้งาน</label>
 						  <label class="radio-inline"><input type="radio" name="notrdy">ไม่พร้อมใช้งาน</label>
 						  <label class="radio-inline"><input type="radio" name="rent">ถูกเช่า</label>
-					    </div>					                    
+					    </div>	
+
 					    <button type="submit" class="btn btn-success">บันทึก</button>
-					    <button type="reset" class="btn btn-info">ยกเลิก</button>
-					  </form>			
+					    <button type="reset" class="btn btn-primary">ยกเลิก</button>			   
+					    </form>			
 					</div>					
 				</div>
 			</div>

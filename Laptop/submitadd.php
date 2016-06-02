@@ -9,5 +9,6 @@
 		"nbBrand" => $_POST["nbBrand"],
 		"nbDetails" => $_POST["nbDetails"]
 		));
+
 	header('Location: index.php');
 ?>

@@ -10,29 +10,23 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Index -</title>
+        <title>รายการเครื่องเช่า</title>
 		<?php include "../include/css.php"; ?>
     </head>
     <body>
 		<?php include "../include/banner.php"; ?>
-
 		
 			<?php include "../include/menu.php"; ?>	
 
 			<div class="container">
 				<div class="row">
-					<div class="col-md-11">						
+					<div class="col-xs-5" style="margin-left: 30px">						
 						<h1>รายการเครื่องเช่า</h1>
 						<a href="addform.php" class="btn btn-info">เพิ่มรายการ</a>
-
-					</div>
-					
+					</div>					
 				</div>
 			</div>
-				
-				
-			
-		
+						
         <?php include "../include/js.php"; ?>      
     </body>
 </html>
