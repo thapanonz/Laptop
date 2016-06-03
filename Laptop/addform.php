@@ -21,9 +21,8 @@
 			<div class="container">
 				<div class="row">				
 					<div class="col-xs-5" style="margin-left: 30px">						
-						<h1>ป้อนรายการเครื่องเช่าใหม่</h1>
+						<h1>ป้อนรายการเครื่องเช่าใหม่</h1><br>
 						<form role="form" action="submitadd.php" method="post">
-
 						<?php $rdo="" ?>
 					    <div class="form-group">
 					      <label>หมายเลขเครื่องเช่า:</label>
@@ -43,14 +42,13 @@
 					      placeholder="ตัวอย่าง: Intel Core i7-5500U, RAM: 8GB, HarddiskDrive: 1TB,    Optical Drive: DVD RW, Display: 14 HD LED, Battery: 4 Cell"></textarea>
 					    </div>
 					    <div class="form-group">
-					      <label>สถานะเครื่อง:</label>
+					      <label>สถานะเครื่อง: &nbsp;&nbsp;&nbsp;</label>
 					      <label class="radio-inline"><input type="radio" name="nbStatus" value="rdy">พร้อมใช้งาน</label>
 						  <label class="radio-inline"><input type="radio" name="nbStatus" value="notrdy">ไม่พร้อมใช้งาน</label>
 						  <label class="radio-inline"><input type="radio" name="nbStatus" value="rent">ถูกเช่า</label>
 					    </div>	
 					   <div style="text-align: center">
-						    <button type="submit" class="btn btn-success">บันทึก</button>
-						    <button type="reset" class="btn btn-primary">ยกเลิก</button>	
+						    <button type="submit" class="btn btn-success">บันทึก</button>				   <a href="index.php" class="btn btn-primary">ยกเลิก</a>
 					   </div>		   
 					    </form>			
 					</div>					
