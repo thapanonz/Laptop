@@ -21,7 +21,7 @@
 
 			<div class="container">
 				<div class="row">
-					<div class="col-xs-5">						
+					<div class="col-xs-5" style="margin-left: 30px">						
 						<h1>รายการเครื่องเช่า</h1>
 						<a href="addform.php" class="btn btn-info">เพิ่มรายการ</a>
 
