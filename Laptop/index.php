@@ -28,7 +28,7 @@
 		      <tr>
 		        <th>หมายเลขเครื่องเช่า</th>
 		        <th>สถานะเครื่อง</th>	
-		        <th>แก้ไข/ลบ</th>	       	        
+		        <th>จัดการ</th>	       	        
 		      </tr>
 		    </thead>
 			<tbody>
@@ -62,15 +62,16 @@
 				          <button type="button" class="btn btn-default" data-dismiss="modal">ปิด</button>
 				        </div>
 				      </div>
+
 				      
 				    </div>
 				  </div>
 
-
                 <?php echo "</td>";
                 echo "<td>" .$row["nbStatus"]."</td>";
                 echo "<td>";
-                echo "<a href='JavaScript:if(confirm('Confirm Delete?')==true){window.location='submitdelete.php?Id=".$row['Id']."'><i style='font-size:25px; class='fa fa-remove' aria-hidden='true'></i></a>";
+            	   echo "<a href='editform.php?Id=".$row['Id']."'><i style='font-size:30px' class='fa fa-pencil' aria-hidden='true'></i></a>";               
+            	   echo "<a href='submitdelete.php?Id=".$row['Id']."' onclick=\"return confirm('คุณต้องการลบ รายการเครื่องเช่า นี้หรือไม่?');\"><i style='font-size:30px' class='fa fa-remove text-danger' aria-hidden='true'></i></a>";
                 echo "</td>";
                 echo "</tr>";
 			}
@@ -84,3 +85,5 @@
         <?php include "../include/js.php"; ?>     
     </body>
 </html>
+
+
