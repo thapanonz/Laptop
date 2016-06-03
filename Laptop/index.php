@@ -3,6 +3,12 @@
 	//Set Path
 	$isSubfolder = true;
 	$activepage = "laptop";
+
+	function setstatus($status){
+		if($status=="rdy"){ return "พร้อมใช้งาน";}
+		else if($status=="notrdy"){ return "ไม่พร้อมใช้งาน";}
+		else if($status=="rent"){ return "ถูกเช่า";}
+	}	
 ?>
 
 <!doctype html>
@@ -68,7 +74,7 @@
 				  </div>
 
                 <?php echo "</td>";
-                echo "<td>" .$row["nbStatus"]."</td>";
+                echo "<td>" .setstatus($row["nbStatus"])."</td>";
                 echo "<td>";
             	   echo "<a href='editform.php?Id=".$row['Id']."'><i style='font-size:30px' class='fa fa-pencil' aria-hidden='true'></i></a>";               
             	   echo "<a href='submitdelete.php?Id=".$row['Id']."' onclick=\"return confirm('คุณต้องการลบ รายการเครื่องเช่า นี้หรือไม่?');\"><i style='font-size:30px' class='fa fa-remove text-danger' aria-hidden='true'></i></a>";

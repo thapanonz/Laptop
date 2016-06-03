@@ -18,35 +18,44 @@
 
 		<?php include "../include/menu.php"; ?>	
 
+		<?php
+			$Id=$_GET['Id'];
+			$sql = $db->prepare("SELECT nbCode,nbSerial,nbBrand,nbDetails,nbStatus FROM notebook WHERE Id=$Id");
+			$sql->execute();
+			$sql->setFetchMode(PDO::FETCH_ASSOC);
+			while ($row = $sql->fetch()) {			 	
+		?>
+
 			<div class="container">
 				<div class="row">				
 					<div class="col-xs-5" style="margin-left: 30px">						
-						<h1>ป้อนรายการเครื่องเช่าใหม่</h1><br>
-						<form role="form" action="editadd.php" method="post">
+						<h1>รายการเครื่องเช่า</h1><br>
+						<form role="form" action="submitupdate.php" method="post">
 						<?php $rdo="" ?>
 					    <div class="form-group">
 					      <label>หมายเลขเครื่องเช่า:</label>
-					      <input type="text" class="form-control" name="nbCode" placeholder="ตัวอย่าง: CC-000"> 
+					      <input type="text" class="form-control" name="nbCode" value="<?php echo $row["nbCode"] ?>"> 
 					    </div>
 					    <div class="form-group">
 					      <label>ซีเรียลเครื่องเช่า:</label>
-					      <input type="text" class="form-control" name="nbSerial" placeholder="ตัวอย่าง: PF07ZHKB">
+					      <input type="text" class="form-control" name="nbSerial" value="<?php echo $row["nbSerial"] ?>">
 					    </div>
 					    <div class="form-group">
 					      <label>ยี่ห้อ/รุ่น:</label>
 					      <input type="text" class="form-control" name="nbBrand" 
-					      placeholder="ตัวอย่าง: Lenovo G40-80 (80E4)"></div>
+					      value="<?php echo $row["nbBrand"] ?>"></div>
 					    <div class="form-group">
 					      <label>รายละเอียดของเครื่อง:</label>
-					      <textarea class="form-control" name="nbDetails" rows="5"
-					      placeholder="ตัวอย่าง: Intel Core i7-5500U, RAM: 8GB, HarddiskDrive: 1TB,    Optical Drive: DVD RW, Display: 14 HD LED, Battery: 4 Cell"></textarea>
+					      <textarea class="form-control" name="nbDetails" rows="5"><?php echo $row["nbDetails"] ?></textarea>
 					    </div>
 					    <div class="form-group">
 					      <label>สถานะเครื่อง: &nbsp;&nbsp;&nbsp;</label>
-					      <label class="radio-inline"><input type="radio" name="nbStatus" value="rdy">พร้อมใช้งาน</label>
-						  <label class="radio-inline"><input type="radio" name="nbStatus" value="notrdy">ไม่พร้อมใช้งาน</label>
-						  <label class="radio-inline"><input type="radio" name="nbStatus" value="rent">ถูกเช่า</label>
+					      <label class="radio-inline"><input type="radio" name="nbStatus" <?=($row["nbStatus"]=="rdy")? 'checked' : ''; ?> value="rdy">พร้อมใช้งาน</label>
+						  <label class="radio-inline"><input type="radio" name="nbStatus" <?=($row["nbStatus"]=="notrdy")? 'checked' : ''; ?> value="notrdy">ไม่พร้อมใช้งาน</label>
+						  <label class="radio-inline"><input type="radio"  name="nbStatus" <?=($row["nbStatus"]=="rent")? 'checked' : ''; ?> value="rent">ถูกเช่า</label>
 					    </div>	
+				
+				<?php } ?>
 					   <div style="text-align: center">
 						    <button type="submit" class="btn btn-success">บันทึก</button>				   <a href="index.php" class="btn btn-primary">ยกเลิก</a>
 					   </div>		   
