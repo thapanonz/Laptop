@@ -45,7 +45,7 @@
 			while ($row = $sql->fetch()) {
 				echo "<tr>";
                 echo "<td>"; ?>             
-                <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#<?php echo $row["nbCode"] ?>"><?php echo $row["nbCode"] ?></button>
+                <a data-toggle="modal" data-target="#<?php echo $row["nbCode"] ?>"><?php echo $row["nbCode"] ?></a>
 
                 <div class="modal fade" id="<?php echo $row["nbCode"] ?>" role="dialog">
 				    <div class="modal-dialog">

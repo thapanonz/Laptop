@@ -1,16 +1,28 @@
 <?php
 	require "../include/connect.php";
-	
-	$sql = $db->prepare("UPDATE notebook SET nbCode=:nbCode,nbSerial=:nbSerial,nbBrand=:nbBrand,
-		nbDetails=:nbDetails,nbStatus=:nbStatus WHERE Id=:Id");
-	$sql->execute(array(
-		"Id" => $_POST["Id"],
-		"nbCode" => $_POST["nbCode"],
-		"nbSerial" => $_POST["nbSerial"],
-		"nbBrand" => $_POST["nbBrand"],
-		"nbDetails" => $_POST["nbDetails"],
-		"nbStatus"=>$_POST["nbStatus"]
-		));
+try{
+	$sql = "UPDATE notebook SET 
+		nbCode =:nbCode,
+		nbSerial = :nbSerial,
+		nbBrand = :nbBrand,
+		nbDetails = :nbDetails,
+		nbStatus = :nbStatus 
+		WHERE Id = :setID";
+	$setid = $_POST['Id'];
+	settype($setid, "integer");
+	$stmp = $db->prepare($sql);
+	$stmp->bindValue("nbCode" , $_POST["nbCode"]);
+	$stmp->bindValue("nbSerial" , $_POST["nbSerial"]);
+	$stmp->bindValue("nbBrand" , $_POST["nbBrand"]);
+	$stmp->bindValue("nbDetails" , $_POST["nbDetails"]);
+	$stmp->bindValue("nbStatus" , $_POST["nbStatus"]);
+	$stmp->bindValue("setID" , $setid);
+	$stmp->execute();
+	echo $_POST["Id"];
 
 	header('Location: index.php');
+	}
+catch(PDOException $e) {
+  echo $e->getMessage();
+}
 ?>
