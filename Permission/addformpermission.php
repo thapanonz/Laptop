@@ -22,35 +22,35 @@
 		
 			<div class="container">
 				<div class="row">
-					<div class="col-xs-5" style="margin-left: 30px">
+					<div class="col-xs-4" style="margin-left: 30px">
 					
 						<h1>เพิ่มผู้จัดการสิทธิ์</h1><br>
 
 						<?php $rdo="" ?>
 
 						<form role = "form" action="sqlpermission.php" method="post">
-						
+												
 						<div class="form-group">
-							<h3>ชื่อผู้ใช้</h3>
+							<h4>ชื่อผู้ใช้</h4>
 							<input type="text" class="form-control" name="user"><br>
 						</div>
 						<div class="form-grop">
-							<h3>คำนำหน้าชื่อ</h3>
+							<h4>คำนำหน้าชื่อ</h4>
 							<input type="text" name="pname" class="form-control"><br>
 						</div>
 						<div class="form-group">
-							<h3>ชื่อ</h3>
+							<h4>ชื่อ</h4>
 							<input type="text" class="form-control" name="name"><br>
 						</div>
 						<div class="form-group">
-							<h3>นามสกุล</h3>
+							<h4>นามสกุล</h4>
 							<input type="text" class="form-control" name="lastname"><br>
 						</div>
 						
 						
 						
 						<div class="form-group">
-							<h3>ประเภทผู้ใช้</h3>
+							<h4>ประเภทผู้ใช้</h4>
 							<input type="radio" name="level" value="admin"> ผู้ดูแล
 							<input type="radio" name="level" value="sadmin"> เจ้าหน้าที่<br><br>
 						</div>
@@ -61,6 +61,7 @@
 						</div>
 						</div>
 						</form>
+						
 					</div>	
 				</div>
 			</div>
