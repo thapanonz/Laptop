@@ -3,6 +3,30 @@
 	//Set Path
 	$isSubfolder = true;
 	$activepage = "permission";
+
+	function setlevel($level){
+		if($level=="admin"){ 
+			return "ผู้ดูแล";
+		}
+		else if($level=="sadmin"){ 
+			return "เจ้าหน้าที่";
+		}		
+	}
+	function DateThai($strDate)
+	{
+		$strYear = date("Y",strtotime($strDate))+543;
+		$strMonth= date("n",strtotime($strDate));
+		$strDay= date("j",strtotime($strDate));
+		$strHour= date("H",strtotime($strDate));
+		$strMinute= date("i",strtotime($strDate));
+		$strSeconds= date("s",strtotime($strDate));
+		$strMonthCut = Array("","ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค.");
+		$strMonthThai=$strMonthCut[$strMonth];
+		return "$strDay $strMonthThai $strYear, $strHour:$strMinute:$strSeconds";
+	}
+
+	// $strDate = "2008-08-14 13:42:44";
+	// echo "ThaiCreate.Com Time now : ".DateThai($strDate);
 ?>
 
 <!doctype html>
@@ -27,7 +51,7 @@
 		
 			<div class="container">
 				<div class="row">
-					<div class="col-xs-5" style="margin-left: 30px">
+					<div class="col-xs-9" style="margin-left: 30px">
 					
 						<h1>จัดการสิทธิ์</h1>
 							<a href="addformpermission.php" class="btn btn-primary">เพิ่มผู้ดูแลระบบ</a>
@@ -36,6 +60,9 @@
 			<thead style="background-color: black; color: white">
 		      <tr>
 		        <th>ชื่อผู้ใช้</th>
+		        <th>คำนำหน้าชื่อ</th>
+		        <th>ชื่อ</th>
+		        <th>นามสกุล</th>
 		        <th>ประเภทผู้ใช้</th>
 		        <th>เวลาใช้งานล่าสุด</th>	
 		        <th>แก้ไข/ลบ</th>
@@ -43,7 +70,7 @@
 		    </thead>
 			<tbody>
 		<?php
-			$sql = $db->prepare("SELECT Id,user,level,last_login FROM permission");
+			$sql = $db->prepare("SELECT Id,user,pname,name,lastname,level,last_login FROM permission");
 			$sql->execute();
 			$sql->setFetchMode(PDO::FETCH_ASSOC);
 			while ($row = $sql->fetch()) {
@@ -60,11 +87,14 @@
 				  </div> 				     
 				    				
                 <?php echo "</td>";
-                echo "<td>" .$row["level"]."</td>";
-                echo "<td>" .$row["last_login"]."</td>";
+                echo "<td>" .$row["pname"]."</td>";
+                echo "<td>" .$row["name"]."</td>";
+                echo "<td>" .$row["lastname"]."</td>";
+                echo "<td>" .setlevel($row["level"])."</td>";
+                echo "<td>" .DateThai($row["last_login"])."</td>";
                 echo "<td>";
             	   echo "<a href='editpermission.php?Id=".$row['Id']."'><i style='font-size:30px' class='fa fa-pencil' aria-hidden='true'></i></a>";               
-            	   echo "<a href='submitpermissiondelete.php?Id=".$row['Id']."' onclick=\"return confirm('คุณต้องการลบ ชื่อผู้ใช้ นี้หรือไม่?');\"><i style='font-size:30px' class='fa fa-remove text-danger' aria-hidden='true'></i></a>";
+            	   echo " <a href='submitpermissiondelete.php?Id=".$row['Id']."' onclick=\"return confirm('คุณต้องการลบ ชื่อผู้ใช้ นี้หรือไม่?');\"><i style='font-size:30px' class='fa fa-remove text-danger' aria-hidden='true'></i></a>";
                 echo "</td>";
                 echo "</tr>";
 			}
