@@ -9,7 +9,16 @@
  ?>
 
 <nav class="navbar navbar-inverse sidebar" role="navigation">
+<<<<<<< HEAD
     <div class="container-fluid">		
+=======
+    <div class="container-fluid">
+		<!-- Brand and toggle get grouped for better mobile display -->
+		<div class="navbar-header">
+			<a class="navbar-brand" href="#">หัวข้อ</a>
+		</div>
+		<!-- Collect the nav links, forms, and other content for toggling -->
+>>>>>>> Permission-Feature
 		<div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
 			<ul class="nav navbar-nav">
 				<li class="<?=($activepage == 'home') ? 'active' : '';?>"><a href="<?=$_path?>index.php">หน้าแรก<span style="font-size:20px;" class="pull-right hidden-xs showopacity fa fa-home"></span></a></li>		

@@ -19,6 +19,7 @@
 		<?php include "../include/menu.php"; ?>	
 
 			<div class="container">
+
 				<div class="row">				
 					<div class="col-xs-5" style="margin-left: 30px">						
 						<h1>ป้อนรายการเครื่องเช่าใหม่</h1><br>
@@ -52,7 +53,8 @@
 					   </div>		   
 					    </form>			
 					</div>					
-				</div>
+
+				
 			</div>
 				
 
