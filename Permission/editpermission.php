@@ -13,7 +13,7 @@
         <title>จัดการสิทธิ์</title>
 		<?php include "../include/css.php"; ?>
     </head>
-    <body>
+    <body style="background-color:lightgrey;">
 		<?php include "../include/banner.php"; ?>
 
 		<?php include "../include/menu.php"; ?>	
@@ -36,20 +36,20 @@
 							<h4>ชื่อผู้ใช้ : </h4> <?php echo $row["user"] ?>
 						</div>
 						<div>
-							<h4>คำนำหน้าชื่อ : </h4>
+							<h4>คำนำหน้าชื่อ</h4>
 								<input type="text" class="form-control" name="pname" value="<?php echo $row["pname"] ?>">
 						</div>
 						<div>
-							<h4>ชื่อ : </h4>
+							<h4>ชื่อ</h4>
 								<input type="text" class="form-control" name="name" value="<?php echo $row["name"] ?>">
 						</div>
 						<div>
-							<h4>นามสกุล : </h4>
+							<h4>นามสกุล</h4>
 								<input type="text" class="form-control" name="lastname" value="<?php echo $row["lastname"] ?>">
 					    </div>
 					    
 					    <div class="form-group">
-					      <h4>ประเภทผู้ใช้: &nbsp;&nbsp;&nbsp;</h4>
+					      <h4>ประเภทผู้ใช้&nbsp;&nbsp;&nbsp;</h4>
 					      <h5 class="radio-inline"><input type="radio" name="level" <?=($row["level"]=="admin")? 'checked' : ''; ?> value="admin">ผู้ดูแล</h5>
 						  <h5 class="radio-inline"><input type="radio" name="level" <?=($row["level"]=="sadmin")? 'checked' : ''; ?> value="sadmin">เจ้าหน้าที่</h5>						 
 					    </div>					
