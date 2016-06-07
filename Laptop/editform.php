@@ -54,7 +54,7 @@
 						  <label class="radio-inline"><input type="radio" name="nbStatus" <?=($row["nbStatus"]=="notrdy")? 'checked' : ''; ?> value="notrdy">ไม่พร้อมใช้งาน</label>
 						  <label class="radio-inline"><input type="radio"  name="nbStatus" <?=($row["nbStatus"]=="rent")? 'checked' : ''; ?> value="rent">ถูกเช่า</label>
 					    </div>					
-				<?php } ?>
+		<?php } ?>
 					   <div style="text-align: center">
 							<input type="hidden" class="form-control" name="Id" value="
 							<?php echo $Id ?>">
