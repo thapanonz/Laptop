@@ -18,7 +18,7 @@ try{
 	$stmp->bindValue("nbStatus" , $_POST["nbStatus"]);
 	$stmp->bindValue("setID" , $setid);
 	$stmp->execute();
-	echo $_POST["Id"];
+	// echo $_POST["Id"];
 
 	header('Location: index.php');
 	}
