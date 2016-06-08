@@ -7,9 +7,7 @@
 	function settype1($type){
 		if($type=="student"){ return "นักศึกษา";}
 		else if($type=="personnel"){ return "บุคลากร";}
-	}	
-
-	
+	}		
 ?>
 
 <!doctype html>
@@ -22,7 +20,7 @@
 		<link rel="stylesheet" type="text/css" href="../css/jquery.dataTables.min.css">
 
 		<style type="text/css">
-			/*th td {text-align: center;}*/
+			table thead tr th {text-align: center;}
 		</style>	
     </head>
     <body>
@@ -64,8 +62,9 @@
                 echo "<td>" .$row["department"]."</td>";
                 echo "<td>"; 
         ?>  
+				<div class="text-center">
 				<a href="#" data-toggle="modal" data-target="#<?php echo $row["Id"] ?>" 
-				style="margin-left: 10px">ติดต่อ</a>
+				>ติดต่อ</a></div>
 
                 <div class="modal fade" id="<?php echo $row["Id"] ?>" role="dialog">
 				    <div class="modal-dialog">
@@ -90,9 +89,11 @@
 				  </div>
 		  <?php echo "</td>"; 
 
-			    echo "<td>"; ?>              
+			    echo "<td>"; ?>
+			    <div class="text-center">              
 				<a href="#" data-toggle="modal" data-target="#<?php echo $row["address"] ?>"
-				style="margin-left: 9px">ที่อยู่</a>
+				class="text-center">ที่อยู่</a>
+				</div>
 
                 <div class="modal fade" id="<?php echo $row["address"] ?>" role="dialog">
 				    <div class="modal-dialog">
@@ -117,7 +118,7 @@
                 <?php echo "</td>"; 
                 
                 echo "<td>"; ?>
-                <div style="margin-left: 7px">
+                <div class="text-center">
             	<?php
             	   echo "<a href='editform.php?Id=".$row['Id']."'><i style='font-size:25px' class='fa fa-pencil' aria-hidden='true'></i></a>";               
             	   echo "&nbsp;&nbsp;<a href='submitdelete.php?Id=".$row['Id']."' onclick=\"return confirm('คุณต้องการลบ รายการผู้เช่า นี้หรือไม่?');\"><i style='font-size:25px' class='fa fa-remove text-danger' aria-hidden='true'></i></a>";
