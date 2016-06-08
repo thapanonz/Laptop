@@ -10,7 +10,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>ป้อนรายการเครื่องเช่าใหม่</title>
+        <title>แก้ไขรายการเครื่องเช่า</title>
 		<?php include "../include/css.php"; ?>
     </head>
     <body>
@@ -29,9 +29,8 @@
 			<div class="container">
 				<div class="row">				
 					<div class="col-xs-5" style="margin-left: 30px">						
-						<h1>รายการเครื่องเช่า</h1><br>
+						<h1>แก้ไขรายการเครื่องเช่า</h1><br>
 						<form role="form" action="submitupdate.php" method="post">
-						<?php $rdo="" ?>
 					    <div class="form-group">
 					      <label>หมายเลขเครื่องเช่า:</label>
 					      <input type="text" class="form-control" name="nbCode" value="<?php echo $row["nbCode"] ?>"> 
