@@ -4,10 +4,30 @@
 	$isSubfolder = true;
 	$activepage = "laptop";
 
-	function setstatus($status){
-		if($status=="rdy"){ return "พร้อมใช้งาน";}
-		else if($status=="notrdy"){ return "ไม่พร้อมใช้งาน";}
-		else if($status=="rent"){ return "ถูกเช่า";}
+
+	if (isset($_GET["ctrl"]) && $_GET["ctrl"]=="editstatus") {
+	$sql = "UPDATE notebook SET 
+		nbStatus =:nbStatus
+		WHERE Id = :setID";
+	$setid = $_GET['Id'];
+	settype($setid, "integer");
+	$stmp = $db->prepare($sql);
+	if($_GET["nbStatus"]=="rdy") {
+		$stmp->bindValue("nbStatus" , 'notrdy'); }
+	else if($_GET["nbStatus"]=="notrdy") {
+		$stmp->bindValue("nbStatus" , 'rdy'); }
+	$stmp->bindValue("setID" , $setid);
+	$stmp->execute();
+	}
+
+	function setstatus($Id,$status){
+		if($status=="rdy"){ 
+			return "<a href='?Id=$Id&nbStatus=$status&ctrl=editstatus' style='text-decoration: none'>
+			<div class='label label-success'>พร้อมใช้งาน</div></a>"; }
+		else if($status=="notrdy"){ 
+			return "<a href='?Id=$Id&nbStatus=$status&ctrl=editstatus' style='text-decoration: none'><div class='label label-danger'>ไม่พร้อมใช้งาน</div></a>"; }
+		else if($status=="rent"){ 
+			return "<div class='label label-warning' >ถูกเช่า</div>"; }
 	}	
 ?>
 
@@ -81,12 +101,13 @@
 				  </div>
 
                 <?php echo "</td>";
-                echo "<td align=\"center\">" .setstatus($row["nbStatus"])."</td>";
+                echo "<td align=\"center\">" .setstatus($row["Id"],$row["nbStatus"])."</td>";
                 echo "<td align=\"center\">";
             	   echo "<a title='แก้ไข' href='editform.php?Id=".$row['Id']."'><i style='font-size:25px' class='fa fa-pencil' aria-hidden='true'></i></a>";               
             	   echo " <a title='ลบ' href='submitdelete.php?Id=".$row['Id']."' onclick=\"return confirm('คุณต้องการลบ รายการเครื่องเช่า นี้หรือไม่?');\"><i style='font-size:25px' class='fa fa-remove text-danger' aria-hidden='true'></i></a>";
                 echo "</td>";
                 echo "</tr>";
+
 			}
 		?>
 			</tbody>
