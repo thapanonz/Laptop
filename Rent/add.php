@@ -38,7 +38,8 @@
 				     	<label>หมายเลขเครื่องเช่า:</label>
 				     	<select class="form-control" name="nbCode">
 				<?php
-					$sql = $db->prepare("SELECT nbCode FROM notebook WHERE nbStatus='rdy' ORDER BY nbCode");
+					$sql = $db->prepare("SELECT nbCode FROM notebook WHERE nbStatus='rdy' 
+						                 ORDER BY nbCode");
 					$sql->execute();
 					$sql->setFetchMode(PDO::FETCH_ASSOC);
 					while ($row = $sql->fetch()) { ?>
