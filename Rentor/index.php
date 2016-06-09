@@ -120,8 +120,8 @@
                 echo "<td>"; ?>
                 <div class="text-center">
             	<?php
-            	   echo "<a href='editform.php?Id=".$row['Id']."'><i style='font-size:25px' class='fa fa-pencil' aria-hidden='true'></i></a>";               
-            	   echo "&nbsp;&nbsp;<a href='submitdelete.php?Id=".$row['Id']."' onclick=\"return confirm('คุณต้องการลบ รายการผู้เช่า นี้หรือไม่?');\"><i style='font-size:25px' class='fa fa-remove text-danger' aria-hidden='true'></i></a>";
+            	   echo "<a title='แก้ไข' href='editform.php?Id=".$row['Id']."'><i style='font-size:25px' class='fa fa-pencil' aria-hidden='true'></i></a>";               
+            	   echo "&nbsp;&nbsp;<a title='ลบ' href='submitdelete.php?Id=".$row['Id']."' onclick=\"return confirm('คุณต้องการลบ รายการผู้เช่า นี้หรือไม่?');\"><i style='font-size:25px' class='fa fa-remove text-danger' aria-hidden='true'></i></a>";
                 echo "</td>"; ?>
 				 </div>
 

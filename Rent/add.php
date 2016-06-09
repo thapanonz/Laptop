@@ -62,10 +62,20 @@
 					      <label>วันครบกำหนดส่งคืน:</label>
 					      <input required id="duedate"  type="text" readonly class="form-control" name="appointlap">
 					    </div>
+
 					    <div class="form-group">
 					      <label>เจ้าหน้าที่ให้บริการ:</label>
-					      <input required type="text" class="form-control" name="staff">
-					    </div> 
+					      <select class="form-control" name="user">
+				<?php
+					$sql = $db->prepare("SELECT user FROM permission  
+						                 ORDER BY user");
+					$sql->execute();
+					$sql->setFetchMode(PDO::FETCH_ASSOC);
+					while ($row = $sql->fetch()) { ?>
+						<option value="<?php $row["Id"] ?>"><?php echo $row["user"] ?></option>
+				<?php } ?>  
+						</select>
+					    </div>
 										
 						<div style="text-align: center">
 					   	   <button type="submit" class="btn btn-success">บันทึก</button>				   <a href="index.php" class="btn btn-primary">ยกเลิก</a>

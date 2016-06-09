@@ -1,6 +1,7 @@
 <?php
 	require "../include/connect.php";
-	
+
+try {
 	$sql = $db->prepare("INSERT INTO permission (user,pname,name,lastname,level,last_login) 
 		VALUES (:user,:pname,:name,:lastname,:level,NOW());");
 	$sql->execute(array(
@@ -9,7 +10,11 @@
 		"name" => $_POST["name"],
 		"lastname" => $_POST["lastname"],
 		"level" => $_POST["level"],
-		));
+		)); 
 
 	header('Location: index.php');
+}
+catch(PDOException $e) {
+  echo $e->getMessage();
+}	
 ?>
