@@ -16,9 +16,9 @@
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">รายการเช่า <span class="caret"></span><span style="font-size:20px;" class="pull-right hidden-xs showopacity fa fa-bullhorn"></span></a>
 					<ul class="dropdown-menu forAnimate" role="menu">
-						<li class="<?=($activepage == 'listallrent') ? 'listall' : '';?>"><a href="<?=$_path?>/rent/index.php">รายการทั้งหมด</a></li>						
-						<li class="<?=($activepage == 'record') ? 'record' : '';?>"><a href="<?=$_path?>/rent/add.php">บันทึกรายการเช่า</a></li>
-						<li class="<?=($activepage == 'return') ? 'return' : '';?>"><a href="<?=$_path?>/rent/return.php">บันทึกการคืน</a></li>										
+						<li class="<?=($activepage == 'listallrent') ? 'active' : '';?>"><a href="<?=$_path?>/rent/index.php">รายการทั้งหมด</a></li>						
+						<li class="<?=($activepage == 'record') ? 'active' : '';?>"><a href="<?=$_path?>/rent/add.php">บันทึกรายการเช่า</a></li>
+						<li class="<?=($activepage == 'return') ? 'active' : '';?>"><a href="<?=$_path?>/rent/return.php">บันทึกการคืน</a></li>										
 					</ul>
 				</li>	
 				<li class="<?=($activepage == 'laptop') ? 'active' : '';?>"><a href="<?=$_path?>laptop/index.php">รายการเครื่องเช่า<span style="font-size:20px;" class="pull-right hidden-xs showopacity fa fa-tasks"></span></a></li>	

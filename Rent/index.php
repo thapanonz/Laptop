@@ -2,7 +2,7 @@
 	require "../include/connect.php";
 	//Set Path
 	$isSubfolder = true;
-	$activepage = "listalluser";
+	$activepage = "listallrent";
 
 	function settype1($type){
 		if($type=="student"){ return "นักศึกษา";}
@@ -15,7 +15,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>รายการผู้เช่าทั้งหมด</title>
+        <title>รายการเช่าทั้งหมด</title>
 		<?php include "../include/css.php"; ?>
 		<link rel="stylesheet" type="text/css" href="../css/jquery.dataTables.min.css">
 
@@ -31,9 +31,9 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-11" style="margin-left: 30px">						
-						<h1>รายการผู้เช่า</h1>
-						<a href="addform.php" class="btn btn-primary">เพิ่มรายการ</a>
-				<br><br><table class="table table-bordered table-hover" id="TableCustomer">
+						<h1>รายการเช่า</h1>
+						<!-- <a href="addform.php" class="btn btn-primary">เพิ่มรายการ</a>
+				<br><br><table class="table table-bordered table-hover" id="example">
 			<thead>
 		      <tr bgcolor="#CCCCCC" >
 		      	<th>ประเภท</th>
@@ -129,16 +129,16 @@
 			}
 		?>
 			</tbody>
-		</table>		
+		</table> -->		
 					</div>					
 				</div>
-			</div>
+			</div> 
 						
         <?php include "../include/js.php"; ?>  
         <script src="../js/jquery.dataTables.min.js"></script> 
         <script>
         	$(document).ready(function() {
-		    	$('#TableCustomer').DataTable();
+		    	$('#example').DataTable();
 			} );
         </script> 
     </body>
