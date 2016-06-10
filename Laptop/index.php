@@ -52,11 +52,7 @@
 
 			<div class="container">
 				<div class="row">
-
-					<div class="col-xs-7" style="margin-left: 30px">						
-
-					<div class="col-xs-7" style="margin-left: 30px">						
-
+					<div class="col-xs-4" style="margin-left: 30px">						
 						<h1>รายการเครื่องเช่า</h1>
 						<a href="addform.php" class="btn btn-primary">เพิ่มรายการ</a>
 		<br><br><table class="table table-bordered table-hover">

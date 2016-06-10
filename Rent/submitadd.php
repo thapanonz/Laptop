@@ -16,7 +16,17 @@ try{
 	$stmp->bindValue("rentlap" , $_POST["rentlap"]);
 	$stmp->bindValue("appointlap" , $_POST["appointlap"]);
 	$stmp->bindValue("setstaffId" , $setstaffId);
-	$stmp->execute();
+	
+	if ($stmp->execute()) {
+		$sql = "UPDATE notebook SET nbStatus='rent' WHERE Id=:setlaptopId";
+
+		$setlaptopId = $_POST['laptopId'];
+		settype($setlaptopId, "integer");
+
+		$stmp = $db->prepare($sql);
+		$stmp->bindValue("setlaptopId" , $setlaptopId);
+		$stmp->execute();
+	}
 
 	//print_r($stmp->errorInfo());
 	header('Location: index.php');
