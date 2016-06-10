@@ -59,11 +59,11 @@
 				        <div class="modal-body">
 					        <div class="row">
 					        	<div class="col-sm-12" style="font-size: 17px; margin-left: 50px; text-align: left">
-									<label>หมายเลขเครื่องเช่า:</label> <?php echo $row["nbCode"] ?><br>
+									<!-- <label>หมายเลขเครื่องเช่า:</label> <?php echo $row["nbCode"] ?><br>
 									<label>ซีเรียลเครื่องเช่า:</label> <?php echo $row["nbSerial"] ?><br>
 									<label>ยี่ห้อ/รุ่น:</label> <?php echo $row["nbBrand"] ?><br>
 									<label>รายละเอียดของเครื่อง:</label><br> <textarea style="padding: 7px" readonly="readonly" rows="5" cols="50"><?php echo $row["nbDetails"] ?></textarea><br>
-									<label>สถานะเครื่อง:</label> <?php echo setstatus($row["nbStatus"]) ?>
+									<label>สถานะเครื่อง:</label> <?php echo setstatus($row["nbStatus"]) ?> -->
 								</div>
 							</div>
 				        </div>

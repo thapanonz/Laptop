@@ -87,7 +87,7 @@
 									<label>ซีเรียลเครื่องเช่า:</label> <?php echo $row["nbSerial"] ?><br>
 									<label>ยี่ห้อ/รุ่น:</label> <?php echo $row["nbBrand"] ?><br>
 									<label>รายละเอียดของเครื่อง:</label><br> <textarea style="padding: 7px" readonly="readonly" rows="5" cols="50"><?php echo $row["nbDetails"] ?></textarea><br>
-									<label>สถานะเครื่อง:</label> <?php echo setstatus($row["nbStatus"]) ?>
+									<label>สถานะเครื่อง:</label> <?php echo setstatus($row["Id"],$row["nbStatus"]) ?>
 								</div>
 							</div>
 				        </div>
