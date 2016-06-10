@@ -42,12 +42,12 @@
 						     	<label>หมายเลขเครื่องเช่า:</label>
 						     	<select class="form-control" name="nbCode">
 								<?php
-									$sql = $db->prepare("SELECT nbCode FROM notebook WHERE nbStatus='rdy' 
+									$sql = $db->prepare("SELECT Id,nbCode FROM notebook WHERE nbStatus='rdy' 
 										                 ORDER BY nbCode");
 									$sql->execute();
 									$sql->setFetchMode(PDO::FETCH_ASSOC);
 									while ($row = $sql->fetch()) { ?>
-									<option value="<?php $row["Id"] ?>"><?php echo $row["nbCode"] ?></option>
+									<option value="<?=$row['Id'] ?>"><?php echo $row["nbCode"] ?></option>
 								<?php } ?>  
 								</select>
 							     
@@ -70,12 +70,12 @@
 					      <label>เจ้าหน้าที่ให้บริการ:</label>
 					      <select class="form-control" name="user">
 							<?php
-								$sql = $db->prepare("SELECT user FROM permission  
+								$sql = $db->prepare("SELECT Id,user FROM permission  
 									                 ORDER BY user");
 								$sql->execute();
 								$sql->setFetchMode(PDO::FETCH_ASSOC);
 								while ($row = $sql->fetch()) { ?>
-									<option value="<?php $row["Id"] ?>"><?php echo $row["user"] ?></option>
+									<option value="<?=$row['Id'] ?>"><?php echo $row["user"] ?></option>
 							<?php } ?>  
 						</select>
 					    </div>
