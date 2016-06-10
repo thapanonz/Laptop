@@ -108,7 +108,7 @@
 						newdate.setDate(d.getDate() + number);
 					    $.datetimepicker.setLocale('th');
 					    $('#duedate').datetimepicker({             
-					        format: 'Y-m-d H:i', //format: 'Y-m-d 12:00',
+					        format: 'Y-m-d 12:00', //format: 'Y-m-d H:i', 
 					        value: newdate,  });
 					});
 			});

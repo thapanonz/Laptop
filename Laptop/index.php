@@ -12,10 +12,12 @@
 	$setid = $_GET['Id'];
 	settype($setid, "integer");
 	$stmp = $db->prepare($sql);
-	if($_GET["nbStatus"]=="rdy") {
-		$stmp->bindValue("nbStatus" , 'notrdy'); }
-	else if($_GET["nbStatus"]=="notrdy") {
-		$stmp->bindValue("nbStatus" , 'rdy'); }
+	
+		if($_GET["nbStatus"]=="rdy") {
+			$stmp->bindValue("nbStatus" , 'notrdy'); }
+		else if($_GET["nbStatus"]=="notrdy") {
+			$stmp->bindValue("nbStatus" , 'rdy'); }
+
 	$stmp->bindValue("setID" , $setid);
 	$stmp->execute();
 	}
