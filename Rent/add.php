@@ -116,21 +116,13 @@
 						newdate.setDate(d.getDate() + number);
 					    $.datetimepicker.setLocale('th');
 					    $('#duedate').datetimepicker({             
-<<<<<<< HEAD
-					        format: 'Y-m-d 12:00', //format: 'Y-m-d H:i', 
-=======
 					        format: 'Y-m-d 12:00', 
->>>>>>> Rent
 					        value: newdate,  });
 					});
 
 					$.mask.definitions['~']='[+-]';
-			  	$('#citizenId').mask('9-9999-99999-99-9');
+			  		$('#citizenId').mask('9-9999-99999-99-9');
 			});
-
-  
-
-
          </script> 
     </body>
 </html>
