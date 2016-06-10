@@ -5,7 +5,7 @@ try{
 	 $sql = "INSERT INTO rent(citizenId,laptopId,rentlap,appointlap,staffId) 
  	VALUES (:citizenId,:setlaptopId,:rentlap,:appointlap,:setstaffId)";
 	
-	$setlaptopId = $_POST['nbCode'];
+	$setlaptopId = $_POST['laptopId'];
 	settype($setlaptopId, "integer");
 	$setstaffId = $_POST['staffId'];
 	settype($setstaffId, "integer");
@@ -18,6 +18,7 @@ try{
 	$stmp->bindValue("setstaffId" , $setstaffId);
 	$stmp->execute();
 
+	//print_r($stmp->errorInfo());
 	header('Location: index.php');
 }
 catch(PDOException $e) {

@@ -40,7 +40,7 @@
 
 					    <div class="form-group" >
 						     	<label>หมายเลขเครื่องเช่า:</label>
-						     	<select class="form-control" name="nbCode">
+						     	<select class="form-control" name="laptopId">
 								<?php
 									$sql = $db->prepare("SELECT Id,nbCode FROM notebook WHERE nbStatus='rdy' 
 										                 ORDER BY nbCode");
@@ -68,20 +68,20 @@
 
 					    <div class="form-group">
 					      <label>เจ้าหน้าที่ให้บริการ:</label>
-					      <select class="form-control" name="user">
+					      <select class="form-control" name="staffId">
 							<?php
-								$sql = $db->prepare("SELECT Id,user FROM permission  
+								$sql = $db->prepare("SELECT Id,pname,name,lastname FROM permission  
 									                 ORDER BY user");
 								$sql->execute();
 								$sql->setFetchMode(PDO::FETCH_ASSOC);
 								while ($row = $sql->fetch()) { ?>
-									<option value="<?=$row['Id'] ?>"><?php echo $row["user"] ?></option>
+									<option value="<?=$row['Id'] ?>"><?php echo $row["pname"].$row["name"]."&nbsp;".$row["lastname"] ?></option>
 							<?php } ?>  
 						</select>
 					    </div>
 										
 						<div style="text-align: center">
-					   	   <button type="submit" class="btn btn-success">บันทึก</button>				   <a href="index.php" class="btn btn-primary">ยกเลิก</a>
+					   	   <button type="submit" class="btn btn-success">บันทึก</button>				   		<a href="index.php" class="btn btn-primary">ยกเลิก</a>
 						</div>
 					</div>		
 
