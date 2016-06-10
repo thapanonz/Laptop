@@ -123,10 +123,6 @@
 					$.mask.definitions['~']='[+-]';
 			  	$('#citizenId').mask('9-9999-99999-99-9');
 			});
-
-  
-
-
          </script> 
     </body>
 </html>
