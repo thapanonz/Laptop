@@ -81,6 +81,9 @@ nav.sidebar .navbar-nav .open .dropdown-menu {
     -webkit-box-shadow: none;
     box-shadow: none;
 }
+nav.sidebar .navbar-nav .open .dropdown-menu .active a {
+    background-color: #000;
+}
 
 /*allows nav box to use 100% width*/
 nav.sidebar .navbar-collapse, nav.sidebar .container-fluid{

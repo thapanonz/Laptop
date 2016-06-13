@@ -1,9 +1,9 @@
 <?php
 	$HOST_NAME = "127.0.0.1";
-	$DB_NAME = "Proj_Notebook";
+	$DB_NAME = "laptop";
 	$CHAR_SET = "charset=utf8"; 
-	$USERNAME = "thapanonz";     
-	$PASSWORD = "104";  
+	$USERNAME = "acadmin";     
+	$PASSWORD = "zxc123**";  
  
 	try {
 		$db = new PDO('mysql:host='.$HOST_NAME.';dbname='.$DB_NAME.';'.$CHAR_SET,$USERNAME,$PASSWORD);
