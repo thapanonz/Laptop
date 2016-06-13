@@ -83,7 +83,7 @@
 				echo "<td align=\"center\">" .$row["rentlap"]."</td>";  
 				echo "<td align=\"center\">" .$row["appointlap"]."</td>";  
 				echo "<td align=\"center\">";
-            	   echo "<a href='editform.php?Id=".$row['Id']."'>คืน</a>";
+            	   echo "<a href='returnform.php?Id=".$row['Id']."'>คืน</a>";
             	echo "</td>";
                 echo "</tr>";
 
