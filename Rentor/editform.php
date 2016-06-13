@@ -25,7 +25,7 @@
 			$sql->setFetchMode(PDO::FETCH_ASSOC);
 			while ($row = $sql->fetch()) {			 	
 		?>
-			<div class="container" >
+			<div class="container">
 			<h1 style="margin-left:43px">แก้ไขรายการผู้เช่า</h1><br>
 			<form role="form" action="submitupdate.php" method="post">	
 				<div class="row" style="margin-left: 30px">				

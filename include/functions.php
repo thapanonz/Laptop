@@ -9,7 +9,7 @@
 				$MaxId=$row["max(Id)"];
 			}
 
-			if($MaxId="NULL") { return 1; }
+			if($MaxId=="NULL") { return 1; }
 			else { return $MaxId+1; }
 	}
 ?>

@@ -1,8 +1,9 @@
 <?php
 	require "../include/connect.php";
+	require "../include/functions.php";
 	//Set Path
 	$isSubfolder = true;
-	$activepage = "listallrent";
+	$activepage = "return";
 ?>
 
 <!doctype html>
@@ -10,22 +11,23 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>รายการเช่าทั้งหมด</title>
+        <title>บันทึกรายการคืน</title>
 		<?php include "../include/css.php"; ?>
+		<link rel="stylesheet" type="text/css" href="../css/jquery.datetimepicker.css">
 
 		<style type="text/css">
 			table thead tr th {text-align: center;}
-		</style>	
+		</style>
     </head>
     <body>
 		<?php include "../include/banner.php"; ?>
-		
-			<?php include "../include/menu.php"; ?>	
+
+		<?php include "../include/menu.php"; ?>	
 
 			<div class="container">
 				<div class="row">
 					<div class="col-xs-8" style="margin-left: 30px">						
-						<h1>รายการเช่า</h1>
+						<h1>บันทึกรายการคืน</h1>
 						
 		<br><table class="table table-bordered table-hover">
 			<thead>
@@ -35,12 +37,12 @@
 		        <th>หมายเลขเครื่อง</th>	 
 		        <th>วันที่เช่า</th>
 		        <th>วันกำหนดส่งคืน</th>
-		        <th>วันที่คืน</th>      	        
+		        <th></th>      	        
 		      </tr>
 		    </thead>
 			<tbody>
 		<?php
-			$sql = $db->prepare("SELECT * FROM rentlist");
+			$sql = $db->prepare("SELECT * FROM rentlist WHERE returnlap is NULL");
 			$sql->execute();
 			$sql->setFetchMode(PDO::FETCH_ASSOC);
 			while ($row = $sql->fetch()) {
@@ -80,8 +82,12 @@
 				echo "<td align=\"center\">" .$row["nbCode"]."</td>";  
 				echo "<td align=\"center\">" .$row["rentlap"]."</td>";  
 				echo "<td align=\"center\">" .$row["appointlap"]."</td>";  
-				echo "<td align=\"center\">" .$row["returnlap"]."</td>";    
+				echo "<td align=\"center\">";
+            	   echo "<a href='returnform.php?Id=".$row['Id']."'>คืน</a>";
+            	echo "</td>";
                 echo "</tr>";
+
+
 			} ?>
 			</tbody>
 		</table>
@@ -89,19 +95,7 @@
 	</div>
 </div>	
 						
-        <?php include "../include/js.php"; ?>  
-<<<<<<< HEAD
-        <script src="../js/jquery.dataTables.min.js"></script> 
-        <script>
-        	$(document).ready(function() {
-		    	$('#example').DataTable();
 
-				
-			});
-        </script> 
-=======
->>>>>>> Thapanon
+        <?php include "../include/js.php"; ?>  
     </body>
 </html>
-
-

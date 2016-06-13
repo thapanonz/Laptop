@@ -32,7 +32,7 @@
 					    </div>	
 						<div class="form-group">
 					      <label>เลขบัตรประชาชน:</label>
-					      <input required type="text" class="form-control" name="Id" placeholder="ตัวอย่าง: 1959900402123"> 
+					      <input required type="text" class="form-control" name="Id" id="citizenId" style="letter-spacing: 1px;" placeholder="ตัวอย่าง: 1-5646-46454-54-6"> 
 					    </div>
 					    <div class="form-group">
 					      <label>รหัสนักศึกษา/บุคลากร:</label>
@@ -90,6 +90,11 @@
 			</div>
 						
 
-        <?php include "../include/js.php"; ?>      
+        <?php include "../include/js.php"; ?>   
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js" type="text/javascript"></script>
+        <script>
+        $.mask.definitions['~']='[+-]';
+		$('#citizenId').mask('9-9999-99999-99-9');  
+		</script> 
     </body>
 </html>

@@ -3,7 +3,7 @@
 	require "../include/functions.php";
 	//Set Path
 	$isSubfolder = true;
-	$activepage = "record";
+	$activepage = "return";
 ?>
 
 <!doctype html>
@@ -11,7 +11,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>บันทึกรายการเช่า</title>
+        <title>บันทึกรายการคืน</title>
 		<?php include "../include/css.php"; ?>
 		<link rel="stylesheet" type="text/css" href="../css/jquery.datetimepicker.css">
     </head>
@@ -21,49 +21,68 @@
 		<?php include "../include/menu.php"; ?>	
 
 			<div class="container" >
-			<h1 style="margin-left:43px">บันทึกรายการเช่า</h1><br>
-			<form role="form" action="submitadd.php" method="post">	
+			<h1 style="margin-left:43px">บันทึกรายการคืน</h1><br>
+			<form role="form" action="submitreturn.php" method="post">	
 				<div class="row" style="margin-left: 30px">				
 					<div class="col-xs-5">
+			<?php
+			$Id=$_GET['Id'];
+			$sql = $db->prepare("SELECT * FROM rent WHERE Id=$Id");
+			$sql->execute();
+			$sql->setFetchMode(PDO::FETCH_ASSOC);
+			while ($row = $sql->fetch()) { ?>
 						<div class="form-group">
-					      <label>สัญญาเช่าเลขที่: <?php echo getNewID() ?></label>
+					      <label>สัญญาเช่าเลขที่: <?php echo $Id ?></label>
 					    </div>
+					
 						<div class="form-group">
-					      <label>เลขบัตรประชาชนผู้เช่า:</label>
-					      	<div class="col-sm-10" style="padding-left: 0">
-					      		<input required type="text" class="form-control" name="citizenId" id="citizenId" style="letter-spacing: 1px;" placeholder="_-____-_____-__-_">
-					      	</div>
-							<div class="col-sm-2" style="text-align: right; padding: 0">
-					      		<a id="retrieveRentor" class="btn btn-info">ค้นหา</a>	
-					      	</div>
+					      <label>ผู้เช่า:</label>
+					      <?php							
+							$sql1 = $db->prepare("SELECT prename,firstname,lastname FROM Customer WHERE Id='".$row['citizenId']."'"); 
+							$sql1->execute();
+							$sql1->setFetchMode(PDO::FETCH_ASSOC);
+							while ($row1 = $sql1->fetch()) { ?>
+					      		<input disabled type="text" class="form-control" value="<?php echo $row1["prename"].$row1["firstname"]." ".$row1["lastname"] ?>">
+					      	<?php } ?>    							
 					    </div>
 
 					    <div class="form-group" >
-						     	<label>หมายเลขเครื่องเช่า:</label>
-						     	<select class="form-control" name="laptopId">
-								<?php
-									$sql = $db->prepare("SELECT Id,nbCode FROM notebook WHERE nbStatus='rdy' 
-										                 ORDER BY nbCode");
-									$sql->execute();
-									$sql->setFetchMode(PDO::FETCH_ASSOC);
-									while ($row = $sql->fetch()) { ?>
-									<option value="<?=$row['Id'] ?>"><?php echo $row["nbCode"] ?></option>
-								<?php } ?>  
-								</select>
-							     
+				     	  <label>หมายเลขเครื่องเช่า:</label>
+				     	  <?php							
+							$sql2 = $db->prepare("SELECT nbCode FROM Notebook WHERE Id=".$row['laptopId']); 
+							$sql2->execute();
+							$sql2->setFetchMode(PDO::FETCH_ASSOC);
+							while ($row2 = $sql2->fetch()) { ?>
+				     	  <input disabled type="text" class="form-control" value="<?php echo $row2["nbCode"] ?>">
+							<?php } ?>     
 					    </div>
 
 					    <div class="form-group">
 					      <label>วันที่เช่า:</label>
-					      <input required id="rentdate" type="text" class="form-control" name="rentlap">
-					    </div>
-					    <div class="form-group">
-					      <label>จำนวนวัน:</label>
-					      <input required id="setday" type="number" class="form-control">
-					    </div>
+					      <input disabled type="text" class="form-control" value="<?php echo $row["rentlap"] ?>">
+					    </div>				
+					   
 					    <div class="form-group">
 					      <label>วันครบกำหนดส่งคืน:</label>
-					      <input required id="duedate"  type="text" readonly class="form-control" name="appointlap">
+					      <input disabled id="duedate"  type="text" class="form-control" value="<?php echo $row["appointlap"] ?>">
+					    </div>
+
+					    <div class="form-group">
+					      <label>เจ้าหน้าที่ให้บริการ:</label>
+					      <?php							
+							$sql3 = $db->prepare("SELECT pname,name,lastname FROM permission WHERE Id=".$row['staffId']); 
+							$sql3->execute();
+							$sql3->setFetchMode(PDO::FETCH_ASSOC);
+							while ($row3 = $sql3->fetch()) { ?>
+					       <input disabled type="text" class="form-control" value="<?php echo $row3["pname"].$row3["name"]." ".$row3["lastname"] ?>">
+					       <?php } ?>
+					    </div>
+					</div>
+
+					<div class="col-xs-5" style="margin-left: 30px">
+					     <div class="form-group">
+					      <label>วันที่คืน:</label>
+					      <input id="rentdate" type="text"  class="form-control" name="returnlap">
 					    </div>
 
 					    <div class="form-group">
@@ -79,7 +98,7 @@
 							<?php } ?>  
 						</select>
 					    </div>
-										
+				<?php } ?>						
 						<div style="text-align: center">
 					   	   <button type="submit" class="btn btn-success">บันทึก</button>				   		<a href="index.php" class="btn btn-primary">ยกเลิก</a>
 						</div>
@@ -122,33 +141,6 @@
 
 					$.mask.definitions['~']='[+-]';
 			  		$('#citizenId').mask('9-9999-99999-99-9');
-			  		$('#citizenId').focusout(function(){
-			  			if($("#citizenId").val().split('_').join('').length != 17)
-			  			{
-			  				alert("กรุณากรอกเลขบัตรประชาชนให้ครบ 13 หลัก");
-			  			}
-			  		});
-
-		  			$("#retrieveRentor").click(function(){
-						var vname = $("#citizenId").val();
-						if(vname.length != 17)
-						{
-							alert("กรุณากรอกเลขบัตรประชาชนให้ครบ 13 หลัก");
-						}
-						else{
-						$.post("retrieveRentor.php", //Required URL of the page on server
-						{ // Data Sending With Request To Server
-						cid:vname
-						},
-						function(response){ // Required Callback Function
-							$("#searchResult").html(response)
-			               
-
-
-
-							});
-						}
-					});
 			});
          </script> 
     </body>
