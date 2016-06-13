@@ -80,9 +80,27 @@
 					</div>
 
 					<div class="col-xs-5" style="margin-left: 30px">
-					     <div class="form-group">
-					      <label>วันที่คืน:</label>
-					      <input id="rentdate" type="text"  class="form-control" name="returnlap">
+					     <div class="form-group" style="padding-bottom: 57px">
+					     	<div class="col-sm-12" style="padding-left: 0">
+					      		<label>วันที่คืน:</label>
+					      	</div>
+					      	<div class="col-sm-10" style="padding-left: 0">
+					      		<input id="rentdate"  type="text" class="form-control" name="returnlap">
+					      	</div>
+							<div class="col-sm-2" style="text-align: right; padding: 0">
+					      		<a id="retrieveRentor" class="btn btn-info">คำนวนเงิน</a>	
+					      	</div>
+					    </div>
+
+					    <div class="form-group">
+					    	<div class="col-sm-12" style="padding-left: 0">
+					      		<label>จำนวนวัน:</label>
+					      	</div>
+					     	 <input id="rentdate" type="text"  class="form-control" name="returnlap">
+					    </div>
+					    <div class="form-group">					    	
+					      		<label>จำนวนเงิน:</label>					      	
+					     	 <input id="rentdate" type="text"  class="form-control" name="returnlap">
 					    </div>
 
 					    <div class="form-group">

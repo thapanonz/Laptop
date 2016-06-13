@@ -28,7 +28,7 @@
 						<div class="form-group">
 					      <label>สัญญาเช่าเลขที่: <?php echo getNewID() ?></label>
 					    </div>
-						<div class="form-group">
+						<div class="form-group" style="padding-bottom: 35px">
 					      <label>เลขบัตรประชาชนผู้เช่า:</label>
 					      	<div class="col-sm-10" style="padding-left: 0">
 					      		<input required type="text" class="form-control" name="citizenId" id="citizenId" style="letter-spacing: 1px;" placeholder="_-____-_____-__-_">
