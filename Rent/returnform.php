@@ -107,8 +107,10 @@
 					       <?php } ?>
 					    </div>
 					</div>
+					
 
 					<div class="col-xs-5" style="margin-left: 30px">
+					<form role="form" action="submitreturn.php" method="post">
 					     <div class="form-group" style="padding-bottom: 57px">
 					     	<div class="col-sm-12" style="padding-left: 0">
 					      		<label>วันที่คืน:</label>
@@ -125,7 +127,7 @@
 					    	<div class="col-sm-12" style="padding-left: 0">
 					      		<label>จำนวนวัน:</label>
 					      	</div>
-					     	 <input readonly id="rentdays" type="text"  class="form-control" name="rentday">
+					     	 <input readonly id="rentdays" type="text"  class="form-control">
 					    </div>
 					    <div class="form-group">					    	
 					      		<label>จำนวนเงิน:</label>					      	
@@ -133,8 +135,8 @@
 					    </div>
 
 					    <div class="form-group">
-					      <label>เจ้าหน้าที่ให้บริการ:</label>
-					      <select class="form-control" name="staffId">
+					      <label>เจ้าหน้าที่รับบริการคืน:</label>
+					      <select class="form-control" name="returnstaffId">
 							<?php
 								$sql = $db->prepare("SELECT Id,pname,name,lastname FROM permission  
 									                 ORDER BY user");
@@ -145,13 +147,16 @@
 							<?php } ?>  
 						</select>
 					    </div>
-				<?php } ?>						
+				 					
 						<div style="text-align: center">
+						<input id="isLate" type="hidden" name="isLate" value="0">
+						<input type="hidden" name="Id" value="<?php echo $Id ?>">
 					   	   <button type="submit" class="btn btn-success">บันทึก</button>			
 					   	   <a href="index.php" class="btn btn-primary">ยกเลิก</a>
 						</div>
+						</form>
 					</div>		
-
+				<?php } ?>
 					<div class="col-xs-5">
 						<div class="searchResult" id="searchResult"></div>
 					</div>
@@ -199,7 +204,7 @@
 			  			duedate = new Date(duedate);		  		
 			  			if(returndate > duedate)
 			  			{
-			  				//days = days+1;
+			  				$('#isLate').val(1);
 			  				fine = $('#finevalue').val();
 
 			  			}

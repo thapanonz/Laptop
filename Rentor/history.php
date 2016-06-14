@@ -4,9 +4,10 @@
 	$isSubfolder = true;
 	$activepage = "history";
 
-	function settype1($type){
-		if($type=="student"){ return "นักศึกษา";}
-		else if($type=="personnel"){ return "บุคลากร";}
+	function setlate($late){
+		if($late=="0"){ return "ปกติ";}
+		else if($late=="1"){ return "<span class='label label-danger'>สาย</span>";}
+		else if($late==NULL){return "ยังไม่คืน"; }
 	}		
 ?>
 
@@ -74,15 +75,16 @@
 
 							echo "<td align=\"center\">".$row1["rentlap"]."</td>"; 
 							echo "<td align=\"center\">".$row1["returnlap"]."</td>"; 
-
-							// สาย? , คำวนวเงิน
+							echo "<td align=\"center\">".setlate($row1["isLate"])."</td>"; 
+							echo "<td align=\"center\">".$row1["cost"]."</td>"; 
+							
 									
 										$sql3 = $db->prepare("SELECT * FROM permission WHERE Id LIKE :staffId");
 										$sql3->bindParam(':staffId', $row1['staffId'], PDO::PARAM_INT);
 										$sql3->execute();
 										$sql3->setFetchMode(PDO::FETCH_ASSOC);
 										while ($row3 = $sql3->fetch()) {
-											echo "<td align=\"center\">".$row3["pname"].$row3["name"].$row3["lastname"]."</td>"; 
+											echo "<td align=\"center\">".$row3["pname"].$row3["name"]." ".$row3["lastname"]."</td>"; 
 										} 
 
 										$sql4 = $db->prepare("SELECT * FROM permission WHERE Id LIKE :returnstaffId");
@@ -90,7 +92,7 @@
 										$sql4->execute();
 										$sql4->setFetchMode(PDO::FETCH_ASSOC);
 										while ($row4 = $sql4->fetch()) {
-											echo "<td align=\"center\">".$row4["pname"].$row4["name"].$row4["lastname"]."</td>"; 
+											echo "<td align=\"center\">".$row4["pname"].$row4["name"]." ".$row4["lastname"]."</td>"; 
 										} 
 							echo "<tr>";
 						} ?>
