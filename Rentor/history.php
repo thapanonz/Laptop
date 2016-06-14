@@ -95,7 +95,8 @@
 							echo "<tr>";
 						} ?>
 					</tbody>
-					</table>		
+					</table>	
+					  <a href="index.php" class="btn btn-primary">ย้อนกลับ</a>	
 					</div>
 			    </div>			    
 			</div>
