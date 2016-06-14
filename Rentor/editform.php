@@ -19,11 +19,12 @@
 		<?php include "../include/menu.php"; ?>	
 		
 		<?php
-			$Id=$_GET['Id'];
-			$sql = $db->prepare("SELECT Id,passport,prename,firstname,lastname,type,faculty,department,address,phone,email FROM customer WHERE Id=$Id");
-			$sql->execute();
-			$sql->setFetchMode(PDO::FETCH_ASSOC);
-			while ($row = $sql->fetch()) {			 	
+			$sql = "SELECT * FROM customer where Id LIKE :Id";
+			$stmt = $db->prepare($sql);
+			$stmt->bindParam(':Id', $_GET['Id'], PDO::PARAM_STR);
+			$stmt->execute();
+			$stmt->setFetchMode(PDO::FETCH_ASSOC);
+			while ($row = $stmt->fetch()) {			 	
 		?>
 			<div class="container">
 			<h1 style="margin-left:43px">แก้ไขรายการผู้เช่า</h1><br>
