@@ -1,6 +1,10 @@
 <?php
 	$HOST_NAME = "127.0.0.1";
+<<<<<<< HEAD
 	$DB_NAME = "laptop";
+=======
+	$DB_NAME = "proj_notebook";
+>>>>>>> Thapanon
 	$CHAR_SET = "charset=utf8"; 
 	$USERNAME = "acadmin";     
 	$PASSWORD = "zxc123**";  
