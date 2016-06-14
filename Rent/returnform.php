@@ -51,7 +51,7 @@
 
 										?>
 										<input type="hidden" id="feevalue" name="feevalue" value="<?=$fee['fee_value']?>">
-										<?
+										<?php
 
 									}
 
@@ -63,7 +63,7 @@
 
 										?>
 										<input type="hidden" id="finevalue" name="finevalue" value="<?=$fine['fee_value']?>">
-										<?
+										<?php
 
 									}
 							
@@ -81,7 +81,9 @@
 							$sql2->setFetchMode(PDO::FETCH_ASSOC);
 							while ($row2 = $sql2->fetch()) { ?>
 				     	  <input disabled type="text" class="form-control" value="<?php echo $row2["nbCode"] ?>">
-							<?php } ?>     
+							<?php 
+							} 
+							?>     
 					    </div>
 
 					    <div class="form-group">
