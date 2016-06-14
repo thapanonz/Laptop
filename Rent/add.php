@@ -28,13 +28,13 @@
 						<div class="form-group">
 					      <label>สัญญาเช่าเลขที่: <?php echo getNewID() ?></label>
 					    </div>
-						<div class="form-group">
+						<div class="form-group" style="padding-bottom: 35px">
 					      <label>เลขบัตรประชาชนผู้เช่า:</label>
 					      	<div class="col-sm-10" style="padding-left: 0">
 					      		<input required type="text" class="form-control" name="citizenId" id="citizenId" style="letter-spacing: 1px;" placeholder="_-____-_____-__-_">
 					      	</div>
 							<div class="col-sm-2" style="text-align: right; padding: 0">
-					      		<button type="submit" class="btn btn-info">ค้นหา</button>	
+					      		<a id="retrieveRentor" class="btn btn-info">ค้นหา</a>	
 					      	</div>
 					    </div>
 
@@ -122,6 +122,33 @@
 
 					$.mask.definitions['~']='[+-]';
 			  		$('#citizenId').mask('9-9999-99999-99-9');
+			  		$('#citizenId').focusout(function(){
+			  			if($("#citizenId").val().split('_').join('').length != 17)
+			  			{
+			  				alert("กรุณากรอกเลขบัตรประชาชนให้ครบ 13 หลัก");
+			  			}
+			  		});
+
+		  			$("#retrieveRentor").click(function(){
+						var vname = $("#citizenId").val();
+						if(vname.length != 17)
+						{
+							alert("กรุณากรอกเลขบัตรประชาชนให้ครบ 13 หลัก");
+						}
+						else{
+						$.post("retrieveRentor.php", //Required URL of the page on server
+						{ // Data Sending With Request To Server
+						cid:vname
+						},
+						function(response){ // Required Callback Function
+							$("#searchResult").html(response)
+			               
+
+
+
+							});
+						}
+					});
 			});
          </script> 
     </body>

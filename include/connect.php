@@ -1,5 +1,7 @@
 <?php
 	$HOST_NAME = "127.0.0.1";
+
+	$DB_NAME = "laptop";
 	$DB_NAME = "proj_notebook";
 	$CHAR_SET = "charset=utf8"; 
 	$USERNAME = "thapanonz";     

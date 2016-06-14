@@ -38,10 +38,37 @@
 						<div class="form-group">
 					      <label>ผู้เช่า:</label>
 					      <?php							
-							$sql1 = $db->prepare("SELECT prename,firstname,lastname FROM Customer WHERE Id='".$row['citizenId']."'"); 
+							$sql1 = $db->prepare("SELECT prename,firstname,lastname,type FROM Customer WHERE Id='".$row['citizenId']."'"); 
 							$sql1->execute();
 							$sql1->setFetchMode(PDO::FETCH_ASSOC);
-							while ($row1 = $sql1->fetch()) { ?>
+							while ($row1 = $sql1->fetch()) { 
+
+									$feeStm = $db->prepare("SELECT fee_value FROM fee WHERE fee_type='".$row1['type']."'"); 
+									$feeStm->execute();
+									$feeStm->setFetchMode(PDO::FETCH_ASSOC);
+									while ($fee = $feeStm->fetch()) 
+									{ 
+
+										?>
+										<input type="hidden" id="feevalue" name="feevalue" value="<?=$fee['fee_value']?>">
+										<?php
+
+									}
+
+									$fineStm = $db->prepare("SELECT fee_value FROM fee WHERE fee_type = 'fine'"); 
+									$fineStm->execute();
+									$fineStm->setFetchMode(PDO::FETCH_ASSOC);
+									while ($fine = $fineStm->fetch()) 
+									{ 
+
+										?>
+										<input type="hidden" id="finevalue" name="finevalue" value="<?=$fine['fee_value']?>">
+										<?php
+
+									}
+							
+							?>
+
 					      		<input disabled type="text" class="form-control" value="<?php echo $row1["prename"].$row1["firstname"]." ".$row1["lastname"] ?>">
 					      	<?php } ?>    							
 					    </div>
@@ -54,12 +81,14 @@
 							$sql2->setFetchMode(PDO::FETCH_ASSOC);
 							while ($row2 = $sql2->fetch()) { ?>
 				     	  <input disabled type="text" class="form-control" value="<?php echo $row2["nbCode"] ?>">
-							<?php } ?>     
+							<?php 
+							} 
+							?>     
 					    </div>
 
 					    <div class="form-group">
 					      <label>วันที่เช่า:</label>
-					      <input disabled type="text" class="form-control" value="<?php echo $row["rentlap"] ?>">
+					      <input disabled type="text" id="rentdate" class="form-control" value="<?php echo $row["rentlap"] ?>">
 					    </div>				
 					   
 					    <div class="form-group">
@@ -80,9 +109,27 @@
 					</div>
 
 					<div class="col-xs-5" style="margin-left: 30px">
-					     <div class="form-group">
-					      <label>วันที่คืน:</label>
-					      <input id="rentdate" type="text"  class="form-control" name="returnlap">
+					     <div class="form-group" style="padding-bottom: 57px">
+					     	<div class="col-sm-12" style="padding-left: 0">
+					      		<label>วันที่คืน:</label>
+					      	</div>
+					      	<div class="col-sm-10" style="padding-left: 0">
+					      		<input id="returndate"  type="text" class="form-control" name="returnlap">
+					      	</div>
+							<div class="col-sm-2" style="text-align: right; padding: 0">
+					      		<a id="calFee" class="btn btn-info">คำนวนเงิน</a>	
+					      	</div>
+					    </div>
+
+					    <div class="form-group">
+					    	<div class="col-sm-12" style="padding-left: 0">
+					      		<label>จำนวนวัน:</label>
+					      	</div>
+					     	 <input readonly id="rentdays" type="text"  class="form-control" name="rentday">
+					    </div>
+					    <div class="form-group">					    	
+					      		<label>จำนวนเงิน:</label>					      	
+					     	 <input id="fee" readonly type="text"  class="form-control" name="fee">
 					    </div>
 
 					    <div class="form-group">
@@ -100,7 +147,8 @@
 					    </div>
 				<?php } ?>						
 						<div style="text-align: center">
-					   	   <button type="submit" class="btn btn-success">บันทึก</button>				   		<a href="index.php" class="btn btn-primary">ยกเลิก</a>
+					   	   <button type="submit" class="btn btn-success">บันทึก</button>			
+					   	   <a href="index.php" class="btn btn-primary">ยกเลิก</a>
 						</div>
 					</div>		
 
@@ -120,7 +168,7 @@
          	$(document).ready(function () {
 				    var d = new Date();
 				    $.datetimepicker.setLocale('th');
-				    $('#rentdate').datetimepicker({             
+				    $('#returndate').datetimepicker({             
 				        mask: true,
 				        timepicker: true,
 				        format: 'Y-m-d H:i',
@@ -128,19 +176,41 @@
 				        step: 1,
 				    });
 
-		         	$('#setday').on('change', function() {
-						var d = new Date();
-						var newdate = new Date(d);
-						var number = parseInt( $('#setday').val(), 10);
-						newdate.setDate(d.getDate() + number);
-					    $.datetimepicker.setLocale('th');
-					    $('#duedate').datetimepicker({             
-					        format: 'Y-m-d 12:00', 
-					        value: newdate,  });
-					});
-
 					$.mask.definitions['~']='[+-]';
 			  		$('#citizenId').mask('9-9999-99999-99-9');
+
+			  		$('#calFee').click(function(){
+			  			// Init
+			  			var startdate = $('#rentdate').val();
+			  			var returndate = $('#returndate').val()
+			  			var duedate = $('#duedate').val()
+			  			var fee = $('#feevalue').val();
+			  			var fine = 0;
+
+			  			//Calculate Days
+			  			startdate = new Date(startdate);
+			  			startdate.setHours(13);
+			  			startdate.setMinutes(0);
+			  			returndate = new Date(returndate);		  			
+			  			diff = returndate - startdate;
+			  			var days = Math.ceil(diff/1000/60/60/24);	
+
+			  			// Check Late
+			  			duedate = new Date(duedate);		  		
+			  			if(returndate > duedate)
+			  			{
+			  				//days = days+1;
+			  				fine = $('#finevalue').val();
+
+			  			}
+
+			  			// Calculate Fee
+			  			fee = (days*fee)+parseInt(fine);
+			  			
+			  			
+						$('#rentdays').val(days);
+						$('#fee').val(fee);
+			  		})
 			});
          </script> 
     </body>

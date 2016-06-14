@@ -90,6 +90,17 @@
 </div>	
 						
         <?php include "../include/js.php"; ?>  
+<<<<<<< HEAD
+        <script src="../js/jquery.dataTables.min.js"></script> 
+        <script>
+        	$(document).ready(function() {
+		    	$('#example').DataTable();
+
+				
+			});
+        </script> 
+=======
+>>>>>>> Thapanon
     </body>
 </html>
 
