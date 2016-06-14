@@ -41,7 +41,7 @@
 						<li class="<?=($activepage == 'periodreport') ? 'active' : '';?>"><a href="<?=$_path?>report/period.php">สรุปตามช่วงเวลา</a></li>	
 					</ul>
 				</li>	
-				<li class="<?=($activepage == 'permission') ? 'active' : '';?>"><a href="<?=$_path?>permission/index.php">จัดการสิทธิ์<span style="font-size:20px;" class="pull-right hidden-xs showopacity fa fa-user"></span></a></li>										
+				<li class="<?=($activepage == 'permission') ? 'active' : '';?>"><a href="<?=$_path?>permission/index.php">จัดการสิทธิ์<span style="font-size:20px;" class="pull-right hidden-xs showopacity fa fa-user"></span></a></li>												
 			</ul>
 		</div>
 	</div>
