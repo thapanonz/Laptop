@@ -1,6 +1,8 @@
 <?php
 	require "../include/connect.php";
 	require "../include/functions.php";
+	require "../include/fnDatethai.php";
+	
 	//Set Path
 	$isSubfolder = true;
 	$activepage = "return";
@@ -55,18 +57,17 @@
 				      <div class="modal-content">
 				        <div class="modal-header">
 				          <button type="button" class="close" data-dismiss="modal">&times;</button>
-				          <h4 class="modal-title">รายการเช่า</h4>
+				          <h4 class="modal-title">รายการคืน</h4>
 				        </div>
 				        <div class="modal-body">
 					        <div class="row">
 					        	<div class="col-sm-12" style="font-size: 17px; margin-left: 50px; text-align: left">
-									 <label>สัญญาเช่าเลขที่:</label> <?php echo $row["Id"] ?><br>
+									<label>สัญญาเช่าเลขที่:</label> <?php echo $row["Id"] ?><br>
 									<label>ชื่อ-นามสกุล:</label> <?php echo $row["firstname"]."&nbsp;".$row["lastname"] ?><br>
 									<label>หมายเลขเครื่อง:</label> <?php echo $row["nbCode"] ?><br><br>
 									<label>วันที่เช่า:</label> <?php echo $row["rentlap"] ?><br>	
-									<label>เจ้าหน้าที่ให้บริการ:</label> <?php echo $row["rent_firstname"]."&nbsp;".$row["rent_lastname"] ?><br><br>
-									<label>วันกำหนดส่งคืน:</label> <?php echo $row["appointlap"] ?><br><br>
-									<label>วันที่คืน:</label> <?php echo $row["returnlap"] ?><br>			    <label>เจ้าหน้าที่รับคืนเครื่อง:</label> <?php echo $row["return_firstname"]."&nbsp;".$row["return_lastname"] ?><br>
+									<label>เจ้าหน้าที่ให้เช่า:</label> <?php echo $row["rent_firstname"]."&nbsp;".$row["rent_lastname"] ?><br><br>
+									<label>วันกำหนดส่งคืน:</label> <?php echo $row["appointlap"] ?>
 								</div>
 							</div>
 				        </div>
@@ -80,8 +81,8 @@
 				echo "</td>";
 				echo "<td align=\"center\">" .$row["firstname"]."&nbsp;".$row["lastname"]."</td>";   
 				echo "<td align=\"center\">" .$row["nbCode"]."</td>";  
-				echo "<td align=\"center\">" .$row["rentlap"]."</td>";  
-				echo "<td align=\"center\">" .$row["appointlap"]."</td>";  
+				echo "<td align=\"center\">" .DateThai($row["rentlap"])."</td>";  
+				echo "<td align=\"center\">" .DateThai($row["appointlap"])."</td>";  
 				echo "<td align=\"center\">";
             	   echo "<a href='returnform.php?Id=".$row['Id']."'>คืน</a>";
             	echo "</td>";

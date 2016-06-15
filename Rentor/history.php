@@ -1,5 +1,7 @@
 <?php
 	require "../include/connect.php";
+	require "../include/fnDatethai.php";
+
 	//Set Path
 	$isSubfolder = true;
 	$activepage = "history";
@@ -7,7 +9,7 @@
 	function setlate($late){
 		if($late=="0"){ return "ปกติ";}
 		else if($late=="1"){ return "<span class='label label-danger'>สาย</span>";}
-		else if($late==NULL){return "ยังไม่คืน"; }
+		else if($late==NULL){return ""; }
 	}		
 ?>
 
@@ -48,11 +50,11 @@
 				        <th>สัญญาเช่าเลขที่</th>
 				        <th>หมายเลขเครื่อง</th>	 
 				        <th>วันที่เช่า</th>
+				        <th>เจ้าหน้าที่ให้เช่า</th>
 				        <th>วันที่คืน</th>    
-				        <th>สาย?</th>  
-				        <th>คำนวนเงิน</th> 
-				        <th>เจ้าที่ให้บริการ</th>   
-				        <th>เจ้าที่รับคืนเครื่อง</th>  	    	        
+				        <th>สถานะ</th>  
+				        <th>คำนวนเงิน</th> 		           
+				        <th>เจ้าหน้าที่รับคืน</th>  	    	        
 				      </tr>
 				    </thead>
 					<tbody>
@@ -73,12 +75,8 @@
 											echo "<td align=\"center\">".$row2["nbCode"]."</td>"; 
 										 }
 
-							echo "<td align=\"center\">".$row1["rentlap"]."</td>"; 
-							echo "<td align=\"center\">".$row1["returnlap"]."</td>"; 
-							echo "<td align=\"center\">".setlate($row1["isLate"])."</td>"; 
-							echo "<td align=\"center\">".$row1["cost"]."</td>"; 
-							
-									
+							echo "<td align=\"center\">".DateThai($row1["rentlap"])."</td>"; 
+
 										$sql3 = $db->prepare("SELECT * FROM permission WHERE Id LIKE :staffId");
 										$sql3->bindParam(':staffId', $row1['staffId'], PDO::PARAM_INT);
 										$sql3->execute();
@@ -87,6 +85,13 @@
 											echo "<td align=\"center\">".$row3["pname"].$row3["name"]." ".$row3["lastname"]."</td>"; 
 										} 
 
+
+							echo "<td align=\"center\">".DateThai($row1["returnlap"])."</td>"; 
+							echo "<td align=\"center\">".setlate($row1["isLate"])."</td>"; 
+							echo "<td align=\"center\">".$row1["cost"]."</td>"; 
+							
+									
+										
 										$sql4 = $db->prepare("SELECT * FROM permission WHERE Id LIKE :returnstaffId");
 										$sql4->bindParam(':returnstaffId', $row1['returnstaffId'], PDO::PARAM_INT);
 										$sql4->execute();

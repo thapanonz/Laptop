@@ -1,5 +1,7 @@
 <?php
 	require "../include/connect.php";
+	require "../include/fnDatethai.php";
+	
 	//Set Path
 	$isSubfolder = true;
 	$activepage = "permission";
@@ -12,19 +14,7 @@
 			return "เจ้าหน้าที่";
 		}		
 	}
-	function DateThai($strDate)
-	{
-		$strYear = date("Y",strtotime($strDate))+543;
-		$strMonth= date("n",strtotime($strDate));
-		$strDay= date("j",strtotime($strDate));
-		$strHour= date("H",strtotime($strDate));
-		$strMinute= date("i",strtotime($strDate));
-		$strSeconds= date("s",strtotime($strDate));
-		$strMonthCut = Array("","ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค.");
-		$strMonthThai=$strMonthCut[$strMonth];
-		return "$strDay $strMonthThai $strYear, $strHour:$strMinute:$strSeconds";
-	}
-
+	
 	// $strDate = "2008-08-14 13:42:44";
 	// echo "ThaiCreate.Com Time now : ".DateThai($strDate);
 ?>

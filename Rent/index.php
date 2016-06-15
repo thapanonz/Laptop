@@ -1,5 +1,7 @@
 <?php
 	require "../include/connect.php";
+	require "../include/fnDatethai.php";
+
 	//Set Path
 	$isSubfolder = true;
 	$activepage = "listallrent";
@@ -24,7 +26,7 @@
 
 			<div class="container">
 				<div class="row">
-					<div class="col-xs-8" style="margin-left: 30px">						
+					<div class="col-xs-9" style="margin-left: 30px">						
 						<h1>รายการเช่า</h1>
 						
 		<br><table class="table table-bordered table-hover">
@@ -61,14 +63,16 @@
 									 <label>สัญญาเช่าเลขที่:</label> <?php echo $row["Id"] ?><br>
 									<label>ชื่อ-นามสกุล:</label> <?php echo $row["firstname"]."&nbsp;".$row["lastname"] ?><br>
 									<label>หมายเลขเครื่อง:</label> <?php echo $row["nbCode"] ?><br><br>
-									<label>วันที่เช่า:</label> <?php echo $row["rentlap"] ?><br>	
+									<label>วันที่เช่า:</label> <?php echo DateThai($row["rentlap"]) ?><br>	
 									<label>เจ้าหน้าที่ให้บริการ:</label> <?php echo $row["rent_firstname"]."&nbsp;".$row["rent_lastname"] ?><br><br>
-									<label>วันกำหนดส่งคืน:</label> <?php echo $row["appointlap"] ?><br><br>
-									<label>วันที่คืน:</label> <?php echo $row["returnlap"] ?><br>			    <label>เจ้าหน้าที่รับคืนเครื่อง:</label> <?php echo $row["return_firstname"]."&nbsp;".$row["return_lastname"] ?><br>
+									<label>วันกำหนดส่งคืน:</label> <?php echo DateThai($row["appointlap"]) ?><br><br>
+									<label>วันที่คืน:</label> <?php echo ($row["returnlap"]==NULL? "<span class='label label-danger'>ยังไม่คืน</span>" : DateThai($row["returnlap"]) ) ?><br>			    
+									<label>เจ้าหน้าที่รับคืน:</label> <?php echo ($row["returnlap"]==NULL? "<span class='label label-danger'>ยังไม่คืน</span>" : $row["return_firstname"]." ".$row["return_lastname"]) ?><br>
 								</div>
 							</div>
 				        </div>
 				        <div class="modal-footer">
+				        	<a href="editrent.php?Id=<?=$row['Id'] ?>" class="btn btn-warning">แก้ไข</a>
 				          <button type="button" class="btn btn-default" data-dismiss="modal">ปิด</button>
 				        </div>
 				      </div>      
@@ -78,9 +82,9 @@
 				echo "</td>";
 				echo "<td align=\"center\">" .$row["firstname"]."&nbsp;".$row["lastname"]."</td>";   
 				echo "<td align=\"center\">" .$row["nbCode"]."</td>";  
-				echo "<td align=\"center\">" .$row["rentlap"]."</td>";  
-				echo "<td align=\"center\">" .$row["appointlap"]."</td>";  
-				echo "<td align=\"center\">" .$row["returnlap"]."</td>";    
+				echo "<td align=\"center\">" .DateThai($row["rentlap"])."</td>";  
+				echo "<td align=\"center\">" .DateThai($row["appointlap"])."</td>";  
+				echo "<td align=\"center\">" .($row["returnlap"]==NULL? "<span class='label label-danger'>ยังไม่คืน</span>" : DateThai($row["returnlap"]) )."</td>";    
                 echo "</tr>";
 			} ?>
 			</tbody>
