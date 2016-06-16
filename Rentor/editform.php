@@ -32,16 +32,23 @@
 				<div class="row" style="margin-left: 30px">				
 					<div class="col-xs-5">													
 						<div class="form-group">
-							<label>ประเภทผู้เช่า:</label><br/>
-					      	<div class="radio" style="margin-left: 15px;">
-						      	<label><input type="radio" name="type" value="student" <?=($row["type"]=="student")? 'checked' : ''; ?> >นักศึกษา</label>
-						      	<label style="margin-left: 30px;"><input type="radio" name="type" value="personnel" <?=($row["type"]=="personnel")? 'checked' : ''; ?>>บุคลากร</label>
-					     	</div>
+							<label>ประเภทผู้เช่า:&nbsp;&nbsp;&nbsp;</label>
+					      	<label class="radio-inline"><input type="radio" name="type" value="student" <?=($row["type"]=="student")? 'checked' : ''; ?>>นักศึกษา</label>
+							<label class="radio-inline"><input type="radio" name="type" value="personnel" <?=($row["type"]=="personnel")? 'checked' : ''; ?>>บุคลากร</label>
 					    </div>	
 						<div class="form-group">
 					      <label>เลขบัตรประชาชน:</label>  <?php echo $row["Id"] ?>
 					     <!--  <input required type="text" class="form-control" name="Id" value="<?php echo $row["Id"] ?>">  -->
 					    </div>
+
+					     <div class="form-group">
+					     <label>ประวัติเสีย:</label>
+					     <select class="form-control" name="isBlacklist">	
+					    	<option <?=($row["isBlacklist"]=='0'? "selected" : "") ?> value="0">ปกติ</option>
+							<option <?=($row["isBlacklist"]=='1'? "selected" : "") ?> value="1">บัญชีดำ</option>
+						</select>
+						</div>
+
 					    <div class="form-group">
 					      <label>รหัสนักศึกษา/บุคลากร:</label>
 					      <input required type="text" class="form-control" name="passport" value="<?php echo $row["passport"] ?>">
@@ -90,7 +97,7 @@
 					    </div>
 		<?php } ?>
 						<div class="text-right">
-						<input type="hidden" class="form-control" name="Id" value="<?php echo $Id ?>">
+						<input type="hidden" class="form-control" name="Id" value="<?php echo $_GET['Id']; ?>">
 
 					   	   	<button type="submit" class="btn btn-success">บันทึก</button>				  <a href="index.php" class="btn btn-primary">ยกเลิก</a>
 						</div>

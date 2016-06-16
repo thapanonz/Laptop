@@ -1,5 +1,8 @@
 <?php
 	require "../include/connect.php";
+	// echo "<pre>";
+	// print_r(var_dump($_POST));
+	// echo "</pre>";
 
 try{
 	$sql = "UPDATE customer SET 
@@ -12,11 +15,14 @@ try{
 		department = :department,
 		address = :address,
 		phone = :phone,
-		email = :email
+		email = :email,
+		isBlacklist = :setisBlacklist
 		WHERE Id = :Id";
 		
-	$stmp = $db->prepare($sql);
-	
+	$setisBlacklist = $_POST['isBlacklist'];
+	settype($setisBlacklist, "integer");
+
+	$stmp = $db->prepare($sql);	
 	$stmp->bindValue("passport" , $_POST["passport"]);
 	$stmp->bindValue("prename" , $_POST["prename"]);
 	$stmp->bindValue("firstname" , $_POST["firstname"]);
@@ -27,6 +33,7 @@ try{
 	$stmp->bindValue("address" , $_POST["address"]);
 	$stmp->bindValue("phone" , $_POST["phone"]);
 	$stmp->bindValue("email" , $_POST["email"]);
+	$stmp->bindValue("setisBlacklist" , $setisBlacklist);
 	$stmp->bindValue("Id" , $_POST["Id"]);
 	$stmp->execute();
 	 // echo $_POST["Id"];

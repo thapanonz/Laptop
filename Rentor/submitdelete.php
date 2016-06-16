@@ -1,6 +1,5 @@
 <?php
 	require "../include/connect.php";
-	
 
 	$sql = ("DELETE FROM customer where Id LIKE :Id");
 	$stmt = $db->prepare($sql);
