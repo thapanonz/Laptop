@@ -2,6 +2,8 @@
 	require "../include/connect.php";
 	
 try{ 
+
+	 
 	 $sql = "INSERT INTO rent(citizenId,laptopId,rentlap,appointlap,staffId) 
  	VALUES (:citizenId,:setlaptopId,:rentlap,:appointlap,:setstaffId)";
 	
@@ -25,10 +27,13 @@ try{
 
 		$stmp = $db->prepare($sql);
 		$stmp->bindValue("setlaptopId" , $setlaptopId);
-		$stmp->execute();
-	}
+		$stmp->execute(); ?>
 
-	//print_r($stmp->errorInfo());
+		<script> window.open('report.php','_blank'); </script>
+	<?php } 
+
+	  // print_r($stmp->errorInfo());  
+
 	header('Location: index.php');
 }
 catch(PDOException $e) {

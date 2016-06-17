@@ -116,7 +116,7 @@
 					      		<label>วันที่คืน:</label>
 					      	</div>
 					      	<div class="col-sm-10" style="padding-left: 0">
-					      		<input id="returndate"  type="text" class="form-control" name="returnlap">
+					      		<input id="returndate" readonly type="text" class="form-control" name="returnlap">
 					      	</div>
 							<div class="col-sm-2" style="text-align: right; padding: 0">
 					      		<a id="calFee" class="btn btn-info">คำนวนเงิน</a>	
@@ -133,6 +133,10 @@
 					      		<label>จำนวนเงิน:</label>					      	
 					     	 <input id="fee" readonly type="text"  class="form-control" name="fee">
 					    </div>
+						
+						<div class="form-group">
+					     <label class="checkbox-inline"><input id="isFine" type="checkbox" name="isFine" value="1">ปรับ</label>
+					    </div>	
 
 					    <div class="form-group">
 					      <label>เจ้าหน้าที่รับบริการคืน:</label>
@@ -205,9 +209,15 @@
 			  			if(returndate > duedate)
 			  			{
 			  				$('#isLate').val(1);
-			  				fine = $('#finevalue').val();
 
 			  			}
+
+			  			if($('#isFine').is(':checked'))
+				  		{
+			  				$('#isFine').val(1);
+			  				fine = $('#finevalue').val();
+
+				  		}
 
 			  			// Calculate Fee
 			  			fee = (days*fee)+parseInt(fine);
@@ -215,7 +225,20 @@
 			  			
 						$('#rentdays').val(days);
 						$('#fee').val(fee);
-			  		})
+			  		});
+					$('#isFine').click(function(){
+				  		
+						if($('#isFine').is(':checked'))
+				  		{
+			  				$('#isFine').val(1);
+			  				$('#fee').val(parseInt($('#fee').val(),10)+parseInt($('#finevalue').val()));	  			
+				  		}
+				  		else
+				  		{
+				  			$('#isFine').val(0);
+				  			$('#fee').val(parseInt($('#fee').val(),10)-parseInt($('#finevalue').val()));
+				  		}
+				  	});
 			});
          </script> 
     </body>

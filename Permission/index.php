@@ -34,15 +34,12 @@
     </style>
     <body>
 		<?php include "../include/banner.php"; ?>
-
 		
 			<?php include "../include/menu.php"; ?>	
-		
-		
+				
 			<div class="container">
 				<div class="row">
-					<div class="col-xs-9" style="margin-left: 30px">
-					
+					<div class="col-xs-9" style="margin-left: 30px">				
 						<h1>จัดการสิทธิ์</h1>
 							<a href="addformpermission.php" class="btn btn-primary">เพิ่มผู้ดูแลระบบ</a>
 			
@@ -65,18 +62,7 @@
 			$sql->setFetchMode(PDO::FETCH_ASSOC);
 			while ($row = $sql->fetch()) {
 				echo "<tr>";
-                echo "<td>"; ?>             
-                <div data-toggle="modal" data-target="#<?php echo $row["user"] ?>"><?php echo $row["user"] ?></div>
-
-                <div class="modal fade" id="<?php echo $row["user"] ?>" role="dialog">
-				    <div class="modal-dialog">
-
-
-
-				  </div>
-				  </div> 				     
-				    				
-                <?php echo "</td>";
+			    echo "<td>" .$row["user"]."</td>";
                 echo "<td>" .$row["pname"]."</td>";
                 echo "<td>" .$row["name"]."</td>";
                 echo "<td>" .$row["lastname"]."</td>";

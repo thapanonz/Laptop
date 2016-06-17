@@ -81,6 +81,7 @@
 					    </div>
 										
 						<div style="text-align: center">
+							<input type="hidden" class="form-control" name="Id" value="<?php echo getNewID()?>">
 					   	   <button type="submit" class="btn btn-success">บันทึก</button>				   		<a href="index.php" class="btn btn-primary">ยกเลิก</a>
 						</div>
 					</div>		
@@ -111,9 +112,9 @@
 
 		         	$('#setday').on('change', function() {
 						var d = new Date();
-						var newdate = new Date(d);
+						var newdate = new Date( $('#rentdate').val());
 						var number = parseInt( $('#setday').val(), 10);
-						newdate.setDate(d.getDate() + number);
+						newdate.setDate(newdate.getDate() + number);
 					    $.datetimepicker.setLocale('th');
 					    $('#duedate').datetimepicker({             
 					        format: 'Y-m-d 13:00', 

@@ -8,6 +8,11 @@
 		if($type=="student"){ return "นักศึกษา";}
 		else if($type=="personnel"){ return "บุคลากร";}
 	}		
+
+	function setblacklist($isBlacklist){
+		if($isBlacklist=="0"){ return "<span class='label label-success'>ปกติ</span>";}
+		else if($isBlacklist=="1"){ return "<span class='label label-danger'>บัญชีดำ</span>";}
+	}		
 ?>
 
 <!doctype html>
@@ -42,14 +47,14 @@
 		        <th>ชื่อ - นามสกุล</th>		   
 		        <th>คณะ/หน่วยงาน</th>
 		        <th>ภาควิชา</th>
-		        <th>ติดต่อ</th>
-		        <th>ที่อยู่</th>
+		        <th>ข้อมูลติดต่อ</th>
+		        <th>สถานะ</th>
 		        <th>จัดการ</th>		            	        
 		      </tr>
 		    </thead>
 			<tbody>
 		<?php
-			$sql = $db->prepare("SELECT Id,passport,prename,firstname,lastname,type,faculty,department,address,phone,email FROM customer");
+			$sql = $db->prepare("SELECT Id,passport,prename,firstname,lastname,type,faculty,department,address,phone,email,isBlacklist FROM customer");
 			$sql->execute();
 			$sql->setFetchMode(PDO::FETCH_ASSOC);
 			while ($row = $sql->fetch()) {
@@ -77,34 +82,7 @@
 					        <div class="row">
 					        	<div class="col-sm-11" style="font-size: 17px; margin-left: 50px; text-align: left">
 									<label>เบอร์โทรศัพท์:</label> <?php echo $row["phone"] ?><br>
-									<label>อีเมล์:</label> <?php echo $row["email"] ?>
-								</div>
-							</div>
-				        </div>
-				        <div class="modal-footer">
-				          <button type="button" class="btn btn-default" data-dismiss="modal">ปิด</button>
-				        </div>
-				      </div>      
-				    </div>
-				  </div>
-		  <?php echo "</td>"; 
-
-			    echo "<td>"; ?>
-			    <div class="text-center">              
-				<a href="#" data-toggle="modal" data-target="#<?php echo $row["address"] ?>"
-				class="text-center">ที่อยู่</a>
-				</div>
-
-                <div class="modal fade" id="<?php echo $row["address"] ?>" role="dialog">
-				    <div class="modal-dialog">
-				      <div class="modal-content">
-				        <div class="modal-header">
-				          <button type="button" class="close" data-dismiss="modal">&times;</button>
-				          <h4 class="modal-title">ที่อยู่ : <?php echo $row["prename"].$row["firstname"]."&nbsp;".$row["lastname"] ?></h4>
-				        </div>
-				        <div class="modal-body">
-					        <div class="row">
-					        	<div class="col-sm-11" style="font-size: 17px; margin-left: 50px; text-align: left">
+									<label>อีเมล์:</label> <?php echo $row["email"] ?><br>
 									<label>ที่อยู่:</label><br> <textarea style="padding: 7px" readonly="readonly" rows="5" cols="50"><?php echo $row["address"] ?></textarea>
 								</div>
 							</div>
@@ -114,9 +92,9 @@
 				        </div>
 				      </div>      
 				    </div>
-				  </div>			
-                <?php echo "</td>"; 
-                
+				  </div>
+		  <?php echo "</td>"; 		    
+                echo "<td align='center'>".setblacklist($row["isBlacklist"])."</td>";
                 echo "<td>"; ?>
                 <div class="text-center">
             	<?php

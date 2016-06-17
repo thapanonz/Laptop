@@ -6,11 +6,14 @@ try{
 	 returnlap = :returnlap,
 	 isLate = :setisLate,
 	 cost = :setcost,
+	 isLate = :setisLate,
 	 returnstaffId = :setreturnstaffId
 	 WHERE Id=:setId";
 	
 	$setisLate = $_POST['isLate'];
 	settype($setisLate, "integer");
+	$setisFine = $_POST['isFine'];
+	settype($setisFine, "integer");
 	$setcost = $_POST['fee'];
 	settype($setcost, "integer");
 	$setreturnstaffId = $_POST['returnstaffId'];
@@ -22,6 +25,7 @@ try{
 	$stmp->bindValue("returnlap" , $_POST["returnlap"]);
 	$stmp->bindValue("setisLate" , $setisLate);
 	$stmp->bindValue("setcost" , $setcost);
+	$stmp->bindValue("setisFine" , $setisFine);
 	$stmp->bindValue("setreturnstaffId" , $setreturnstaffId);
 	$stmp->bindValue("setId" , $setId);
 	

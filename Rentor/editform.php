@@ -42,7 +42,7 @@
 					    </div>
 
 					     <div class="form-group">
-					     <label>ประวัติเสีย:</label>
+					     <label>สถานะ:</label>
 					     <select class="form-control" name="isBlacklist">	
 					    	<option <?=($row["isBlacklist"]=='0'? "selected" : "") ?> value="0">ปกติ</option>
 							<option <?=($row["isBlacklist"]=='1'? "selected" : "") ?> value="1">บัญชีดำ</option>
