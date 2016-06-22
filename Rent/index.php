@@ -72,7 +72,9 @@
 							</div>
 				        </div>
 				        <div class="modal-footer">
-				        	<a href="editrent.php?Id=<?=$row['Id'] ?>" class="btn btn-warning">แก้ไข</a>
+
+				        	<!-- <a href="editrent.php?Id=<?=$row['Id'] ?>" class="btn btn-warning">แก้ไข</a> -->
+				        	
 				          <button type="button" class="btn btn-default" data-dismiss="modal">ปิด</button>
 				        </div>
 				      </div>      

@@ -102,7 +102,7 @@
                 echo "<td align=\"center\">" .setstatus($row["Id"],$row["nbStatus"])."</td>";
                 echo "<td align=\"center\">";
             	   echo "<a title='แก้ไข' href='editform.php?Id=".$row['Id']."'><i style='font-size:25px' class='fa fa-pencil' aria-hidden='true'></i></a>";               
-            	   echo " <a title='ลบ' href='submitdelete.php?Id=".$row['Id']."' onclick=\"return confirm('คุณต้องการลบ รายการเครื่องเช่า นี้หรือไม่?');\"><i style='font-size:25px' class='fa fa-remove text-danger' aria-hidden='true'></i></a>";
+            	   // echo " <a title='ลบ' href='submitdelete.php?Id=".$row['Id']."' onclick=\"return confirm('คุณต้องการลบ รายการเครื่องเช่า นี้หรือไม่?');\"><i style='font-size:25px' class='fa fa-remove text-danger' aria-hidden='true'></i></a>";
                 echo "</td>";
                 echo "</tr>";
 
