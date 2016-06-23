@@ -31,9 +31,9 @@ require'../include/connect.php';
 	<link href="../css/core.css" rel="stylesheet" media="print" type="text/css" />	
 </head>
 <body>
-
+<a href="" id="printBTN">Hello</a>
 <div id="wrapper">
-	<div id="content">
+	<div id="content" >
 	<?php	
 			$Id=$_GET["Id"];
 			$sql = $db->prepare ("SELECT *, DATEDIFF(appointlap, rentlap) AS days 
@@ -129,5 +129,12 @@ require'../include/connect.php';
 	<script src="../js/jquery-1.6.2.min.js"></script>
 	<script src="../js/jquery.PrintArea.js_4.js"></script>
 	<script src="../js/core.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+				$('#printBTN').click(function(){
+				     $("#content").print();
+				});
+		});
+	</script>
 </body>
 </html>

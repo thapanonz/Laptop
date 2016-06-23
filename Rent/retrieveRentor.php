@@ -12,7 +12,7 @@ if($_POST["cid"]) {
 
 	function setblacklist($isBlacklist){
 		if($isBlacklist=="0"){ return "<span class='label label-success'>ปกติ</span>";}
-		else if($isBlacklist=="1"){ return "<span class='label label-danger'>บัญชีดำ</span>";}
+		else if($isBlacklist=="1"){ return "<span class='label label-default'>บัญชีดำ</span>";}
 	}	
 
 	function setisLate($isLate){

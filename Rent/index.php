@@ -88,7 +88,7 @@
 				echo "<td align=\"center\">" .DateThai($row["rentlap"])."</td>";  
 				echo "<td align=\"center\">" .DateThai($row["appointlap"])."</td>";  
 				echo "<td align=\"center\">" .($row["returnlap"]==NULL? "<span class='label label-danger'>ยังไม่คืน</span>" : DateThai($row["returnlap"]) )."</td>";    
-				echo "<td><a href='agreement.php?Id=".$row['Id']."'><i class='fa fa-print'></i></a></td>";
+				echo "<td><a id='popup' href='agreement.php?Id=".$row['Id']."'><i class='fa fa-print'></i></a></td>";
                 echo "</tr>";
 
 			} ?>
@@ -99,17 +99,26 @@
 </div>	
 						
         <?php include "../include/js.php"; ?>  
-<<<<<<< HEAD
         <script src="../js/jquery.dataTables.min.js"></script> 
         <script>
         	$(document).ready(function() {
 		    	$('#example').DataTable();
 
-				
+		    	$('#popup').click(function(){
+		    		var NWin = window.open($(this).prop('href'),'','height=900,width=1000');
+		    		if(window.focus)
+		    		{
+		    			NWin.focus();
+		    		}
+		    		return false;
+		    	});
+
+		    	
+
 			});
+
         </script> 
-=======
->>>>>>> Thapanon
+
     </body>
 </html>
 
