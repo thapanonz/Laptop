@@ -135,7 +135,7 @@
 					    </div>
 						
 						<div class="form-group">
-					     <label class="checkbox-inline"><input id="isFine" type="checkbox" name="isFine" value="1">ปรับ</label>
+					     <label class="checkbox-inline"><input id="isFine" type="checkbox" name="isFine" value="1">ปรับ</label>&nbsp;&nbsp;<label id="txtlate"> </label>
 					    </div>	
 
 					    <div class="form-group">
@@ -155,7 +155,7 @@
 						<div style="text-align: center">
 						<input id="isLate" type="hidden" name="isLate" value="0">
 						<input type="hidden" name="Id" value="<?php echo $Id ?>">
-					   	   <button type="submit" class="btn btn-success">บันทึก</button>			
+					   	   <button id="btnsubmit" type="submit" class="btn btn-success">บันทึก</button>			
 					   	   <a href="index.php" class="btn btn-primary">ยกเลิก</a>
 						</div>
 						</form>
@@ -175,6 +175,9 @@
          <script>
          	//jQuery('#datetimepicker').datetimepicker();
          	$(document).ready(function () {
+         		$("#btnsubmit").prop('disabled', true);
+         		$("#isFine").prop('disabled', true);
+
 				    var d = new Date();
 				    $.datetimepicker.setLocale('th');
 				    $('#returndate').datetimepicker({             
@@ -208,8 +211,9 @@
 			  			duedate = new Date(duedate);		  		
 			  			if(returndate > duedate)
 			  			{
+			  				$("#isFine").prop('disabled', false);
 			  				$('#isLate').val(1);
-
+			  				$("#txtlate").html("<span class='label label-danger'>สาย</span>");
 			  			}
 
 			  			if($('#isFine').is(':checked'))
@@ -225,6 +229,8 @@
 			  			
 						$('#rentdays').val(days);
 						$('#fee').val(fee);
+
+						$("#btnsubmit").prop('disabled', false);
 			  		});
 					$('#isFine').click(function(){
 				  		

@@ -6,18 +6,18 @@ try{
 	 returnlap = :returnlap,
 	 isLate = :setisLate,
 	 cost = :setcost,
-	 isLate = :setisLate,
-	 returnstaffId = :setreturnstaffId
+	 returnstaffId = :setreturnstaffId,
+	 isFine = :setisFine
 	 WHERE Id=:setId";
 	
 	$setisLate = $_POST['isLate'];
-	settype($setisLate, "integer");
-	$setisFine = $_POST['isFine'];
-	settype($setisFine, "integer");
+	settype($setisLate, "integer");	
 	$setcost = $_POST['fee'];
 	settype($setcost, "integer");
 	$setreturnstaffId = $_POST['returnstaffId'];
 	settype($setreturnstaffId, "integer");
+	$setisFine = $_POST['isFine'];
+	settype($setisFine, "integer");
 	$setId = $_POST['Id'];
 	settype($setId,"integer");
 	

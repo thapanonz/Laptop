@@ -22,7 +22,7 @@
 
 			<div class="container" >
 			<h1 style="margin-left:43px">บันทึกรายการเช่า</h1><br>
-			<form role="form" action="submitadd.php" method="post">	
+			<form role="form" action="submitadd.php" method="post" onsubmit="return confirm('คุณต้องการบันทึก รายการเช่า นี้หรือไม่?');">	
 				<div class="row" style="margin-left: 30px">				
 					<div class="col-xs-5">
 						<div class="form-group">
@@ -82,11 +82,11 @@
 										
 						<div style="text-align: center">
 							<input type="hidden" class="form-control" name="Id" value="<?php echo getNewID()?>">
-					   	   <button type="submit" class="btn btn-success">บันทึก</button>				   		<a href="index.php" class="btn btn-primary">ยกเลิก</a>
+					   	   <button type="submit" class="btn btn-success" id="btnsubmit">บันทึก</button>		 <a href="index.php" class="btn btn-primary">ยกเลิก</a>
 						</div>
 					</div>		
 
-					<div class="col-xs-5">
+					<div class="col-xs-6">
 						<div class="searchResult" id="searchResult"></div>
 					</div>
 				</div>	  
@@ -100,6 +100,8 @@
          <script>
          	//jQuery('#datetimepicker').datetimepicker();
          	$(document).ready(function () {
+         			$("#btnsubmit").prop('disabled', true);
+
 				    var d = new Date();
 				    $.datetimepicker.setLocale('th');
 				    $('#rentdate').datetimepicker({             
@@ -137,19 +139,24 @@
 							alert("กรุณากรอกเลขบัตรประชาชนให้ครบ 13 หลัก");
 						}
 						else{
-						$.post("retrieveRentor.php", //Required URL of the page on server
-						{ // Data Sending With Request To Server
-						cid:vname
-						},
-						function(response){ // Required Callback Function
-							$("#searchResult").html(response)
-			               
-
-
-
+							$.post("retrieveRentor.php", //Required URL of the page on server
+							{ // Data Sending With Request To Server
+							cid:vname
+							},
+							function(response){ // Required Callback Function
+								if(response == false) {
+									response = "<h4 class=\"text-danger\">ไม่พบผู้ใช้</h4>";
+								    $("#searchResult").html(response)
+									$("#btnsubmit").prop('disabled', true);							
+								}
+								else{
+									$("#searchResult").html(response)
+									$("#btnsubmit").prop('disabled', false);
+								}
 							});
 						}
 					});
+
 			});
          </script> 
     </body>

@@ -37,7 +37,8 @@
 		        <th>หมายเลขเครื่อง</th>	 
 		        <th>วันที่เช่า</th>
 		        <th>วันกำหนดส่งคืน</th>
-		        <th>วันที่คืน</th>      	        
+		        <th>วันที่คืน</th>  
+		        <th></th>    	        
 		      </tr>
 		    </thead>
 			<tbody>
@@ -87,7 +88,9 @@
 				echo "<td align=\"center\">" .DateThai($row["rentlap"])."</td>";  
 				echo "<td align=\"center\">" .DateThai($row["appointlap"])."</td>";  
 				echo "<td align=\"center\">" .($row["returnlap"]==NULL? "<span class='label label-danger'>ยังไม่คืน</span>" : DateThai($row["returnlap"]) )."</td>";    
+				echo "<td><a href='agreement.php?Id=".$row['Id']."'><i class='fa fa-print'></i></a></td>";
                 echo "</tr>";
+
 			} ?>
 			</tbody>
 		</table>
