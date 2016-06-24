@@ -27,14 +27,29 @@ try{
 
 		$stmp = $db->prepare($sql);
 		$stmp->bindValue("setlaptopId" , $setlaptopId);
-		$stmp->execute(); ?>
+		$stmp->execute(); 
+		
+		$maxSQL = "SELECT Id FROM rent ORDER By Id Desc LIMIT 1";
+		$maxSTM = $db->prepare($maxSQL);
+		$maxSTM->execute();
+		$maxSTM->setFetchMode(PDO::FETCH_ASSOC);
+		if($row = $maxSTM->fetch())
+		{
 
-		<script> window.open('report.php','_blank'); </script>
-	<?php } 
+		 ?>
+			<script type="text/javascript">
+				var url = "agreement.php?Id=<?=$row['Id']?>";
+				window.open(url,'','height=900,width=1000');
+				window.location = 'index.php';
+			</script>
+		 <?
+		}
+		?>
+
+<?php } 
 
 	  // print_r($stmp->errorInfo());  
 
-	header('Location: index.php');
 }
 catch(PDOException $e) {
   echo $e->getMessage();

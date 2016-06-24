@@ -20,6 +20,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>ผู้เช่าบัญชีดำ</title>
 		<?php include "../include/css.php"; ?>
+		<link rel="stylesheet" type="text/css" href="../css/jquery.dataTables.min.css">
 
 		<style type="text/css">
 			table thead tr th {text-align: center;}
@@ -32,10 +33,10 @@
 
 			<div class="container">
 				<div class="row">
-					<div class="col-xs-5" style="margin-left: 30px">						
+					<div class="col-xs-6" style="margin-left: 30px">						
 						<h1>ผู้เช่าบัญชีดำ</h1>
 						
-		<br><table class="table table-bordered table-hover">
+		<br><table class="table table-bordered table-hover" id="TableBlacklist">
 			<thead>
 		      <tr bgcolor="#CCCCCC" >
 		        <th>เลขบัตรประชาชน</th>
@@ -64,7 +65,12 @@
 </div>	
 
         <?php include "../include/js.php"; ?>  
-        
+        <script src="../js/jquery.dataTables.min.js"></script> 
+        <script>
+        	$(document).ready(function() {
+		    	$('#TableBlacklist').DataTable();
+			} );
+        </script> 
     </body>
 </html>
 
