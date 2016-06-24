@@ -1,0 +1,71 @@
+<?php
+	require "include/connect.php";
+	$activepage = "home";
+
+	if(isset($_GET["error"])) {
+		$error=$_GET["error"];
+		if($error==1){
+			$errormessage="ไม่พบผู้ใช้งาน";
+		}
+	}
+?>
+
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>หน้าแรก</title>
+		<?php include "include/css.php" ?>
+
+		<style type="text/css" media="screen">
+			.loginbox {
+				margin-top: 80px;
+				width: 100%;
+				height: 450px;
+				background-color: #FFF;
+				border: solid 1px #2E13A1;
+				border-radius: 5px;
+			}
+		</style>
+    </head>
+    <body>
+		<?php include "include/banner.php"; ?>
+		
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-6">						
+				
+				</div>
+				<div class="col-xs-6">						
+					<div class="loginbox" >
+					<div class="container-fluid" style="padding: 50px 80px 0 80px;">
+
+					<?php if(isset($error)) { ?>
+					<div class="alert alert-danger">
+						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+						<strong>พบข้อผิดพลาด</strong> <?=$errormessage ?>
+					</div>
+					<?php } ?>
+					<form class="form form-horizontal" action="validation.php" method="POST" role="form">
+						<legend>Login</legend> 
+						<div class="form-group">
+							<label>Username</label> <input type="text" class="form-control" name="username">
+						</div>
+						<div class="form-group">
+							<label>Password</label> <input type="password" class="form-control" name="password">
+						</div>
+					
+						
+					
+						<button type="submit" class="btn btn-primary">Submit</button>
+					</form>
+</div>
+					</div>
+				</div>
+			</div>
+			
+		
+        <?php include "include/js.php" ?>      
+    </body>
+</html>
