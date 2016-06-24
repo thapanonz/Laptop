@@ -27,7 +27,11 @@ h2 {
 
 p {
 	text-indent: 30px;
-	line-height: 23px;
+	line-height: 28px;
+}
+
+pre {
+	line-height: 22px;
 }
 
 span {

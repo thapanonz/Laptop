@@ -145,12 +145,12 @@
 							},
 							function(response){ // Required Callback Function
 								if(response == false) {
-									response = "<h4 class=\"text-danger\">ไม่พบผู้ใช้</h4>";
-								    $("#searchResult").html(response)
+									response = "<br><br><h3 class=\"text-danger\">ไม่พบผู้ใช้</h4>";
+								    $("#searchResult").html(response);
 									$("#btnsubmit").prop('disabled', true);							
 								}
 								else{
-									$("#searchResult").html(response)
+									$("#searchResult").html(response);
 									$("#btnsubmit").prop('disabled', false);
 								}
 							});

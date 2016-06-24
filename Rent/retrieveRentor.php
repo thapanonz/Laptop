@@ -1,8 +1,4 @@
-<html>
-	<style type="text/css">
-		th,td {text-align: center;}
-	</style>	
-</html>
+
 
 <?php
 if($_POST["cid"]) {
@@ -48,13 +44,14 @@ if($_POST["cid"]) {
 						
 						</div>
 				<?php	} ?>
-		<table class="table table-bordered table-hover">
+
+		<table class="table table-bordered table-hover text-center">
 				<thead>
-			      <tr bgcolor="#CCCCCC" >
-			      <th>วันที่เช่า</th>
-			      <th>วันที่คืน</th>
-			      <th>หมายเลขเครื่องเช่า</th>
-			      <th colspan="2">สถานะ</th>			      	             	        
+			      <tr style="color: #000000; background-color: #ccc;" >
+			      <td>วันที่เช่า</td>
+			      <td>วันที่คืน</td>
+			      <td>หมายเลขเครื่องเช่า</td>
+			      <td colspan="2">สถานะ</td>			      	             	        
 			      </tr>
 			    </thead>
 				<tbody>		
@@ -77,5 +74,5 @@ if($_POST["cid"]) {
 	<?php } 
 	else {
 		return false; }
-} ?>
+  } ?>
 

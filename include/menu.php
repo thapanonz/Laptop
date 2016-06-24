@@ -31,7 +31,7 @@
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">ข้อมูลผู้เช่า <span class="caret"></span><span style="font-size:20px;" class="pull-right hidden-xs showopacity fa fa-folder-open"></span></a>
 					<ul class="dropdown-menu forAnimate" role="menu">
 						<li class="<?=($activepage == 'listalluser') ? 'active' : '';?>"><a href="<?=$_path?>rentor/index.php">รายการทั้งหมด</a></li>						
-						<li class="<?=($activepage == 'history') ? 'active' : '';?>"><a href="<?=$_path?>rentor/history.php">ตรวจสอบประวัติ</a></li>									
+						<li class="<?=($activepage == 'blacklist') ? 'active' : '';?>"><a href="<?=$_path?>rentor/blacklist.php">ผู้เช่าบัญชีดำ</a></li>									
 					</ul>
 				</li>	
 				<li class="dropdown <?=($activepage == 'dailyreport' || $activepage == 'periodreport' ) ? 'open' : '';?>">
