@@ -1,4 +1,8 @@
 <?php
+	session_start();
+	if(isset($_SESSION['userperm'])){
+		header('Location: index.php');
+	}
 	require "include/connect.php";
 	$activepage = "home";
 
@@ -6,6 +10,12 @@
 		$error=$_GET["error"];
 		if($error==1){
 			$errormessage="ไม่พบผู้ใช้งาน";
+		}
+		if($error==2){
+			$errormessage="กรุณเข้าสู่ระบบ";
+		}
+		if($error==3){
+			$errormessage="คุณไม่มีสิทธิในการใช้งานส่วนนี้";
 		}
 	}
 ?>

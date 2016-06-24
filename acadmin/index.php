@@ -1,4 +1,9 @@
 <?php
+	session_start();
+	if(!isset($_SESSION['userperm'])) {
+	header('Location: login.php?error=2'); 
+	}
+
 	require "include/connect.php";
 	$activepage = "home";
 ?>
@@ -35,7 +40,9 @@
 						<h2>เครื่องพร้อมให้เช่าจำนวน <span class='label label-success'> <?php echo $row["sumlaptop"] ?></span> เครื่อง</h2>
 					<?php } ?>	
 					</div>
-					<div class="col-xs-6">								
+					<div class="col-xs-6">	
+						
+
 					<!-- ใส่รูปlaptop -->
 					</div>	
 

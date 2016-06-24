@@ -1,4 +1,9 @@
 <?php
+	session_start();
+	if(!isset($_SESSION['userperm'])) {
+	header('Location: ../login.php?error=2'); 
+	}
+
 	require "../include/connect.php";
 	//Set Path
 	$isSubfolder = true;

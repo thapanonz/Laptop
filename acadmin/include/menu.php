@@ -12,7 +12,7 @@
     <div class="container-fluid">
 		<!-- Brand and toggle get grouped for better mobile display -->
 		<div class="navbar-header">
-			<a class="navbar-brand" href="#">เมนู</a>
+			<?=$_SESSION['userperm']?> <a href="<?=$_path?>logout.php">(ออกจากระบบ)</a>
 		</div>
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
@@ -41,7 +41,12 @@
 						<li class="<?=($activepage == 'periodreport') ? 'active' : '';?>"><a href="<?=$_path?>report/period.php">สรุปตามช่วงเวลา</a></li>	
 					</ul>
 				</li>	
-				<li class="<?=($activepage == 'permission') ? 'active' : '';?>"><a href="<?=$_path?>permission/index.php">จัดการสิทธิ์<span style="font-size:20px;" class="pull-right hidden-xs showopacity fa fa-user"></span></a></li>												
+
+				<?
+				if($_SESSION['userlevel'] == "sadmin") {
+				?>
+				<li class="<?=($activepage == 'permission') ? 'active' : '';?>"><a href="<?=$_path?>permission/index.php">จัดการสิทธิ์<span style="font-size:20px;" class="pull-right hidden-xs showopacity fa fa-user"></span></a></li>		
+				<? } ?>										
 			</ul>
 		</div>
 	</div>

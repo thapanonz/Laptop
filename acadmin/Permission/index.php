@@ -1,4 +1,12 @@
 <?php
+	session_start();
+	if(!isset($_SESSION['userperm'])) {
+	header('Location: ../login.php?error=2'); 
+	}
+	if($_SESSION['userlevel'] != "sadmin") {
+	header('Location: ../login.php?error=3'); 
+	}
+
 	require "../include/connect.php";
 	require "../include/fnDatethai.php";
 	
