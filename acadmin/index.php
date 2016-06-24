@@ -1,6 +1,5 @@
 <?php
 	require "include/connect.php";
-
 	$activepage = "home";
 ?>
 
@@ -11,19 +10,41 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>หน้าแรก</title>
 		<?php include "include/css.php" ?>
+
+		<style type="text/css" media="screen">
+			.btn-lg {
+				padding: 10px 30px 10px 30px;
+				margin-top: 10px;
+				width: 65%;
+			}
+		</style>
     </head>
     <body>
 		<?php include "include/banner.php"; ?>
 		
-			<?php include "include/menu.php"; ?>	
+		<?php include "include/menu.php"; ?>	
 
-				<div class="container">
+			<div class="container">
 				<div class="row">
-					<div class="col-xs-5">						
-						
-							<!-- ใส่ข้อความ -->
+					<div class="col-xs-11">						
+				<?php
+					$sql = $db->prepare("SELECT COUNT(Id) AS sumlaptop FROM notebook WHERE nbStatus='rdy'");
+					$sql->execute();
+					$sql->setFetchMode(PDO::FETCH_ASSOC);
+					if ($row = $sql->fetch()) { ?>
+						<h2>เครื่องพร้อมให้เช่าจำนวน <span class='label label-success'> <?php echo $row["sumlaptop"] ?></span> เครื่อง</h2>
+					<?php } ?>	
+					</div>
+					<div class="col-xs-6">								
+					<!-- ใส่รูปlaptop -->
+					</div>	
 
-					</div>					
+					<div class="col-xs-5">								
+					<a href="rent/index.php" class="btn btn-lg btn-primary">บันทึกการเช่า</a><br>
+					<a href="rent/return.php" class="btn btn-lg btn-danger">บันทึกการคืน</a><br>
+					<a href="report/daily.php" class="btn btn-lg btn-warning">สรุปข้อมูลรายวัน</a>
+					</div>	
+							
 				</div>
 			</div>
 			
