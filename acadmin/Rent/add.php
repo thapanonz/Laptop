@@ -145,7 +145,7 @@
 							},
 							function(response){ // Required Callback Function
 								if(response == false) {
-									response = "<br><br><h3 class=\"text-danger\">ไม่พบผู้ใช้</h4>";
+									response = "<br><br><h3 class=\"text-danger\">ไม่พบผู้ใช้</h3>";
 								    $("#searchResult").html(response);
 									$("#btnsubmit").prop('disabled', true);							
 								}
