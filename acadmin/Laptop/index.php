@@ -40,6 +40,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>รายการเครื่องเช่า</title>
 		<?php include "../include/css.php"; ?>
+		<link rel="stylesheet" type="text/css" href="../css/jquery.dataTables.min.css">
 		
 		<style type="text/css">
 			th {text-align: center;}
@@ -52,10 +53,10 @@
 
 			<div class="container">
 				<div class="row">
-					<div class="col-xs-4" style="margin-left: 30px">						
+					<div class="col-xs-5" style="margin-left: 30px">						
 						<h1>รายการเครื่องเช่า</h1>
 						<a href="addform.php" class="btn btn-primary">เพิ่มรายการ</a>
-		<br><br><table class="table table-bordered table-hover">
+		<br><br><table class="table table-bordered table-hover" id="TableLaptop">
 			<thead>
 		      <tr bgcolor="#CCCCCC" >
 		        <th>หมายเลขเครื่องเช่า</th>
@@ -115,6 +116,12 @@
 </div>
 						
         <?php include "../include/js.php"; ?>     
+        <script src="../js/jquery.dataTables.min.js"></script> 
+        <script>
+        	$(document).ready(function() {
+		    	$('#TableLaptop').DataTable();
+			} );
+        </script> 
     </body>
 </html>
 

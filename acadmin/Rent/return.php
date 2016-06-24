@@ -16,6 +16,7 @@
         <title>บันทึกรายการคืน</title>
 		<?php include "../include/css.php"; ?>
 		<link rel="stylesheet" type="text/css" href="../css/jquery.datetimepicker.css">
+		<link rel="stylesheet" type="text/css" href="../css/jquery.dataTables.min.css">
 
 		<style type="text/css">
 			table thead tr th {text-align: center;}
@@ -31,7 +32,7 @@
 					<div class="col-xs-8" style="margin-left: 30px">						
 						<h1>บันทึกรายการคืน</h1>
 						
-		<br><table class="table table-bordered table-hover">
+		<br><table class="table table-bordered table-hover" id="TableReturn">
 			<thead>
 		      <tr bgcolor="#CCCCCC" >
 		        <th>สัญญาเช่าเลขที่</th>
@@ -98,5 +99,11 @@
 						
 
         <?php include "../include/js.php"; ?>  
+        <script src="../js/jquery.dataTables.min.js"></script> 
+        <script>
+        	$(document).ready(function() {
+		    	$('#TableReturn').DataTable();
+			} );
+        </script> 
     </body>
 </html>

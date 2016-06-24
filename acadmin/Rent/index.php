@@ -14,6 +14,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>รายการเช่าทั้งหมด</title>
 		<?php include "../include/css.php"; ?>
+		<link rel="stylesheet" type="text/css" href="../css/jquery.dataTables.min.css">
 
 		<style type="text/css">
 			table thead tr th {text-align: center;}
@@ -29,7 +30,7 @@
 					<div class="col-xs-9" style="margin-left: 30px">						
 						<h1>รายการเช่า</h1>
 						
-		<br><table class="table table-bordered table-hover">
+		<br><table class="table table-bordered table-hover" id="TableRent">
 			<thead>
 		      <tr bgcolor="#CCCCCC" >
 		        <th>สัญญาเช่าเลขที่</th>
@@ -88,7 +89,7 @@
 				echo "<td align=\"center\">" .DateThai($row["rentlap"])."</td>";  
 				echo "<td align=\"center\">" .DateThai($row["appointlap"])."</td>";  
 				echo "<td align=\"center\">" .($row["returnlap"]==NULL? "<span class='label label-danger'>ยังไม่คืน</span>" : DateThai($row["returnlap"]) )."</td>";    
-				echo "<td><a id='popup' href='agreement.php?Id=".$row['Id']."'><i class='fa fa-print'></i></a></td>";
+				echo "<td><a class='popup' href='agreement.php?Id=".$row['Id']."'><i class='fa fa-print'></i></a></td>";
                 echo "</tr>";
 
 			} ?>
@@ -104,7 +105,7 @@
         	$(document).ready(function() {
 		    	$('#example').DataTable();
 
-		    	$('#popup').click(function(){
+		    	$('.popup').click(function(){
 		    		var NWin = window.open($(this).prop('href'),'','height=900,width=1000');
 		    		if(window.focus)
 		    		{
@@ -112,13 +113,14 @@
 		    		}
 		    		return false;
 		    	});
-
-		    	
-
 			});
-
         </script> 
-
+		<script src="../js/jquery.dataTables.min.js"></script> 
+        <script>
+        	$(document).ready(function() {
+		    	$('#TableRent').DataTable();
+			} );
+        </script> 
     </body>
 </html>
 
