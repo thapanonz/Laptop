@@ -8,11 +8,11 @@
 
  ?>
 
-<nav class="navbar navbar-inverse sidebar" role="navigation">	
+<nav class="navbar navbar-default sidebar" role="navigation">	
     <div class="container-fluid">
 		<!-- Brand and toggle get grouped for better mobile display -->
 		<div class="navbar-header">
-			<a class="navbar-brand" href="#">หัวข้อ</a>
+			<a class="navbar-brand" href="#">เมนู</a>
 		</div>
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
