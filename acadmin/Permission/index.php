@@ -15,16 +15,13 @@
 	$activepage = "permission";
 
 	function setlevel($level){
-		if($level=="admin"){ 
+		if($level=="sadmin"){ 
 			return "ผู้ดูแล";
 		}
-		else if($level=="sadmin"){ 
+		else if($level=="admin"){ 
 			return "เจ้าหน้าที่";
 		}		
 	}
-	
-	// $strDate = "2008-08-14 13:42:44";
-	// echo "ThaiCreate.Com Time now : ".DateThai($strDate);
 ?>
 
 <!doctype html>

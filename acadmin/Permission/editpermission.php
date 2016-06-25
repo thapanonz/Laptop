@@ -37,30 +37,29 @@
 			<div class="container">
 				<div class="row">				
 					<div class="col-xs-4" style="margin-left: 30px">						
-						<h1>จัดการสิทธิ์</h1><br>
-						<form role="form" action="submitupdatepermission.php" method="post">
-						<?php $rdo="" ?>
-						<div>
-							<h4>ชื่อผู้ใช้ : </h4> <?php echo $row["user"] ?>
-						</div><br>
-						<div>
-							<h4>คำนำหน้าชื่อ</h4>
+						<h1>แก้ไขจัดการสิทธิ์</h1><br>
+						<form role="form" action="submitupdatepermission.php" method="post">					
+						<div class="form-group">
+							<label>ชื่อผู้ใช้:</label>&nbsp;<?php echo $row["user"] ?>
+						</div>
+						<div class="form-group">
+							<label>คำนำหน้าชื่อ</label>
 								<input type="text" class="form-control" name="pname" value="<?php echo $row["pname"] ?>">
-						</div><br>
-						<div>
-							<h4>ชื่อ</h4>
+						</div>
+						<div class="form-group">
+							<label>ชื่อ</label>
 								<input type="text" class="form-control" name="name" value="<?php echo $row["name"] ?>">
-						</div><br>
-						<div>
-							<h4>นามสกุล</h4>
+						</div>
+						<div class="form-group">
+							<label>นามสกุล</label>
 								<input type="text" class="form-control" name="lastname" value="<?php echo $row["lastname"] ?>">
-					    </div><br>
+					    </div>
 					    
 					    <div class="form-group">
-					      <h4>ประเภทผู้ใช้</h4>
-					      <label class="radio-inline"><input type="radio" name="level" <?=($row["level"]=="admin")? 'checked' : ''; ?> value="admin">ผู้ดูแล</label>
-						  <label class="radio-inline"><input type="radio" name="level" <?=($row["level"]=="sadmin")? 'checked' : ''; ?> value="sadmin">เจ้าหน้าที่</label>						 
-					    </div><br><br>					
+					      <label>ประเภทผู้ใช้</label><br>
+					      <label class="radio-inline" style="margin-left: 30px;"><input type="radio" name="level" <?=($row["level"]=="sadmin")? 'checked' : ''; ?> value="sadmin">ผู้ดูแล</label>
+						  <label class="radio-inline"><input type="radio" name="level" <?=($row["level"]=="admin")? 'checked' : ''; ?> value="admin">เจ้าหน้าที่</label>						 
+					    </div>				
 				<?php } ?>
 					   <div style="text-align: center">
 							<input type="hidden" class="form-control" name="Id" value="

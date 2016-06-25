@@ -7,12 +7,19 @@
 	$sql->execute();
 	$sql->setFetchMode(PDO::FETCH_ASSOC);
 	if ($row = $sql->fetch()) { 
-		$_SESSION['userperm'] = $user;
-		$_SESSION['userlevel'] = $row['level'];
-		session_write_close();
-		header('Location: index.php');
+		$sql1= "UPDATE permission SET last_login = NOW() WHERE user = :user";
+		$stmp = $db->prepare($sql1);
+		$stmp->bindParam("user" , $_POST["username"]);
+		if ($stmp->execute()) {
+			$_SESSION['userperm'] = $user;
+			$_SESSION['userlevel'] = $row['level'];
+			session_write_close();
+			header('Location: index.php'); 
+		}
 	}
 	else {
 		header('Location: login.php?error=1');		
 	}
 ?>
+
+

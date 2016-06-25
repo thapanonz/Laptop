@@ -30,42 +30,34 @@
 		
 			<div class="container">
 				<div class="row">
-					<div class="col-xs-4" style="margin-left: 30px">
-					
+					<div class="col-xs-4" style="margin-left: 30px">				
 						<h1>เพิ่มผู้จัดการสิทธิ์</h1><br>
-
-						<?php $rdo="" ?>
-
-						<form role = "form" action="sqlpermission.php" method="post">
-												
+						<form role = "form" action="sqlpermission.php" method="post">							
 						<div class="form-group">
-							<h4>ชื่อผู้ใช้</h4>
-							<input type="text" class="form-control" name="user"><br>
+							<label>ชื่อผู้ใช้:</label>
+							<input type="text" class="form-control" name="user">
 						</div>
 						<div class="form-grop">
-							<h4>คำนำหน้าชื่อ</h4>
-							<input type="text" name="pname" class="form-control"><br>
+							<label>คำนำหน้าชื่อ:</label>
+							<input type="text" name="pname" class="form-control">
 						</div>
 						<div class="form-group">
-							<h4>ชื่อ</h4>
-							<input type="text" class="form-control" name="name"><br>
+							<label>ชื่อ:</label>
+							<input type="text" class="form-control" name="name">
 						</div>
 						<div class="form-group">
-							<h4>นามสกุล</h4>
-							<input type="text" class="form-control" name="lastname"><br>
-						</div>
-						
-						
-						
+							<label>นามสกุล:</label>
+							<input type="text" class="form-control" name="lastname">
+						</div>										
 						<div class="form-group">
-							<h4>ประเภทผู้ใช้</h4>
-							<input type="radio" name="level" value="admin"> ผู้ดูแล
-							<input type="radio" name="level" value="sadmin"> เจ้าหน้าที่<br><br>
-						</div>
+					      <label>ประเภทผู้ใช้</label><br>
+					      <label class="radio-inline" style="margin-left: 30px;"><input type="radio" name="level"value="sadmin">ผู้ดูแล</label>
+						  <label class="radio-inline"><input type="radio" name="level" value="admin">เจ้าหน้าที่</label>						 
+					    </div>	
 						<div class="form-group">
 						<div style="text-align:center">
 							<button type="submit" class="btn btn-success">ตกลง</button>
-							<button type="reset" class="btn btn-primary">ยกเลิก</button>
+							<a href="index.php" class="btn btn-primary">ยกเลิก</a>
 						</div>
 						</div>
 						</form>
@@ -73,11 +65,7 @@
 					</div>	
 				</div>
 			</div>
-		
-				
-				
 			
-		
         <?php include "../include/js.php"; ?>      
     </body>
 </html>

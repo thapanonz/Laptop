@@ -28,7 +28,7 @@
 				</li>	
 				<li class="<?=($activepage == 'laptop') ? 'active' : '';?>"><a href="<?=$_path?>laptop/index.php">รายการเครื่องเช่า<span style="font-size:20px;" class="pull-right hidden-xs showopacity fa fa-tasks"></span></a></li>	
 				<li class="dropdown <?=($activepage == 'listalluser' || $activepage == 'history' ) ? 'open' : '';?>">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown">ข้อมูลผู้เช่า <span class="caret"></span><span style="font-size:20px;" class="pull-right hidden-xs showopacity fa fa-folder-open"></span></a>
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">ข้อมูลผู้เช่า <span class="caret"></span><span style="font-size:20px;" class="pull-right hidden-xs showopacity fa fa-users"></span></a>
 					<ul class="dropdown-menu forAnimate" role="menu">
 						<li class="<?=($activepage == 'listalluser') ? 'active' : '';?>"><a href="<?=$_path?>rentor/index.php">รายการทั้งหมด</a></li>						
 						<li class="<?=($activepage == 'blacklist') ? 'active' : '';?>"><a href="<?=$_path?>rentor/blacklist.php">ผู้เช่าบัญชีดำ</a></li>									

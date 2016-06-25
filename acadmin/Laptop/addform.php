@@ -24,12 +24,10 @@
 		<?php include "../include/menu.php"; ?>	
 
 			<div class="container">
-
 				<div class="row">				
 					<div class="col-xs-5" style="margin-left: 30px">						
 						<h1>ป้อนรายการเครื่องเช่าใหม่</h1><br>
 						<form role="form" action="submitadd.php" method="post">
-						<?php $rdo="" ?>
 					    <div class="form-group">
 					      <label>หมายเลขเครื่องเช่า:</label>
 					      <input type="text" class="form-control" name="nbCode" placeholder="ตัวอย่าง: CC-000"> 
