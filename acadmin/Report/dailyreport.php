@@ -28,7 +28,7 @@ require'../include/connect.php';
 				                  FROM reportlist WHERE Id_rent='".$returnlap"'");
 			$sql->execute();
 			$sql->setFetchMode(PDO::FETCH_ASSOC);
-			while ($row = $sql->fetch()) { ?>
+			if ($row = $sql->fetch()) { ?>
 			<div style="">
 			    <h2 style="text-align:center;">สัญญาเช่าเครื่องคอมพิวเตอร์</h2>
 				<h3 style="text-align:center; ">สัญญาเช่าเลขที่&nbsp;&nbsp;<?php echo $row["Id_rent"] ?></h3>	

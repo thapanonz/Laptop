@@ -28,7 +28,7 @@ require'../include/connect.php';
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>Report Print</title>
+	<title>Report Rent Print</title>
 	<meta name="description" content="jQuery Print Area" />
 	<meta name="keywords" content="jQuery Print Area" />
 	<meta http-equiv="imagetoolbar" content="no" />
@@ -45,7 +45,7 @@ require'../include/connect.php';
 				                  FROM reportlist WHERE Id_rent=".$Id);
 			$sql->execute();
 			$sql->setFetchMode(PDO::FETCH_ASSOC);
-			while ($row = $sql->fetch()) { ?>
+			if ($row = $sql->fetch()) { ?>
 			<div style="">
 			    <h2 style="text-align:center;">สัญญาเช่าเครื่องคอมพิวเตอร์</h2>
 				<h3 style="text-align:center; ">สัญญาเช่าเลขที่&nbsp;&nbsp;<?php echo $row["Id_rent"] ?></h3>	

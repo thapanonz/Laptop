@@ -31,10 +31,10 @@
 				<div class="row" style="margin-left: 30px">				
 					<div class="col-xs-4">	
 						<div class="form-group">
-					      <label>วันที่คืน:</label>
-					      <input required id="rentdate" type="text" class="form-control" name="returnlap">	    
+					<label>วันที่คืน:</label>
+					<input required id="rentdate" type="text" class="form-control" name="returnlap">	    
 					    </div>		
-					<a href='dailyreport.php?returnlap=".$row['Id']."' class="btn btn-warning">สรุปข้อมูลรายวัน</a>
+				<a href='dailyreport.php?returnlap=".$row['Id']."' class="btn btn-warning">สรุปข้อมูลรายวัน</a>
 				</div>	  
 			</form>		
 			</div>
