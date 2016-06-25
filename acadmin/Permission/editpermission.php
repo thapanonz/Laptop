@@ -18,7 +18,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>จัดการสิทธิ์</title>
+        <title>แก้ไขจัดการสิทธิ์</title>
 		<?php include "../include/css.php"; ?>
     </head>
     <body style="background-color:lightgrey;">
