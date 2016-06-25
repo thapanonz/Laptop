@@ -34,7 +34,7 @@
 					<label>วันที่คืน:</label>
 					<input required id="rentdate" type="text" class="form-control" name="returnlap">	    
 					    </div>		
-				<a href='dailyreport.php?returnlap=".$row['Id']."' class="btn btn-warning">สรุปข้อมูลรายวัน</a>
+				<a href='' class="btn btn-warning btnsubmit">สรุปข้อมูลรายวัน</a>
 				</div>	  
 			</form>		
 			</div>
@@ -42,10 +42,8 @@
 
         <?php include "../include/js.php"; ?>      
          <script src="../js/jquery.datetimepicker.full.min.js"></script> 
-         <script>
+         <script type="text/javascript">
          	$(document).ready(function () {
-         			$("#btnsubmit").prop('disabled', true);
-
 				    var d = new Date();
 				    $.datetimepicker.setLocale('th');
 				    $('#rentdate').datetimepicker({             
@@ -57,5 +55,12 @@
 				    });		         	
 			});
          </script> 
+         <script type="text/javascript">
+         	$(".btnsubmit").click(function(){
+				var url = "dailyreport.php?returnlap=".$row['Id'].";
+				window.open(url,'','height=900,width=1000');
+				window.location = 'index.php';
+				});	
+		</script>
     </body>
 </html>

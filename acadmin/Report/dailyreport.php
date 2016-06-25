@@ -23,9 +23,10 @@ require'../include/connect.php';
 <div id="wrapper">
 	<div id="content" >
  <?php	
-		$returnlap=$_GET["returnlap"];
-		$sql = $db->prepare ("SELECT *, DATEDIFF(appointlap, rentlap) AS days 
-			                  FROM reportlist WHERE Id_rent='".$returnlap"'");
+		//$returnlap=$_GET["returnlap"];
+		$sql = $db->prepare ("SELECT returnlap from rent where returnlap 
+							BETWEEN (DATE_FORMAT(DATE_SUB('2016-06-26',INTERVAL 1 DAY) ,'%Y-%m-%d 13:00:00')) 
+							AND (DATE_FORMAT('2016-06-26','%Y-%m-%d 12:59:00'))");
 		$sql->execute();
 		$sql->setFetchMode(PDO::FETCH_ASSOC);
 		if ($row = $sql->fetch()) { ?> 

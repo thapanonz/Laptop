@@ -67,8 +67,8 @@ if($_POST["cid"]) {
 				                echo "<td>" .DateThai($row1["rentlap"])."</td>";
 				                echo "<td>" .($row1["returnlap"]==NULL? "<span class='label label-danger'>ยังไม่คืน</span>" : DateThai($row1["returnlap"]) )."</td>";
 				                echo "<td>" .$row1["nbCode"]."</td>";
-				                echo "<td>" .($row1["isLate"] == 0 ? "" : setisLate($row1["isLate"]) )."</td>";
-				                echo "<td>" .($row1["isLate"] == 0 ? "" : setisFine($row1["isFine"]) )."</td>";
+				                echo "<td>" .($row1["returnlap"] ==NULL ? "" : setisLate($row1["isLate"]) )."</td>";
+				                echo "<td>" .($row1["returnlap"] ==NULL ? "" : setisFine($row1["isFine"]) )."</td>";
 				                echo "</tr>";
 							}
 						?>
