@@ -4,7 +4,29 @@
 	header('Location: ../login.php?error=2'); 
 	}
 	
-require'../include/connect.php';
+	require'../include/connect.php';
+
+	function DateThai($strDate){
+		$strYear = date("Y",strtotime($strDate))+543;
+		$strMonth= date("n",strtotime($strDate));
+		$strDay= date("j",strtotime($strDate));
+		$strHour= date("H",strtotime($strDate));
+		$strMinute= date("i",strtotime($strDate));
+		$strSeconds= date("s",strtotime($strDate));
+		$strMonthCut = Array("","มกราคม","กุมภาพันธ์","มีนาคม","เมษายน","พฤษภาคม","มิถุนายน","กรกฎาคม","สิงหาคม","กันยายน","ตุลาคม","พฤศจิกายน","ธันวาคม");
+		$strMonthThai=$strMonthCut[$strMonth];
+		return "$strDay $strMonthThai $strYear";
+	}
+
+	function DateThai1($strDate){
+		$strYear = date("Y",strtotime($strDate))+543;
+		$strMonth= date("m",strtotime($strDate));
+		$strDay= date("d",strtotime($strDate));
+		$strHour= date("H",strtotime($strDate));
+		$strMinute= date("i",strtotime($strDate));
+		$strSeconds= date("s",strtotime($strDate));
+		return "$strDay/$strMonth/$strYear $strHour:$strMinute";
+	}
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -17,26 +39,27 @@ require'../include/connect.php';
 	<meta http-equiv="imagetoolbar" content="no" />
 	<link href="../css/core.css" rel="stylesheet" media="screen" type="text/css" />
 	<link href="../css/core.css" rel="stylesheet" media="print" type="text/css" />	
+
 </head>
 <body>
 
 <div id="wrapper">
 	<div id="content" >
  <?php	
-		//$returnlap=$_GET["returnlap"];
-		$sql = $db->prepare ("SELECT returnlap from rent where returnlap 
-							BETWEEN (DATE_FORMAT(DATE_SUB('2016-06-26',INTERVAL 1 DAY) ,'%Y-%m-%d 13:00:00')) 
-							AND (DATE_FORMAT('2016-06-26','%Y-%m-%d 12:59:00'))");
+		$returnlap='2016-06-26';
+		$sql = $db->prepare ("SELECT * FROM dailyreport WHERE returnlap BETWEEN 
+							(DATE_FORMAT(DATE_SUB('$returnlap',INTERVAL 1 DAY) ,'%Y-%m-%d 13:00:00')) AND 
+							(DATE_FORMAT('$returnlap','%Y-%m-%d 12:59:00'))");
 		$sql->execute();
 		$sql->setFetchMode(PDO::FETCH_ASSOC);
 		if ($row = $sql->fetch()) { ?> 
 		<div>
-		    <h2 style="text-align:left;">รายงานรายละเอียดการับคืนและยอดเงิน</h2>
-			<h3 style="text-align:center; ">วันที่&nbsp;&nbsp;<?php echo $row["Id_rent"] ?></h3>	
+		    <h2 style="text-align:left;">รายงานรายละเอียดการรับคืนและยอดเงิน</h2>
+			<h3 style="text-align:center; ">วันที่&nbsp;&nbsp;<?php echo  DateThai($returnlap) ?></h3>	
 		</div>
-		<div>
-			<table class="table">
-			    <thead>
+		<br><div style="">
+			<table>
+				<thead>
 			      <tr>
 			        <th>No</th>
 			        <th>RentID</th>
@@ -50,25 +73,61 @@ require'../include/connect.php';
 			      </tr>
 			    </thead>
 			    <tbody>
-			      <tr>
-			        <td>1</td>
-			        <td>Anna</td>
-			      </tr>
-			      <tr>
-			        <td>2</td>
-			        <td>Debbie</td>
-			      </tr>
-			      <tr>
-			        <td>3</td>
-			        <td>John</td>
-			      </tr>
-			    </tbody>
-  </table>
-		
-		</div>	
+	<?php 
+		$num=1; $sumfee=0; $sumfine=0; $sumpayment=0;
+		$sql = $db->prepare ("SELECT * FROM dailyreport WHERE returnlap BETWEEN 
+							(DATE_FORMAT(DATE_SUB('2016-06-26',INTERVAL 1 DAY) ,'%Y-%m-%d 13:00:00')) AND 
+							(DATE_FORMAT('2016-06-26','%Y-%m-%d 12:59:00'))");
+		$sql->execute();
+		$sql->setFetchMode(PDO::FETCH_ASSOC);
+		while ($row = $sql->fetch()) { 
+			      echo "<tr>";
+			      echo "<td align=\"center\">" .$num."</td>";
+			      echo "<td align=\"center\">" .$row["Id_rent"]."</td>";  
+			      echo "<td align=\"center\">" .$row["Id_customer"]."</td>"; 
+			      echo "<td align=\"center\">" .$row["nbCode"]."</td>"; 
+			      echo "<td align=\"center\">" .DateThai1($row["rentlap"])."</td>"; 
+			      echo "<td align=\"center\">" .DateThai1($row["returnlap"])."</td>"; 
 
+			      $fee=$row["fee"];
+			      $fine=$row["isFine"];
+			      $payment=$row["cost"];
+
+			      if(($fine==0) || ($fine==1)) {
+				      	if($fine==0) {
+				      		$fee=$row["cost"];
+				      		$fine=0;
+				      		$payment=$row["cost"];
+				      	}
+				      	if($fine==1) {
+				      		$fee=$row["cost"]-500;
+				      		$fine=$row["fee"];
+				      		$payment=$row["cost"];
+				      	}
+				    echo "<td align=\"center\">" .$fee."</td>"; 
+				    echo "<td align=\"center\">" .$fine."</td>"; 
+				    echo "<td align=\"center\">" .$payment."</td>"; 
+			      }
+			      echo "</tr>";
+			      $sumfee=$sumfee+$fee;
+			      $sumfine=$sumfine+$fine;
+			      $sumpayment=$sumpayment+$payment;
+			      $num++; } 
+			      echo "<tr>";
+			      echo "<td colspan=\"6\">&nbsp;</td>"; 
+			      echo "<td align=\"center\">".$sumfee."</td>";
+			      echo "<td align=\"center\">".$sumfine."</td>";
+			      echo "<td align=\"center\">".$sumpayment."</td>";
+			      echo "</tr>";
+			      ?>
+
+			    </tbody>
+  			</table>		
+		</div>	
 	</div>
 </div>
+<?php } ?>
+
 		
 	<script src="../js/jquery-1.6.2.min.js"></script>
 	<script src="../js/jquery.PrintArea.js_4.js"></script>

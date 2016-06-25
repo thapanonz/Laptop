@@ -27,22 +27,24 @@
 
 			<div class="container" >
 			<h1 style="margin-left:43px">สรุปข้อมูลรายวัน</h1><br>
-			<form role="form" action="submitadd.php" method="post">	
+			<form role="form" action="" method="POST">	
 				<div class="row" style="margin-left: 30px">				
 					<div class="col-xs-4">	
 						<div class="form-group">
 					<label>วันที่คืน:</label>
-					<input required id="rentdate" type="text" class="form-control" name="returnlap">	    
+					<input id="rentdate" type="text" class="form-control" name="returnlap">	    
 					    </div>		
-				<a href='' class="btn btn-warning btnsubmit">สรุปข้อมูลรายวัน</a>
-				</div>	  
+					    <button type="submit" class="btn btn-warning">สรุปข้อมูลรายวัน</button>
+				
+					</div> 
+				</div>  
 			</form>		
 			</div>
-						
+			
 
         <?php include "../include/js.php"; ?>      
          <script src="../js/jquery.datetimepicker.full.min.js"></script> 
-         <script type="text/javascript">
+         <script>
          	$(document).ready(function () {
 				    var d = new Date();
 				    $.datetimepicker.setLocale('th');
@@ -55,12 +57,20 @@
 				    });		         	
 			});
          </script> 
-         <script type="text/javascript">
-         	$(".btnsubmit").click(function(){
-				var url = "dailyreport.php?returnlap=".$row['Id'].";
+<!-- 
+      <?php 
+		$returnlap=$_POST["returnlap"];
+		$sql = $db->prepare(" SELECT returnlap from rent where returnlap BETWEEN 
+							(DATE_FORMAT(DATE_SUB('".$returnlap."',INTERVAL 1 DAY) ,'%Y-%m-%d 13:00:00')) AND 
+							(DATE_FORMAT('".$returnlap."','%Y-%m-%d 12:59:00')) ");
+		$sql->execute();
+		$sql->setFetchMode(PDO::FETCH_ASSOC);
+		if ($row = $sql->fetch()) { ?> 
+			<script type="text/javascript">
+				var url = "dailyreport.php?returnlap='".<?=$returnlap?>."'";
 				window.open(url,'','height=900,width=1000');
 				window.location = 'index.php';
-				});	
-		</script>
+			</script>
+		 <?php } ?>	  -->	
     </body>
 </html>
