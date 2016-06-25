@@ -1,5 +1,5 @@
 <?php
-			session_start();
+	session_start();
 	if(!isset($_SESSION['userperm'])) {
 	header('Location: ../login.php?error=2'); 
 	}

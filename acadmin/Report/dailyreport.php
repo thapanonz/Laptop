@@ -3,7 +3,7 @@
 	if(!isset($_SESSION['userperm'])) {
 	header('Location: ../login.php?error=2'); 
 	}
-	
+
 	require'../include/connect.php';
 
 	function DateThai($strDate){
@@ -57,22 +57,20 @@
 		    <h2 style="text-align:left;">รายงานรายละเอียดการรับคืนและยอดเงิน</h2>
 			<h3 style="text-align:center; ">วันที่&nbsp;&nbsp;<?php echo  DateThai($returnlap) ?></h3>	
 		</div>
-		<br><div style="">
-			<table>
-				<thead>
+		<br><div>
+			<table>	
 			      <tr>
-			        <th>No</th>
-			        <th>RentID</th>
-			        <th>CustomerID</th>
-			        <th>Code</th>
-			        <th>RentDate</th>
-			        <th>ReturnDate</th>
-			        <th>Fee</th>
-			        <th>Fine</th>
-			        <th>Payment</th>
-			      </tr>
-			    </thead>
-			    <tbody>
+			        <th align="center">No</th>
+			        <th align="center">RentID</th>
+			        <th align="center">CustomerID</th>
+			        <th align="center">Code</th>
+			        <th align="center">RentDate</th>
+			        <th align="center">ReturnDate</th>
+			        <th align="center">Fee</th>
+			        <th align="center">Fine</th>
+			        <th align="center">Payment</th>
+			      </tr>			   			   
+			    
 	<?php 
 		$num=1; $sumfee=0; $sumfine=0; $sumpayment=0;
 		$sql = $db->prepare ("SELECT * FROM dailyreport WHERE returnlap BETWEEN 
@@ -121,7 +119,7 @@
 			      echo "</tr>";
 			      ?>
 
-			    </tbody>
+			    
   			</table>		
 		</div>	
 	</div>
