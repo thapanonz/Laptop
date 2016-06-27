@@ -49,7 +49,7 @@
 		    </thead>
 			<tbody>
 		<?php
-			$sql = $db->prepare("SELECT * FROM rentlist");
+			$sql = $db->prepare("SELECT * FROM rentlist ORDER BY Id DESC");
 			$sql->execute();
 			$sql->setFetchMode(PDO::FETCH_ASSOC);
 			while ($row = $sql->fetch()) {
@@ -123,9 +123,9 @@
 		<script src="../js/jquery.dataTables.min.js"></script> 
         <script>
         	$(document).ready(function() {
-		    	$('#TableRent').DataTable();
+		    	$('#TableLaptop').DataTable();
 			} );
-        </script> 
+        </script>  
     </body>
 </html>
 

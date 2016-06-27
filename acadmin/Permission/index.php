@@ -46,7 +46,7 @@
 				<div class="row">
 					<div class="col-xs-9" style="margin-left: 30px">				
 						<h1>จัดการสิทธิ์</h1>
-							<a href="addformpermission.php" class="btn btn-primary">เพิ่มผู้ดูแลระบบ</a>
+							<a href="addformpermission.php" class="btn btn-primary">เพิ่มสิทธิ์การใช้งาน</a>
 			
 			<br><br><table class="table table-bordered table-hover">
 			<thead style="background-color: black; color: white">

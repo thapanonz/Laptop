@@ -27,7 +27,14 @@ try{
 
 		$stmp = $db->prepare($sql);
 		$stmp->bindValue("setlaptopId" , $setlaptopId);
-		$stmp->execute(); 
+		if($stmp->execute()) {
+			// Log Statment
+			$menu = "Laptop";
+			$desc = $_SESSION['userperm']." เพิ่มรายการโน๊ตบุ๊ที่ ".$_POST["nbCode"];
+			logs($_SESSION['staffId'],$menu,$desc);
+		}
+
+
 		
 		$maxSQL = "SELECT Id FROM rent ORDER By Id Desc LIMIT 1";
 		$maxSTM = $db->prepare($maxSQL);

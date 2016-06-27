@@ -24,7 +24,12 @@
 			$stmp->bindValue("nbStatus" , 'rdy'); }
 
 	$stmp->bindValue("setID" , $setid);
-	$stmp->execute();
+	if($stmp->execute()) {
+		// Log Statment
+		$menu = "Laptop";
+		$desc = $_SESSION['userperm']."เปลี่ยนสถานะ";
+		logs($_SESSION['staffId'],$menu,$desc);
+		}
 	}
 
 	function setstatus($Id,$status){

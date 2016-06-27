@@ -1,4 +1,5 @@
 <?php
+	session_start();
 	require "../include/connect.php";
 try{
 	$sql = "UPDATE notebook SET 
@@ -20,6 +21,10 @@ try{
 	$stmp->execute();
 	// echo $_POST["Id"];
 
+	// Log Statment
+	$menu = "Laptop";
+	$desc = $_SESSION['userperm']." แก้ไขรายการโน๊ตบุ๊ที่ ".$_POST["nbCode"];
+	logs($_SESSION['staffId'],$menu,$desc);
 	header('Location: index.php');
 	}
 catch(PDOException $e) {
