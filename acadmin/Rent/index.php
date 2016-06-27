@@ -94,7 +94,7 @@
 				echo "<td align=\"center\">" .DateThai($row["rentlap"])."</td>";  
 				echo "<td align=\"center\">" .DateThai($row["appointlap"])."</td>";  
 				echo "<td align=\"center\">" .($row["returnlap"]==NULL? "<span class='label label-danger'>ยังไม่คืน</span>" : DateThai($row["returnlap"]) )."</td>";    
-				echo "<td><a class='popup' href='agreement.php?Id=".$row['Id']."'><i class='fa fa-print'></i></a></td>";
+				echo "<td><a class='popup' title='ใบสัญญาเช่า' href='agreement.php?Id=".$row['Id']."'><i class='fa fa-print'></i></a></td>";
                 echo "</tr>";
 
 			} ?>

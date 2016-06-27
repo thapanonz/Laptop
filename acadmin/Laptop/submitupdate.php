@@ -22,9 +22,11 @@ try{
 	// echo $_POST["Id"];
 
 	// Log Statment
+	require "../include/fnLogs.php";
 	$menu = "Laptop";
 	$desc = $_SESSION['userperm']." แก้ไขรายการโน๊ตบุ๊ที่ ".$_POST["nbCode"];
 	logs($_SESSION['staffId'],$menu,$desc);
+	
 	header('Location: index.php');
 	}
 catch(PDOException $e) {

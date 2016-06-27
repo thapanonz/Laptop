@@ -1,4 +1,5 @@
 <?php
+	session_start();
 	require "../include/connect.php";
 	
 try{ 
@@ -16,6 +17,11 @@ try{
 		"phone"=>$_POST["phone"],
 		"email"=>$_POST["email"]
 		));
+
+	require "../include/fnLogs.php";
+	$menu = "Rentor";
+	$desc = $_SESSION['userperm']." เพิ่มรายการผู้เช่าชื่อ ".$_POST["prename"].$_POST["firstname"]." ".$_POST["lastname"];
+	logs($_SESSION['staffId'],$menu,$desc);
 
 	header('Location: index.php');
 	}

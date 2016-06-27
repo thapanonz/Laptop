@@ -16,10 +16,10 @@
 			$_SESSION['userlevel'] = $row['level'];
 
 			// Log Statment
+			require "include/fnLogs.php";
 			$menu = "Login";
 			$desc = $_SESSION['userperm']." เข้าสู่ระบบ";
 			logs($_SESSION['staffId'],$menu,$desc);
-
 
 			session_write_close();
 			header('Location: index.php'); 

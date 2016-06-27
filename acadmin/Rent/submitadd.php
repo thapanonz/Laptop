@@ -29,9 +29,11 @@ try{
 		$stmp = $db->prepare($sql);
 		$stmp->bindValue("setlaptopId" , $setlaptopId);
 		if($stmp->execute()) {
+
 			// Log Statment
+			require "../include/fnLogs.php";
 			$menu = "Rent";
-			$desc = $_SESSION['userperm']." เพิ่มรายการผู้เช่า";
+			$desc = $_SESSION['userperm']." เพิ่มรายการเช่า";
 			logs($_SESSION['staffId'],$menu,$desc);
 		}
 

@@ -30,9 +30,12 @@ try{
 	$stmp->bindValue("setreturnstaffId" , $setreturnstaffId);
 	$stmp->bindValue("setId" , $setId);
 	
-	$stmp->execute();
-
-	//print_r($stmp->errorInfo());
+	if($stmp->execute()) {
+		require "../include/fnLogs.php";
+		$menu = "Rent";
+		$desc = $_SESSION['userperm']." บันทึกรายการคืน";
+		logs($_SESSION['staffId'],$menu,$desc);
+	}
 	header('Location: index.php');
 }
 catch(PDOException $e) {

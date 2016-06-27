@@ -1,4 +1,5 @@
 <?php
+	session_start();
 	require "../include/connect.php";
 	// echo "<pre>";
 	// print_r(var_dump($_POST));
@@ -35,10 +36,15 @@ try{
 	$stmp->bindValue("email" , $_POST["email"]);
 	$stmp->bindValue("setisBlacklist" , $setisBlacklist);
 	$stmp->bindValue("Id" , $_POST["Id"]);
-	$stmp->execute();
-	 // echo $_POST["Id"];
+	if($stmp->execute()) {
 
+		require "../include/fnLogs.php";
+		$menu = "Rentor";
+		$desc = $_SESSION['userperm']." แก้ไขรายการผู้เช่า";
+		logs($_SESSION['staffId'],$menu,$desc);
+	 
 	header('Location: index.php');
+		}
 	}
 catch(PDOException $e) {
   echo $e->getMessage();

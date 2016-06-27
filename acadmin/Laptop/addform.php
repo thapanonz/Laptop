@@ -56,11 +56,7 @@
 					   </div>		   
 					    </form>			
 					</div>					
-
-				
 			</div>
-				
-
         <?php include "../include/js.php"; ?>      
     </body>
 </html>
