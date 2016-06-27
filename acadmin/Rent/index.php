@@ -44,7 +44,7 @@
 		        <th>วันที่เช่า</th>
 		        <th>วันกำหนดส่งคืน</th>
 		        <th>วันที่คืน</th>  
-		        <th></th>    	        
+		        <th colspan="2"></th>    	        
 		      </tr>
 		    </thead>
 			<tbody>
@@ -95,6 +95,13 @@
 				echo "<td align=\"center\">" .DateThai($row["appointlap"])."</td>";  
 				echo "<td align=\"center\">" .($row["returnlap"]==NULL? "<span class='label label-danger'>ยังไม่คืน</span>" : DateThai($row["returnlap"]) )."</td>";    
 				echo "<td><a class='popup' title='ใบสัญญาเช่า' href='agreement.php?Id=".$row['Id']."'><i class='fa fa-print'></i></a></td>";
+				echo "<td align=\"center\">";
+			if($row["returnlap"]!=NULL) {
+				echo "<a class='popup' title='ใบเสร็จรับเงิน' href='receipt.php?Id=".$row['Id']."'><i class='fa fa-file-pdf-o'></i></";
+			} else {
+				echo "";
+			}
+				echo "</td>";
                 echo "</tr>";
 
 			} ?>

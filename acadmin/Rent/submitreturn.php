@@ -34,9 +34,15 @@ try{
 		require "../include/fnLogs.php";
 		$menu = "Rent";
 		$desc = $_SESSION['userperm']." บันทึกรายการคืน";
-		logs($_SESSION['staffId'],$menu,$desc);
-	}
-	header('Location: index.php');
+		logs($_SESSION['staffId'],$menu,$desc); ?>
+
+		<script type="text/javascript">
+				var url = "receipt.php?Id=<?=$setId?>";
+				window.open(url,'','height=900,width=1000');
+				window.location = 'index.php';
+		</script>
+	<?php } 
+	//header('Location: index.php');
 }
 catch(PDOException $e) {
   echo $e->getMessage();
