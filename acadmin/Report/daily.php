@@ -59,7 +59,7 @@
          </script> 
 
       <?php 
-		$returnlap=$_GET["returnlap"];
+      	isset($_GET["returnlap"])? $returnlap=$_GET["returnlap"] : $returnlap="";	
 		$sql = $db->prepare("SELECT returnlap FROM rent WHERE (returnlap BETWEEN 
 							(DATE_FORMAT(DATE_SUB('".$returnlap."',INTERVAL 1 DAY) ,'%Y-%m-%d 13:00:00')) AND 
 							(DATE_FORMAT('".$returnlap."','%Y-%m-%d 12:59:00')))");

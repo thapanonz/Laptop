@@ -8,7 +8,7 @@
 	require "../include/functions.php";
 	//Set Path
 	$isSubfolder = true;
-	$activepage = "dailyreport";
+	$activepage = "periodreport";
 ?>
 
 <!doctype html>
@@ -60,8 +60,10 @@
          </script> 
 
       <?php 
-		$startdate=$_GET["startdate"];
+       if (isset($_GET["startdate"]) && isset($_GET["enddate"])) {
+       $startdate=$_GET["startdate"];
 		$enddate=$_GET["enddate"];
+		
 		$sql = $db->prepare("SELECT returnlap FROM rent WHERE (returnlap BETWEEN 
 							(DATE_FORMAT('".$startdate."' ,'%Y-%m-%d %H:%i:00')) AND 
 							(DATE_FORMAT('".$enddate."' ,'%Y-%m-%d %H:%i:00')))");
@@ -75,6 +77,6 @@
 					window.location = 'period.php';
 				});
 			</script>
-		 <?php } ?>
+		 <?php } }?>
     </body>
 </html>
