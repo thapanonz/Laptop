@@ -66,7 +66,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand page-scroll" href="#page-top" style="font-family: 'THSarabunNew', sans-serif;">ระบบเช่า/คืน NOTEBOOK</a>
+                <a class="navbar-brand page-scroll" href="#page-top" style="font-family: 'THSarabunNew', sans-serif;">บริการเช่า NOTEBOOK</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -94,7 +94,7 @@
     <header>
         <div class="header-content">
             <div class="header-content-inner">
-                <h1>บริการเช่า/คืน NOTEBOOK</h1>
+                <h1>บริการเช่า NOTEBOOK</h1>
                 <h2>ศูนย์คอมพิวเตอร์ มหาวิทยาลัยสงขลานครินทร์</h2>
                 <hr>
                 <b><h4>เครื่องพร้อมให้บริการเช่า 

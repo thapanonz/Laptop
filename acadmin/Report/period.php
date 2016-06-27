@@ -16,7 +16,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>สรุปข้อมูลรายวัน</title>
+        <title>สรุปข้อมูลตามช่วงเวลา</title>
 		<?php include "../include/css.php"; ?>
 		<link rel="stylesheet" type="text/css" href="../css/jquery.datetimepicker.css">
     </head>
@@ -26,17 +26,15 @@
 		<?php include "../include/menu.php"; ?>	
 
 			<div class="container" >
-			<h1 style="margin-left:43px">สรุปข้อมูลรายวัน</h1><br>
-			<form role="form" action="" method="GET">	
+			<h1 style="margin-left:43px">สรุปข้อมูลตามช่วงเวลา</h1><br>
+			<form role="form" class="form form-inline" action="" method="GET">	
 				<div class="row" style="margin-left: 30px">				
-					<div class="col-xs-3">	
+					<div class="col-xs-6">	
 						<div class="form-group">
-					<label>วันที่คืน:</label>
-					<input id="rentdate" type="text" class="form-control" name="returnlap">	    
-					    </div>		
-					    <button type="submit" class="btn btn-warning">สรุปข้อมูลรายวัน</button>
-				
-					</div> 
+					<label>ช่วงเวลา:</label>
+					<input id="startdate" type="text" class="form-control" name="startdate">
+					&nbsp;&nbsp;ถึง&nbsp;&nbsp;<input id="enddate" type="text" class="form-control" name="enddate">	 </div>		
+					    <br> <br><button type="submit" class="btn btn-warning">สรุปข้อมูลตามช่วงเวลา</button>		</div> 
 				</div>  
 			</form>		
 			</div>
@@ -48,10 +46,10 @@
          	$(document).ready(function () {
 				    var d = new Date();
 				    $.datetimepicker.setLocale('th');
-				    $('#rentdate').datetimepicker({             
+				    $('#startdate,#enddate').datetimepicker({             
 				        mask: true,
 				        timepicker: true,
-				        format: 'Y-m-d',
+				        format: 'Y-m-d H:i',
 				        value: d,
 				        step: 1,
 				    });	
@@ -59,18 +57,19 @@
          </script> 
 
       <?php 
-		$returnlap=$_GET["returnlap"];
+		$startdate=$_GET["startdate"];
+		$enddate=$_GET["enddate"];
 		$sql = $db->prepare("SELECT returnlap FROM rent WHERE (returnlap BETWEEN 
-							(DATE_FORMAT(DATE_SUB('".$returnlap."',INTERVAL 1 DAY) ,'%Y-%m-%d 13:00:00')) AND 
-							(DATE_FORMAT('".$returnlap."','%Y-%m-%d 12:59:00')))");
+							(DATE_FORMAT('".$startdate."' ,'%Y-%m-%d %H:%i:00')) AND 
+							(DATE_FORMAT('".$enddate."' ,'%Y-%m-%d %H:%i:00')))");
 		$sql->execute();
 		$sql->setFetchMode(PDO::FETCH_ASSOC);
 		if ($row = $sql->fetch()) { ?> 
 			<script type="text/javascript">
 				$(document).ready(function () {
-					var url = "dailyreport.php?returnlap=<?=$returnlap?>";
+					var url = "dailyreport.php?startdate=<?=$startdate?>&enddate=<?=$enddate?>";
 					window.open(url,'','height=900,width=1000');
-					window.location = 'daily.php';
+					window.location = 'period.php';
 				});
 			</script>
 		 <?php 
