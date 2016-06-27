@@ -1,4 +1,5 @@
 <?php
+	session_start();
 	require "../include/connect.php";
 	
 try{ 
@@ -29,8 +30,8 @@ try{
 		$stmp->bindValue("setlaptopId" , $setlaptopId);
 		if($stmp->execute()) {
 			// Log Statment
-			$menu = "Laptop";
-			$desc = $_SESSION['userperm']." เพิ่มรายการโน๊ตบุ๊ที่ ".$_POST["nbCode"];
+			$menu = "Rent";
+			$desc = $_SESSION['userperm']." เพิ่มรายการผู้เช่า";
 			logs($_SESSION['staffId'],$menu,$desc);
 		}
 

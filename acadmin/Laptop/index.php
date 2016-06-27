@@ -26,8 +26,9 @@
 	$stmp->bindValue("setID" , $setid);
 	if($stmp->execute()) {
 		// Log Statment
+		require "../include/fnLogs.php";
 		$menu = "Laptop";
-		$desc = $_SESSION['userperm']."เปลี่ยนสถานะ";
+		$desc = $_SESSION['userperm']." เปลี่ยนสถานะเครื่องเช่า (".$_GET['Id'].")";
 		logs($_SESSION['staffId'],$menu,$desc);
 		}
 	}

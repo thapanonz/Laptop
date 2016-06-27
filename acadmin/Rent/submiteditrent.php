@@ -1,4 +1,5 @@
 <?php
+	session_start();
 	require "../include/connect.php";
 
 // echo "<pre>";
@@ -56,7 +57,12 @@ try{
 				$stmp->bindValue("setreturnstaffId" , $setreturnstaffId);
 			}
 
-	$stmp->execute();
+	if($stmp->execute()) {
+		// Log Statment
+		$menu = "Rent";
+		$desc = $_SESSION['userperm']." แก้ไขรายการผู้เช่า";
+		logs($_SESSION['staffId'],$menu,$desc);
+	}
 	
 	header('Location: index.php');
 	}
