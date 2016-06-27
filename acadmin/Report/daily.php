@@ -27,7 +27,7 @@
 
 			<div class="container" >
 			<h1 style="margin-left:43px">สรุปข้อมูลรายวัน</h1><br>
-			<form role="form" action="" method="POST">	
+			<form role="form" action="" method="GET">	
 				<div class="row" style="margin-left: 30px">				
 					<div class="col-xs-4">	
 						<div class="form-group">
@@ -54,23 +54,28 @@
 				        format: 'Y-m-d',
 				        value: d,
 				        step: 1,
-				    });		         	
+				    });	
 			});
          </script> 
-<!-- 
+
       <?php 
-		$returnlap=$_POST["returnlap"];
-		$sql = $db->prepare(" SELECT returnlap from rent where returnlap BETWEEN 
+		$returnlap=$_GET["returnlap"];
+		$sql = $db->prepare("SELECT returnlap FROM rent WHERE (returnlap BETWEEN 
 							(DATE_FORMAT(DATE_SUB('".$returnlap."',INTERVAL 1 DAY) ,'%Y-%m-%d 13:00:00')) AND 
-							(DATE_FORMAT('".$returnlap."','%Y-%m-%d 12:59:00')) ");
+							(DATE_FORMAT('".$returnlap."','%Y-%m-%d 12:59:00')))");
 		$sql->execute();
 		$sql->setFetchMode(PDO::FETCH_ASSOC);
 		if ($row = $sql->fetch()) { ?> 
 			<script type="text/javascript">
-				var url = "dailyreport.php?returnlap='".<?=$returnlap?>."'";
-				window.open(url,'','height=900,width=1000');
-				window.location = 'index.php';
+				$(document).ready(function () {
+					var url = "dailyreport.php?returnlap=<?=$returnlap?>";
+					window.open(url,'','height=900,width=1000');
+					window.location = 'daily.php';
+				});
 			</script>
-		 <?php } ?>	  -->	
+		 <?php 
+		} 
+
+		 ?>
     </body>
 </html>

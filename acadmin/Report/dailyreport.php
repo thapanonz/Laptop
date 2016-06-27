@@ -46,13 +46,8 @@
 <div id="wrapper">
 	<div id="content" >
  <?php	
-		$returnlap='2016-06-26';
-		$sql = $db->prepare ("SELECT * FROM dailyreport WHERE returnlap BETWEEN 
-							(DATE_FORMAT(DATE_SUB('$returnlap',INTERVAL 1 DAY) ,'%Y-%m-%d 13:00:00')) AND 
-							(DATE_FORMAT('$returnlap','%Y-%m-%d 12:59:00'))");
-		$sql->execute();
-		$sql->setFetchMode(PDO::FETCH_ASSOC);
-		if ($row = $sql->fetch()) { ?> 
+		$returnlap=$_GET["returnlap"];
+		if (isset($returnlap)) { ?> 
 		<div>
 		    <h2 style="text-align:left;">รายงานรายละเอียดการรับคืนและยอดเงิน</h2>
 			<h3 style="text-align:center; ">วันที่&nbsp;&nbsp;<?php echo  DateThai($returnlap) ?></h3>	
@@ -60,22 +55,22 @@
 		<br><div>
 			<table>	
 			      <tr>
-			        <th align="center">No</th>
-			        <th align="center">RentID</th>
-			        <th align="center">CustomerID</th>
-			        <th align="center">Code</th>
-			        <th align="center">RentDate</th>
-			        <th align="center">ReturnDate</th>
-			        <th align="center">Fee</th>
-			        <th align="center">Fine</th>
-			        <th align="center">Payment</th>
+			        <th width="5%" align="center">No</th>
+			        <th width="3%" align="center">RentID</th>
+			        <th width="25%" align="center">CustomerID</th>
+			        <th  width="10%" align="center">Code</th>
+			        <th width="20%" align="center">RentDate</th>
+			        <th width="20%" align="center">ReturnDate</th>
+			        <th width="7%" align="center">Fee</th>
+			        <th width="8%" align="center">Fine</th>
+			        <th  width="12%" align="center">Payment</th>
 			      </tr>			   			   
 			    
 	<?php 
 		$num=1; $sumfee=0; $sumfine=0; $sumpayment=0;
-		$sql = $db->prepare ("SELECT * FROM dailyreport WHERE returnlap BETWEEN 
-							(DATE_FORMAT(DATE_SUB('2016-06-26',INTERVAL 1 DAY) ,'%Y-%m-%d 13:00:00')) AND 
-							(DATE_FORMAT('2016-06-26','%Y-%m-%d 12:59:00'))");
+		$sql = $db->prepare ("SELECT * FROM dailyreport WHERE (returnlap BETWEEN 
+							(DATE_FORMAT(DATE_SUB('".$returnlap."',INTERVAL 1 DAY) ,'%Y-%m-%d 13:00:00')) AND 
+							(DATE_FORMAT('".$returnlap."','%Y-%m-%d 12:59:00')))");
 		$sql->execute();
 		$sql->setFetchMode(PDO::FETCH_ASSOC);
 		while ($row = $sql->fetch()) { 
@@ -91,14 +86,14 @@
 			      $fine=$row["isFine"];
 			      $payment=$row["cost"];
 
-			      if(($fine==0) || ($fine==1)) {
+			      if(isset($row["fee"])) {
 				      	if($fine==0) {
 				      		$fee=$row["cost"];
 				      		$fine=0;
 				      		$payment=$row["cost"];
 				      	}
-				      	if($fine==1) {
-				      		$fee=$row["cost"]-500;
+				      	else if($fine==1) {
+				      		$fee=$row["cost"]-$row["fee"];
 				      		$fine=$row["fee"];
 				      		$payment=$row["cost"];
 				      	}
@@ -110,16 +105,15 @@
 			      $sumfee=$sumfee+$fee;
 			      $sumfine=$sumfine+$fine;
 			      $sumpayment=$sumpayment+$payment;
-			      $num++; } 
+			      $num++; 
+			} 
 			      echo "<tr>";
 			      echo "<td colspan=\"6\">&nbsp;</td>"; 
 			      echo "<td align=\"center\">".$sumfee."</td>";
 			      echo "<td align=\"center\">".$sumfine."</td>";
 			      echo "<td align=\"center\">".$sumpayment."</td>";
 			      echo "</tr>";
-			      ?>
-
-			    
+			      ?>			    
   			</table>		
 		</div>	
 	</div>
