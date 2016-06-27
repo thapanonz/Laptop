@@ -33,8 +33,11 @@
 						<div class="form-group">
 					<label>ช่วงเวลา:</label>
 					<input id="startdate" type="text" class="form-control" name="startdate">
-					&nbsp;&nbsp;ถึง&nbsp;&nbsp;<input id="enddate" type="text" class="form-control" name="enddate">	 </div>		
-					    <br> <br><button type="submit" class="btn btn-warning">สรุปข้อมูลตามช่วงเวลา</button>		</div> 
+					&nbsp;&nbsp;ถึง&nbsp;&nbsp;
+					<input id="enddate" type="text" class="form-control" name="enddate">
+						</div>		
+					<br> <br><button type="submit" class="btn btn-warning">สรุปข้อมูลตามช่วงเวลา</button>	
+					</div> 
 				</div>  
 			</form>		
 			</div>
@@ -72,9 +75,6 @@
 					window.location = 'period.php';
 				});
 			</script>
-		 <?php 
-		} 
-
-		 ?>
+		 <?php } ?>
     </body>
 </html>

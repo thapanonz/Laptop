@@ -73,9 +73,6 @@
 					window.location = 'daily.php';
 				});
 			</script>
-		 <?php 
-		} 
-
-		 ?>
+		 <?php } ?>
     </body>
 </html>
