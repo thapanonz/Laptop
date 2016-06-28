@@ -23,7 +23,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>ตรวจสอบประวัติ</title>
+        <title>ประวัติการเช่า</title>
 		<?php include "../include/css.php"; ?>
 		<link rel="stylesheet" type="text/css" href="../css/jquery.dataTables.min.css">
 
@@ -44,12 +44,21 @@
 				while ($row = $sql->fetch()) { 
 			?>
 			<div class="container">
-			<h1 style="margin-left:43px">ตรวจสอบประวัติ</h1><br>
+			<h1 style="margin-left:50px">ประวัติการเช่า</h1>
 				<div class="row">
 					<div class="col-md-11" style="margin-left: 30px">						
-									
-					<label>ผู้เช่า:</label> <?php echo $row["prename"].$row["firstname"]." ".$row["lastname"] ?>
-					
+												
+					<?php
+						$sql5 = $db->prepare("SELECT COUNT(isLate) AS countlate FROM rent WHERE citizenId LIKE :Id AND isLate='1'");
+						$sql5->bindParam(':Id', $row['Id'], PDO::PARAM_STR);	
+						$sql5->execute();
+						$sql5->setFetchMode(PDO::FETCH_ASSOC);  ?>
+						<h3 style="margin: 17px 0 0 0;"><b>ผู้เช่า:</b> <?php echo $row["prename"].$row["firstname"]." ".$row["lastname"] ?>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<?php if ($row5 = $sql5->fetch()) { 
+							if($row5["countlate"] != 0) { echo "<b>สาย:</b> <span class='label label-danger'>".$row5["countlate"]."</span> ครั้ง"; } else { echo "<label class=\"text-success\"><u>ไม่พบ</u>การคืนสาย</label>"; }
+						 } ?></h3>
+												
 					<br><table id="TableHistory" class="table table-bordered table-hover">
 					<thead>
 				      <tr bgcolor="#CCCCCC" >
