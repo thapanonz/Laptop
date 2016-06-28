@@ -25,6 +25,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>ตรวจสอบประวัติ</title>
 		<?php include "../include/css.php"; ?>
+		<link rel="stylesheet" type="text/css" href="../css/jquery.dataTables.min.css">
 
 		<style type="text/css">
 			table thead tr th {text-align: center;}
@@ -49,7 +50,7 @@
 									
 					<label>ผู้เช่า:</label> <?php echo $row["prename"].$row["firstname"]." ".$row["lastname"] ?>
 					
-					<br><table class="table table-bordered table-hover">
+					<br><table class="table table-bordered table-hover" id="TableHistory">
 					<thead>
 				      <tr bgcolor="#CCCCCC" >
 				        <th>สัญญาเช่าเลขที่</th>
@@ -91,8 +92,8 @@
 										} 
 
 
-							echo "<td align=\"center\">".DateThai($row1["returnlap"])."</td>"; 
-							echo "<td align=\"center\">".setlate($row1["isLate"])."</td>"; 
+							echo "<td align=\"center\">".($row1["returnlap"]==NULL? "<span class='label label-danger'>ยังไม่คืน</span>" : DateThai($row1["returnlap"]) )."</td>"; 
+							echo "<td align=\"center\">".($row1["returnlap"]==NULL? "" : setlate($row1["isLate"]) )."</td>"; 
 							echo "<td align=\"center\">".$row1["cost"]."</td>"; 
 							
 									
@@ -101,9 +102,11 @@
 										$sql4->bindParam(':returnstaffId', $row1['returnstaffId'], PDO::PARAM_INT);
 										$sql4->execute();
 										$sql4->setFetchMode(PDO::FETCH_ASSOC);
+										echo "<td align=\"center\">";
 										while ($row4 = $sql4->fetch()) {
-											echo "<td align=\"center\">".$row4["pname"].$row4["name"]." ".$row4["lastname"]."</td>"; 
+											echo $row4["pname"].$row4["name"]." ".$row4["lastname"]; 
 										} 
+										echo "</td>";
 							echo "<tr>";
 						} ?>
 					</tbody>
@@ -114,8 +117,13 @@
 			</div>
 		<?php } ?>
 
-        <?php include "../include/js.php"; ?>  
-        
+         <?php include "../include/js.php"; ?>  
+        <script src="../js/jquery.dataTables.min.js"></script> 
+        <script>
+        	$(document).ready(function() {
+		    	$('#TableHistory').DataTable();
+			} );
+        </script>        
     </body>
 </html>
 

@@ -124,7 +124,7 @@ require'../include/connect.php';
         //<![CDATA[
         $(document).ready(function() {            
                 //Print ele4 with custom options
-                //window.print();
+                window.print();
             });
         </script>
 </body>
