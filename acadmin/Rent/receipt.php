@@ -34,59 +34,85 @@ require'../include/connect.php';
 	<meta http-equiv="imagetoolbar" content="no" />
 	<link href="../css/core.css" rel="stylesheet" media="screen" type="text/css" />
 	<link href="../css/core.css" rel="stylesheet" media="print" type="text/css" />	
+	<style>
+		body {
+			font-size:16px;
+		}
+		.receiptHeader{
+			background-color:#CCC;
+			text-align:center;
+			font-size:24px;
+			font-weight: bold;
+			padding:10px 0 10px 0;
+			margin-bottom:15px;
+		}
+		.detailBox{
+			width:90%;
+			height: 100px;
+			border:1px solid #AAA;
+			margin-left:auto;
+			margin-right:auto;
+			margin-top:10px;
+		}
+		.signName{
+			margin-left: 300px;
+			margin-top: 45px;
+		}
+	</style>
 </head>
 <body>
 
 <div id="wrapper">
 	<div id="content" >
 		<?php	
-			$Id=$_GET["Id"];
-			$sql = $db->prepare ("SELECT * FROM receipt WHERE Id_rent=".$Id);
-			$sql->execute();
-			$sql->setFetchMode(PDO::FETCH_ASSOC);
-			if ($row = $sql->fetch()) { ?>
-		<h2 style="text-align:center;">ใบแทนใบเสร็จรับเงิน</h2>
-		<h3 style="text-align:center; ">วันที่ออกใบแทนใบเสร็จรับเงิน&nbsp;&nbsp;<?php echo DateThai($row["returnlap"]) ?></h3><br><br>
+		$Id=$_GET["Id"];
+		$sql = $db->prepare ("SELECT * FROM receipt WHERE Id_rent=".$Id);
+		$sql->execute();
+		$sql->setFetchMode(PDO::FETCH_ASSOC);
+		if ($row = $sql->fetch()) { ?>
 
-		<p>ได้รับเงินจาก<span><?php echo $row["prename"].$row["firstname"].' '.$row["lastname"] ?></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;สัญญาเช่าเลขที่<span><?php echo $row["Id_rent"] ?></span><br>ประเภทลูกค้า<span><?php echo settype1($row["type"]) ?></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;สังกัดคณะ/หน่วยงาน <span><?php echo $row["faculty"] ?></span><br><b>เป็นเงินดังรายการต่อไปนี้</b></p>	
-
-		<div>
-<div style="float:left; width:10%; height: 198px; padding:0 0 0 3px; border:0;"></div>
-<div style="float:left; width:85%; height: 198px; padding:0 0 0 3px; margin-left: 10px; border:1px solid #000;">
-<pre>
-		<?php 
-			$fee=$row["fee"];
-	        $fine=$row["isFine"];
-	        $payment=$row["cost"];
-
-		      if(isset($row["fee"])) {
-			      	if($fine==0) {
-			      		$fee=$row["cost"];
-			      		$fine=0;
-			      		$payment=$row["cost"];
-			      	}
-			      	else if($fine==1) {
-			      		$fee=$row["cost"]-$row["fee"];
-			      		$fine=$row["fee"];
-			      		$payment=$row["cost"];
-			      	} ?>
-<br>ค่าเช่าเครื่องคอมพิวเตอร์ Notebook รหัสบาร์โค้ด<span><?php echo $row["nbCode"] ?></span> <span><?php echo $fee ?></span>
-ค่าปรับ(ถ้ามี) <span><?php echo $fine ?></span>
-รวมเป็นเงินที่ต้องชำระทั้งสิ้น(บาท) <div style="padding-right: 20px; text-align: right;"><span><?php echo $payment ?></span></div>
-<?php } ?> 
-</pre>
-		</div>
-	</div>
-
-	<div style="padding-top: 28px">
-<div style="float:left; width:45%; height: 167px; padding:0 0 0 3px; border:0px solid #000;"></div>
-<div style="float:left; width:51%; height: 167px; padding:0 0 0 3px; margin-left: 10px; border:0px solid #000;">
-<pre style="padding-left: 20px;">
-ลงชื่อผู้รับเงิน                                        
-<div style="padding-top: 11px; padding-left: 50px;"><div style="background-color:#CCC; text-align: center; padding: 2px 0 2px 0"><?php echo $row["pname"].$row["name"].' '.$row["lastname1"] ?></div></div>
-</pre>
+			<div class="receiptHeader">
+				ใบแทนใบเสร็จรับเงิน
 			</div>
-		</div>
+			<div style="text-align:right;">
+				สัญญาเช่าเลขที่ <?=$row["Id_rent"]?>
+			</div>
+			<div style="text-align:right; margin-bottom:20px;">
+				วันที่ออกใบแทนใบเสร็จรับเงิน&nbsp;&nbsp;<?php echo DateThai($row["returnlap"]) ?>
+			</div>
+			<div>
+				<div style="margin-bottom: 15px;">ได้รับเงินจาก<span><?php echo $row["prename"].$row["firstname"].' '.$row["lastname"] ?></span></div>
+				<div style="margin-bottom: 15px;">ประเภทลูกค้า<span><?php echo settype1($row["type"]) ?></span></div>
+				<div style="margin-bottom: 15px;">สังกัดคณะ/หน่วยงาน <span><?php echo $row["faculty"] ?></span></div>
+			</div>
+			<div>
+				<b>เป็นเงินดังรายการต่อไปนี้</b>
+				<div class="detailBox">
+					<table cellpadding="5" cellspacing="10" style="width:100%;">
+						<tr>
+							<td>ค่าเช่าเครื่องคอมพิวเตอร์ Notebook รหัสบาร์โค้ด <span><?php echo $row["nbCode"] ?></td>
+							<td align="right"><?=($row["isFine"] == 1 ? 	$row["cost"] - $row["fee"] : $row["cost"])?> .-</td>
+						</tr>
+						<tr>
+							<td>ค่าปรับ (ถ้ามี)</td>
+							<td align="right"><?=($row["isFine"] == 1 ? 	$row["fee"] : 0)?> .-</td>
+						</tr>
+						<tr style="font-weight: bold;">
+							<td>รวมเป็นเงินที่ต้องชำระทั้งสิ้น (บาท)</td>
+							<td style="border-bottom:double 2px #AAA;" align="right"><?=$row["cost"]?> .-</td>
+						</tr>
+					</table>
+				</div>
+				<div>
+					<div class="signName">
+						<div>ลงชื่อผู้รับเงิน </div>
+						<div style="margin: 25px 0 0 100px;"><span><?php echo $row["pname"].$row["name"].' '.$row["lastname1"] ?></span></div>
+					</div>
+				</div>
+			</div>
+
+
+
 		<?php } ?>
 	</div>	
 </div>
@@ -98,7 +124,7 @@ require'../include/connect.php';
         //<![CDATA[
         $(document).ready(function() {            
                 //Print ele4 with custom options
-                window.print();
+                //window.print();
             });
         </script>
 </body>
