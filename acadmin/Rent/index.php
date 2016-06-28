@@ -97,7 +97,7 @@
 				echo "<td><a class='popup' title='ใบสัญญาเช่า' href='agreement.php?Id=".$row['Id']."'><i class='fa fa-print'></i></a></td>";
 				echo "<td align=\"center\">";
 			if($row["returnlap"]!=NULL) {
-				echo "<a class='popup' title='ใบเสร็จรับเงิน' href='receipt.php?Id=".$row['Id']."'><i class='fa fa-file-pdf-o'></i></";
+				echo "<a class='popup' title='ใบเสร็จรับเงิน' href='receipt.php?Id=".$row['Id']."'><i class='fa fa-money'></i></";
 			} else {
 				echo "";
 			}

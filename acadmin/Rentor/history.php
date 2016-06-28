@@ -50,7 +50,7 @@
 									
 					<label>ผู้เช่า:</label> <?php echo $row["prename"].$row["firstname"]." ".$row["lastname"] ?>
 					
-					<br><table class="table table-bordered table-hover" id="TableHistory">
+					<br><table class="table table-bordered table-hover">
 					<thead>
 				      <tr bgcolor="#CCCCCC" >
 				        <th>สัญญาเช่าเลขที่</th>
