@@ -75,12 +75,12 @@
 					      <label>เจ้าหน้าที่ให้บริการ:</label>
 					      <select class="form-control" name="staffId">
 							<?php
-								$sql = $db->prepare("SELECT Id,pname,name,lastname FROM permission  
+								$sql = $db->prepare("SELECT Id,user,pname,name,lastname FROM permission  
 									                 ORDER BY user");
 								$sql->execute();
 								$sql->setFetchMode(PDO::FETCH_ASSOC);
 								while ($row = $sql->fetch()) { ?>
-									<option value="<?=$row['Id'] ?>"><?php echo $row["pname"].$row["name"]."&nbsp;".$row["lastname"] ?></option>
+									<option value="<?=$row['Id'] ?>" selected="<?php ($_SESSION['userperm']==$row["user"]? $row["user"] : "" ) ?>"><?php echo $row["pname"].$row["name"]."&nbsp;".$row["lastname"] ?></option>
 							<?php } ?>  
 						</select>
 					    </div>
