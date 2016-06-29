@@ -37,7 +37,7 @@
 					$sql->execute();
 					$sql->setFetchMode(PDO::FETCH_ASSOC);
 					if ($row = $sql->fetch()) { ?>
-						<h2>เครื่องพร้อมให้เช่าจำนวน <span class='label label-success'> <?php echo $row["sumlaptop"] ?></span> เครื่อง</h2>
+						<h2>เครื่องพร้อมให้บริการเช่าจำนวน <span class='label label-success'> <?php echo $row["sumlaptop"] ?></span> เครื่อง</h2>
 					<?php } ?>	
 					</div>
 					
@@ -45,7 +45,8 @@
 						<img src="imgs/Lenovo G4080.png" height="450" width="580">			
 					</div>	
 
-					<div class="col-xs-5">								
+					<div class="col-xs-5">
+					<br>								
 					<a href="rent/add.php" class="btn btn-lg btn-primary">บันทึกการเช่า</a><br>
 					<a href="rent/return.php" class="btn btn-lg btn-danger">บันทึกการคืน</a><br>
 					<a href="report/daily.php" class="btn btn-lg btn-warning">สรุปข้อมูลรายวัน</a>

@@ -97,16 +97,16 @@
                 <h1>บริการเช่า NOTEBOOK</h1>
                 <h2>ศูนย์คอมพิวเตอร์ มหาวิทยาลัยสงขลานครินทร์</h2>
                 <hr>
-                <b><h4>เครื่องพร้อมให้บริการเช่า 
+                <h3>เครื่องพร้อมให้บริการเช่าจำนวน 
                 <?php 
                 $sql = $db->prepare("SELECT COUNT(Id) AS sumlaptop FROM notebook WHERE nbStatus='rdy'");
                     $sql->execute();
                     $sql->setFetchMode(PDO::FETCH_ASSOC);
                     if ($row = $sql->fetch()) { ?>
-                       <span class='label label-success'> <?php echo $row["sumlaptop"] ?></span> 
+                       <span class='label label-success' style="font-size: 35px; padding:0 10px 0 10px"> <?php echo $row["sumlaptop"] ?></span> 
                     <?php } ?>                 
-                 เครื่อง</h4></b>
-                <br><br><a href="#about" class="page-scroll btn btn-default btn-xl sr-button" style="font-family: 'THSarabunNew', sans-serif;">ขั้นตอนการรับบริการ</a>
+                 เครื่อง</h3>
+                <br><br><br><br><br><a href="#about" class="page-scroll btn btn-default btn-xl sr-button" style="font-family: 'THSarabunNew', sans-serif;">ข้อกำหนดการเช่า</a>
             </div>
         </div>
     </header>
@@ -176,7 +176,7 @@
                     </div>
                     <hr class="light">
                     <div class="text-center">
-                        <a href="#services" class="page-scroll btn btn-default btn-xl sr-button" style="font-family: 'THSarabunNew', sans-serif;">รายระเอียดเครื่องเช่า</a>
+                        <a href="#services" class="page-scroll btn btn-default btn-xl sr-button" style="font-family: 'THSarabunNew', sans-serif;">รายละเอียดเครื่องเช่า</a>
                     </div>
                 </div>
             </div>
@@ -207,7 +207,7 @@
                         <div class="comp-spec-info"><br><br>
                             <b><h5> - Processor :</b> Intel Core i7-5500U (2.40 - 3.00 GHz)<br><br> 
                             <b> - Graphic Card :</b> AMD Radeon R5 M230 (2GB GDDR3)<br><br> 
-                            <b> - Main Memory :</b> 4 GB DDR3L<br><br> 
+                            <b> - Main Memory :</b> 8 GB DDR3L<br><br> 
                             <b> - Hard Disk Drive :</b> 1 TB 5400 RPM<br><br> 
                             <b> - Display :</b> 14 inch (1366x768) HD<br><br>
                             <b> - Wireless Lan :</b> 802.11 b/g/n<br><br>
@@ -425,16 +425,17 @@
                     <p>ศูนย์คอมพิวเตอร์ มหาวิทยาลัยสงขลานครินทร์ อำเภอหาดใหญ่ จังหวัดสงขลา 90110</p>
                 </div>
                 <div class="col-lg-4 text-center">
-                    <a class="fa fa-map-marker fa-4x sr-contact" style="color: blue" href="https://www.google.co.th/maps/place/%E0%B8%A8%E0%B8%B9%E0%B8%99%E0%B8%A2%E0%B9%8C%E0%B8%84%E0%B8%AD%E0%B8%A1%E0%B8%9E%E0%B8%B4%E0%B8%A7%E0%B9%80%E0%B8%95%E0%B8%AD%E0%B8%A3%E0%B9%8C+%E0%B8%A1%E0%B8%AB%E0%B8%B2%E0%B8%A7%E0%B8%B4%E0%B8%97%E0%B8%A2%E0%B8%B2%E0%B8%A5%E0%B8%B1%E0%B8%A2%E0%B8%AA%E0%B8%87%E0%B8%82%E0%B8%A5%E0%B8%B2%E0%B8%99%E0%B8%84%E0%B8%A3%E0%B8%B4%E0%B8%99%E0%B8%97%E0%B8%A3%E0%B9%8C+(Computer+Center)/@7.0089211,100.495748,17z/data=!3m1!4b1!4m5!3m4!1s0x304d29a51a0f6199:0x321018be7a59ffe5!8m2!3d7.0089158!4d100.4979367?hl=th" target="_blank"></a>
+                    <a class="fa fa-map-marker fa-4x sr-contact" href="https://www.google.co.th/maps/place/ศูนย์คอมพิวเตอร์+มหาวิทยาลัยสงขลานครินทร์+(Computer+Center)/@7.0091004,100.4983552,16.25z/data=!4m5!3m4!1s0x304d29a51a0f6199:0x321018be7a59ffe5!8m2!3d7.0089158!4d100.4979367?hl=th" target="_blank"></a>
                     <p><p>ที่ตั้ง</p></p>
                 </div>
                 <div class="col-lg-4 text-center">
                     <i class="fa fa-phone fa-4x sr-contact"></i>
-                    <p><p>โทร. 0-7428-2101</p><p>
-                    โทรสาร. 0-7428-2111
+                    <p><br>โทร. 0-7428-2101
+                    <br>โทรสาร. 0-7428-2111</p>
+                   
                 </div>
                 <div class="col-lg-4 text-center">
-                    <a class="fa fa-facebook fa-4x sr-contact" style="color: blue" href="https://www.facebook.com/ccserve/?fref=ts" target="_blank"></a>
+                    <a class="fa fa-facebook fa-4x sr-contact" style="color: blue" href="https://www.facebook.com/ccserve" target="_blank"></a>
                     <p><p>กลุ่มงานบริการวิชาการ ศูนย์คอมพิวเตอร์ ม.อ.</p><p>
                 </div>
             </div>
