@@ -69,7 +69,7 @@
 						<a href="addform.php" class="btn btn-primary">เพิ่มรายการ</a>
 		<br><br><table class="table table-bordered table-hover" id="TableLaptop">
 			<thead>
-		      <tr bgcolor="#CCCCCC" >
+		      <tr bgcolor="#CCCCCC">
 		        <th>หมายเลขเครื่องเช่า</th>
 		        <th>สถานะเครื่อง</th>	
 		        <th>จัดการ</th>	       	        

@@ -106,8 +106,7 @@
 							echo "<td align=\"center\">".($row1["returnlap"]==NULL? "" : setlate($row1["isLate"]) )."</td>"; 
 							echo "<td align=\"center\">".$row1["cost"]."</td>"; 
 							echo "<td align=\"center\">";
-									
-										
+																			
 										$sql4 = $db->prepare("SELECT * FROM permission WHERE Id LIKE :returnstaffId");
 										$sql4->bindParam(':returnstaffId', $row1['returnstaffId'], PDO::PARAM_INT);
 										$sql4->execute();

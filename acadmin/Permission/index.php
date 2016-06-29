@@ -49,8 +49,8 @@
 							<a href="addformpermission.php" class="btn btn-primary">เพิ่มสิทธิ์การใช้งาน</a>
 			
 			<br><br><table class="table table-bordered table-hover">
-			<thead style="background-color: black; color: white">
-		      <tr>
+			<thead>
+		      <tr bgcolor="#CCCCCC">
 		        <th>ชื่อผู้ใช้</th>
 		        <th>คำนำหน้าชื่อ</th>
 		        <th>ชื่อ</th>

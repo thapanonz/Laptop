@@ -18,7 +18,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>รายการเช่าทั้งหมด</title>
-		<?php include "../include/css.php"; ?>
+		<?php include "../include/css.php"; ?>	
 		<link rel="stylesheet" type="text/css" href="../css/jquery.dataTables.min.css">
 
 		<style type="text/css">
@@ -32,19 +32,19 @@
 
 			<div class="container">
 				<div class="row">
-					<div class="col-xs-9" style="margin-left: 30px">						
+					<div class="col-xs-11" style="margin-left: 30px">						
 						<h1>รายการเช่า</h1>
 						
 		<br><table class="table table-bordered table-hover" id="TableRent">
 			<thead>
-		      <tr bgcolor="#CCCCCC" >
+		      <tr bgcolor="#CCCCCC">
 		        <th>สัญญาเช่าเลขที่</th>
 		        <th>ชื่อ - นามสกุล</th>	
 		        <th>หมายเลขเครื่อง</th>	 
 		        <th>วันที่เช่า</th>
 		        <th>วันกำหนดส่งคืน</th>
 		        <th>วันที่คืน</th>  
-		        <th colspan="2"></th>    	        
+		        <th>พิมพ์</th>    	        
 		      </tr>
 		    </thead>
 			<tbody>
@@ -70,8 +70,7 @@
 									 <label>สัญญาเช่าเลขที่:</label> <?php echo $row["Id"] ?><br>
 									<label>ชื่อ-นามสกุล:</label> <?php echo $row["firstname"]."&nbsp;".$row["lastname"] ?><br>
 									<label>หมายเลขเครื่อง:</label> <?php echo $row["nbCode"] ?><br><br>
-									<label>วันที่เช่า:</label> <?php echo DateThai($row["rentlap"]) ?><br>	
-									<label>เจ้าหน้าที่ให้บริการ:</label> <?php echo $row["rent_firstname"]."&nbsp;".$row["rent_lastname"] ?><br><br>
+									<label>วันที่เช่า:</label> <?php echo DateThai($row["rentlap"]) ?><br><label>เจ้าหน้าที่ให้บริการ:</label> <?php echo $row["rent_firstname"]." ".$row["rent_lastname"] ?><br><br>
 									<label>วันกำหนดส่งคืน:</label> <?php echo DateThai($row["appointlap"]) ?><br><br>
 									<label>วันที่คืน:</label> <?php echo ($row["returnlap"]==NULL? "<span class='label label-danger'>ยังไม่คืน</span>" : DateThai($row["returnlap"]) ) ?><br>			    
 									<label>เจ้าหน้าที่รับคืน:</label> <?php echo ($row["returnlap"]==NULL? "<span class='label label-danger'>ยังไม่คืน</span>" : $row["return_firstname"]." ".$row["return_lastname"]) ?><br>
@@ -93,17 +92,14 @@
 				echo "<td align=\"center\">" .$row["nbCode"]."</td>";  
 				echo "<td align=\"center\">" .DateThai($row["rentlap"])."</td>";  
 				echo "<td align=\"center\">" .DateThai($row["appointlap"])."</td>";  
-				echo "<td align=\"center\">" .($row["returnlap"]==NULL? "<span class='label label-danger'>ยังไม่คืน</span>" : DateThai($row["returnlap"]) )."</td>";    
-				echo "<td><a class='popup' title='ใบสัญญาเช่า' href='agreement.php?Id=".$row['Id']."'><i class='fa fa-print'></i></a></td>";
+				echo "<td align=\"center\">"; 
+				echo ($row["returnlap"]==NULL? "<span class='label label-danger'>ยังไม่คืน</span>" : DateThai($row["returnlap"]) );
+				echo "</td>";    
 				echo "<td align=\"center\">";
-			if($row["returnlap"]!=NULL) {
-				echo "<a class='popup' title='ใบเสร็จรับเงิน' href='receipt.php?Id=".$row['Id']."'><i class='fa fa-money'></i></";
-			} else {
-				echo "";
-			}
-				echo "</td>";
+				echo "<a class='popup' title='ใบสัญญาเช่า' href='agreement.php?Id=".$row['Id']."'><i class='fa fa-print'></i></a> ";
+				echo "&nbsp;&nbsp;".($row["returnlap"]!=NULL? "<a class='popup text-warning' title='ใบเสร็จรับเงิน' href='receipt.php?Id=".$row['Id']."'><i class='fa fa-money'></i></a>" : "" );
+				echo "</td>";	
                 echo "</tr>";
-
 			} ?>
 			</tbody>
 		</table>
@@ -112,11 +108,9 @@
 </div>	
 						
         <?php include "../include/js.php"; ?>  
-        <script src="../js/jquery.dataTables.min.js"></script> 
+       <script src="../js/jquery.dataTables.min.js"></script> 
         <script>
-        	$(document).ready(function() {
-		    	$('#example').DataTable();
-
+        	$(document).ready(function() {		    	
 		    	$('.popup').click(function(){
 		    		var NWin = window.open($(this).prop('href'),'','height=900,width=1000');
 		    		if(window.focus)
@@ -127,12 +121,12 @@
 		    	});
 			});
         </script> 
-		<script src="../js/jquery.dataTables.min.js"></script> 
+
         <script>
         	$(document).ready(function() {
-		    	$('#TableLaptop').DataTable();
+		    	$('#TableRent').DataTable();
 			} );
-        </script>  
+        </script> 
     </body>
 </html>
 

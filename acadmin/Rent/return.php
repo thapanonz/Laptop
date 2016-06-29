@@ -19,8 +19,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>บันทึกรายการคืน</title>
-		<?php include "../include/css.php"; ?>
-		<link rel="stylesheet" type="text/css" href="../css/jquery.datetimepicker.css">
+		<?php include "../include/css.php"; ?>	
 		<link rel="stylesheet" type="text/css" href="../css/jquery.dataTables.min.css">
 
 		<style type="text/css">
@@ -71,9 +70,9 @@
 									<label>สัญญาเช่าเลขที่:</label> <?php echo $row["Id"] ?><br>
 									<label>ชื่อ-นามสกุล:</label> <?php echo $row["firstname"]."&nbsp;".$row["lastname"] ?><br>
 									<label>หมายเลขเครื่อง:</label> <?php echo $row["nbCode"] ?><br><br>
-									<label>วันที่เช่า:</label> <?php echo $row["rentlap"] ?><br>	
+									<label>วันที่เช่า:</label> <?php echo DateThai($row["rentlap"]) ?><br>	
 									<label>เจ้าหน้าที่ให้เช่า:</label> <?php echo $row["rent_firstname"]."&nbsp;".$row["rent_lastname"] ?><br><br>
-									<label>วันกำหนดส่งคืน:</label> <?php echo $row["appointlap"] ?>
+									<label>วันกำหนดส่งคืน:</label> <?php echo DateThai($row["appointlap"])	 ?>
 								</div>
 							</div>
 				        </div>

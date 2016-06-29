@@ -161,7 +161,7 @@
 						<input id="isLate" type="hidden" name="isLate" value="0">
 						<input type="hidden" name="Id" value="<?php echo $Id ?>">
 					   	   <button id="btnsubmit" type="submit" class="btn btn-success">บันทึก</button>			
-					   	   <a href="index.php" class="btn btn-primary">ยกเลิก</a>
+					   	   <a href="return.php" class="btn btn-primary">ยกเลิก</a>
 						</div>
 						</form>
 					</div>		
