@@ -81,11 +81,12 @@
 					    <div class="form-group" >
 				     	  <label>หมายเลขเครื่องเช่า:</label>
 				     	  <?php							
-							$sql2 = $db->prepare("SELECT nbCode FROM Notebook WHERE Id=".$row['laptopId']); 
+							$sql2 = $db->prepare("SELECT Id,nbCode FROM Notebook WHERE Id=".$row['laptopId']); 
 							$sql2->execute();
 							$sql2->setFetchMode(PDO::FETCH_ASSOC);
 							while ($row2 = $sql2->fetch()) { ?>
 				     	  <input disabled type="text" class="form-control" value="<?php echo $row2["nbCode"] ?>">
+				     	  <input type="hidden" class="form-control" name="nbId" value="<?php echo $row2["Id"] ?>">
 							<?php 
 							} 
 							?>     

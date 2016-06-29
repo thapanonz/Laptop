@@ -17,7 +17,11 @@ try{
 	settype($setcost, "integer");
 	$setreturnstaffId = $_POST['returnstaffId'];
 	settype($setreturnstaffId, "integer");
-	$setisFine = $_POST['isFine'];
+	if(isset($_POST['isFine'])){
+			$setisFine = $_POST['isFine'];			
+	} else {
+		$setisFine = 0;
+	}
 	settype($setisFine, "integer");
 	$setId = $_POST['Id'];
 	settype($setId,"integer");
@@ -31,6 +35,16 @@ try{
 	$stmp->bindValue("setId" , $setId);
 	
 	if($stmp->execute()) {
+		$sql1 = "UPDATE notebook SET 
+				nbStatus='notrdy'
+			 	WHERE Id=:setId";
+		$setId1 = $_POST['nbId'];
+		settype($setId,"integer");
+
+		$stmp1 = $db->prepare($sql1);
+		$stmp1->bindValue("setId" , $setId1);
+		$stmp1->execute();
+
 		require "../include/fnLogs.php";
 		$menu = "Rent";
 		$desc = $_SESSION['userperm']." คืนเครื่องสัญญาเช่าเลขที่ ".$setId;
