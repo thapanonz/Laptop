@@ -3,13 +3,16 @@
 	require "../include/connect.php";
 	
 	$Id=$_GET['Id'];
-	$sql = $db->exec("DELETE FROM notebook where Id=$Id");
-
-	// Log Statment
-	require "../include/fnLogs.php";
-	$menu = "Laptop";
-	$desc = $_SESSION['userperm']." ลบรายการโน๊ตบุ๊คที่ (".$_GET['Id'].")";
-	logs($_SESSION['staffId'],$menu,$desc);
+	$sql1 = $db->prepare("SELECT nbCode FROM notebook WHERE Id=".$Id);
+	$sql1->execute();
+	$sql1->setFetchMode(PDO::FETCH_ASSOC);
+	if ($row1 = $sql1->fetch()) {
+		require "../include/fnLogs.php";
+		$menu = "Permission";
+		$desc = $_SESSION['userperm']." ลบรายการเครื่องเช่าหมายเลข ".$row1["nbCode"];
+		logs($_SESSION['staffId'],$menu,$desc);
 	
+	$sql = $db->exec("DELETE FROM notebook where Id=$Id");
     header('Location: index.php');
+	}
 ?> 

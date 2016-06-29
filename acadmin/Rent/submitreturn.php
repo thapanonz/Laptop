@@ -33,8 +33,9 @@ try{
 	if($stmp->execute()) {
 		require "../include/fnLogs.php";
 		$menu = "Rent";
-		$desc = $_SESSION['userperm']." บันทึกรายการคืน";
-		logs($_SESSION['staffId'],$menu,$desc); ?>
+		$desc = $_SESSION['userperm']." คืนเครื่องสัญญาเช่าเลขที่ ".$setId;
+		logs($_SESSION['staffId'],$menu,$desc); 
+	?>
 
 		<script type="text/javascript">
 				var url = "receipt.php?Id=<?=$setId?>";

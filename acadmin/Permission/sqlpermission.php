@@ -1,4 +1,5 @@
 <?php
+	session_start();
 	require "../include/connect.php";
 
 try {
@@ -11,6 +12,11 @@ try {
 		"lastname" => $_POST["lastname"],
 		"level" => $_POST["level"],
 		)); 
+
+	require "../include/fnLogs.php";
+	$menu = "Permission";
+	$desc = $_SESSION['userperm']." เพิ่มสิทธิ์ผู้ใช้งานชื่อ ".$_POST["user"];
+	logs($_SESSION['staffId'],$menu,$desc);
 
 	header('Location: index.php');
 }

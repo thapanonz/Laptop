@@ -24,7 +24,7 @@ try{
 	// Log Statment
 	require "../include/fnLogs.php";
 	$menu = "Laptop";
-	$desc = $_SESSION['userperm']." แก้ไขรายการโน๊ตบุ๊ที่ ".$_POST["nbCode"];
+	$desc = $_SESSION['userperm']." แก้ไขข้อมูลเครื่องเช่าหมายเลข ".$_POST["nbCode"];
 	logs($_SESSION['staffId'],$menu,$desc);
 	
 	header('Location: index.php');

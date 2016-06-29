@@ -15,7 +15,7 @@
 	// Log Statment
 	require "../include/fnLogs.php";
 	$menu = "Laptop";
-	$desc = $_SESSION['userperm']." เพิ่มรายการโน๊ตบุ๊ที่ ".$_POST["nbCode"];
+	$desc = $_SESSION['userperm']." เพิ่มเครื่องเช่าหมายเลข ".$_POST["nbCode"];
 	logs($_SESSION['staffId'],$menu,$desc);
 	
 	header('Location: index.php');

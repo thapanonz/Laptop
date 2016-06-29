@@ -28,14 +28,7 @@ try{
 
 		$stmp = $db->prepare($sql);
 		$stmp->bindValue("setlaptopId" , $setlaptopId);
-		if($stmp->execute()) {
-
-			// Log Statment
-			require "../include/fnLogs.php";
-			$menu = "Rent";
-			$desc = $_SESSION['userperm']." เพิ่มรายการเช่า";
-			logs($_SESSION['staffId'],$menu,$desc);
-		}
+		$stmp->execute();
 
 
 		
@@ -45,6 +38,10 @@ try{
 		$maxSTM->setFetchMode(PDO::FETCH_ASSOC);
 		if($row = $maxSTM->fetch())
 		{
+			require "../include/fnLogs.php";
+			$menu = "Rent";
+			$desc = $_SESSION['userperm']." เพิ่มสัญญาเช่าเลขที่ ".$row["Id"];
+			logs($_SESSION['staffId'],$menu,$desc);
 
 		 ?>
 			<script type="text/javascript">

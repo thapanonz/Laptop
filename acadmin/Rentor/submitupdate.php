@@ -40,7 +40,7 @@ try{
 
 		require "../include/fnLogs.php";
 		$menu = "Rentor";
-		$desc = $_SESSION['userperm']." แก้ไขรายการผู้เช่า";
+		$desc = $_SESSION['userperm']." แก้ไขข้อมูลผู้เช่าเลขบัตร ".$_POST["Id"];
 		logs($_SESSION['staffId'],$menu,$desc);
 	 
 	header('Location: index.php');
