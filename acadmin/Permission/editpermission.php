@@ -18,7 +18,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>แก้ไขสิทธิ์การใช้งาน</title>
+        <title>แก้ไขข้อมูลผู้ใช้งาน</title>
 		<?php include "../include/css.php"; ?>
     </head>
     <body style="background-color:lightgrey;">
@@ -37,7 +37,7 @@
 			<div class="container">
 				<div class="row">				
 					<div class="col-xs-4" style="margin-left: 30px">						
-						<h1>แก้ไขสิทธิ์การใช้งาน</h1><br>
+						<h1>แก้ไขข้อมูลผู้ใช้งาน</h1><br>
 						<form role="form" action="submitupdatepermission.php" method="post">					
 						<div class="form-group">
 							<label>ชื่อผู้ใช้:</label>&nbsp;<?php echo $row["user"] ?>
