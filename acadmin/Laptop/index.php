@@ -25,13 +25,27 @@
 
 	$stmp->bindValue("setID" , $setid);
 	if($stmp->execute()) {
-		// Log Statment
-		require "../include/fnLogs.php";
-		$menu = "Laptop";
-		$desc = $_SESSION['userperm']." เปลี่ยนสถานะเครื่องเช่า (".$_GET['Id'].")";
-		logs($_SESSION['staffId'],$menu,$desc);
+		$sql1 = $db->prepare("SELECT nbCode FROM notebook WHERE Id='".$setid."'");
+		$sql1->execute();
+		$sql1->setFetchMode(PDO::FETCH_ASSOC);
+		while ($row1 = $sql1->fetch()) {
+
+			// Log Statment
+			require "../include/fnLogs.php";
+			$menu = "Laptop";
+			if(isset($_GET["nbStatus"])) {
+				if($_GET["nbStatus"]=="rdy") {
+					$status="ไม่พร้อมใช้งาน";
+				} else if($_GET["nbStatus"]=="notrdy") {
+					$status="พร้อมใช้งาน";
+				}
+			$desc = $_SESSION['userperm']." แก้ไขสถานะเครื่องเช่า ".$row1["nbCode"]." (".$status.")";
+			}
+			logs($_SESSION['staffId'],$menu,$desc);
+
 		}
 	}
+}
 
 	function setstatus($Id,$status){
 		if($status=="rdy"){ 

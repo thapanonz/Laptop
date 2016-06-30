@@ -30,7 +30,6 @@ try{
 		$stmp->bindValue("setlaptopId" , $setlaptopId);
 		$stmp->execute();
 
-
 		
 		$maxSQL = "SELECT Id FROM rent ORDER By Id Desc LIMIT 1";
 		$maxSTM = $db->prepare($maxSQL);
