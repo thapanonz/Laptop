@@ -27,7 +27,7 @@
 
 			<div class="container" >
 			<h1 style="margin-left:43px">บันทึกรายการคืน</h1><br>
-			<form role="form" action="submitreturn.php" method="post">	
+			<form role="form" action="submitreturn.php" method="post" onsubmit="return confirm('คุณต้องการบันทึก รายการคืน นี้หรือไม่?');">	
 				<div class="row" style="margin-left: 30px">				
 					<div class="col-xs-5">
 			<?php
