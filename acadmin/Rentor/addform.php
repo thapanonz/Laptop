@@ -41,7 +41,7 @@
 					    </div>
 					    <div class="form-group">
 					      <label>รหัสนักศึกษา/บุคลากร:</label>
-					      <input required type="text" class="form-control" name="passport" placeholder="ตัวอย่าง: 5610210000@psu.ac.th">
+					      <input required type="text" class="form-control" name="passport" placeholder="ตัวอย่าง: 5610210000">
 					    </div>
 					    <div class="form-group">
 					      <label>คำนำหน้าชื่อ:</label>

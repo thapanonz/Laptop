@@ -46,7 +46,8 @@
 					</div>	
 
 					<div class="col-xs-5">
-					<br>								
+					<br>						
+					<a href="rentor/addform.php" class="btn btn-lg btn-success">บันทึกข้อมูลผู้เช่าใหม่</a><br>		
 					<a href="rent/add.php" class="btn btn-lg btn-primary">บันทึกการเช่า</a><br>
 					<a href="rent/return.php" class="btn btn-lg btn-danger">บันทึกการคืน</a><br>
 					<a href="report/daily.php" class="btn btn-lg btn-warning">สรุปข้อมูลรายวัน</a>

@@ -42,7 +42,7 @@
 				<div class="row">
 					<div class="col-md-11" style="margin-left: 30px">						
 						<h1>รายการผู้เช่า</h1>
-						<a href="addform.php" class="btn btn-primary">เพิ่มรายการ</a>
+						<a href="addform.php" class="btn btn-primary">เพิ่มข้อมูลผู้เช่า</a>
 				<br><br><table class="table table-bordered table-hover" id="TableCustomer">
 			<thead>
 		      <tr bgcolor="#CCCCCC" >

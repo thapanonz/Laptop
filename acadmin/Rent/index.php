@@ -105,8 +105,9 @@
 		</table>
 		</div>					
 	</div>
-</div>	
-						
+</div>			
+
+
         <?php include "../include/js.php"; ?>  
        <script src="../js/jquery.dataTables.min.js"></script> 
         <script>
