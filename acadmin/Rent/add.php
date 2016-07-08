@@ -35,11 +35,12 @@
 					    </div>
 						<div class="form-group" style="padding-bottom: 35px">
 					      <label>เลขบัตรประชาชนผู้เช่า:</label>
-					      	<div class="col-sm-10" style="padding-left: 0">
+					      	<div class="col-sm-8" style="padding-left: 0">
 					      		<input required type="text" class="form-control" name="citizenId" id="citizenId" style="letter-spacing: 1px;" placeholder="_-____-_____-__-_">
 					      	</div>
-							<div class="col-sm-2" style="text-align: right; padding: 0">
-					      		<a id="retrieveRentor" class="btn btn-info">ค้นหา</a>	
+							<div class="col-sm-4" style="text-align: right; padding: 0">
+					      		<a id="retrieveRentor" class="btn btn-primary">ค้นหา</a>	
+					      		 <a href="http://regist2010.cc.psu.ac.th/acsstudentviewer" target="_blank" class="btn btn-info">สถานะ</a>
 					      	</div>
 					    </div>
 
@@ -87,7 +88,7 @@
 										
 						<div style="text-align: center">
 							<input type="hidden" class="form-control" name="Id" value="<?php echo getNewID()?>">
-					   	   <button type="submit" class="btn btn-success" id="btnsubmit">บันทึก</button>		 <a href="index.php" class="btn btn-primary">ยกเลิก</a>
+					   	   <button type="submit" class="btn btn-success" id="btnsubmit">บันทึก</button>		 <a href="index.php" class="btn btn-danger">ยกเลิก</a>
 						</div>
 					</div>		
 

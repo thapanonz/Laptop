@@ -1,19 +1,4 @@
 <?
-
-if(!$_POST['username'])
-{
-	echo "<font color=red>ผิดพลาด: </font>กรุณากรอกชื่อผู้ใช้";
-	exit();
-}
-if(!$_POST['password'])
-{
-	echo "<font color=red>ผิดพลาด: </font>กรุณากรอกรหัสผ่าน";
-	exit();
-}
-
-
-
-
 //you should look into using PECL filter or some form of filtering here for POST variables
 $username = strtoupper($_POST["username"]); //remove case sensitivity on the username
 $password = $_POST["password"];
@@ -21,11 +6,11 @@ $username = addslashes($username);
 $password = addslashes($password);
 //$formage = $_POST["formage"];
 
-if ($_POST["oldform"]) { //prevent null bind
+if (isset($_POST["btnSubmit"])) { //prevent null bind
 
 	if ($username != NULL && $password != NULL){
 		//include the class and create a connection
-		include (dirname(__FILE__) . "/../src/adLDAP.php");
+		include (dirname(__FILE__) . "/src/adLDAP.php");
         try {
 		    $adldap = new adLDAP();
         }
