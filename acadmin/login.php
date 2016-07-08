@@ -63,13 +63,13 @@
 					<form class="form form-horizontal" action="validation.php" method="POST" role="form">
 						<legend>Login</legend> 
 						<div class="form-group">
-							<label>Username</label> <input type="text" class="form-control" name="username">
+							<label>Username</label> <input required type="text" class="form-control" name="username">
 						</div>
 						<div class="form-group">
-							<label>Password</label> <input type="password" class="form-control" name="password">
+							<label>Password</label> <input required type="password" class="form-control" name="password">
 						</div>
 										
-						<button type="submit" class="btn btn-primary">Submit</button>
+						<input type="submit" class="btn btn-primary" name="btnSubmit" value="Login">
 					</form>
 </div>
 					</div>
