@@ -430,8 +430,8 @@
                 </div>
                 <div class="col-lg-4 text-center">
                     <i class="fa fa-phone fa-4x sr-contact"></i>
-                    <p><br>โทร. 0-7428-2101
-                    <br>โทรสาร. 0-7428-2111</p>
+                    <p><br>โทร. 0-7428-2116
+                    <br>โทรสาร. 0-7428-2070</p>
                    
                 </div>
                 <div class="col-lg-4 text-center">

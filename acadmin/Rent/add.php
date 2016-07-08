@@ -80,7 +80,7 @@
 								$sql->execute();
 								$sql->setFetchMode(PDO::FETCH_ASSOC);
 								while ($row = $sql->fetch()) { ?>
-									<option value="<?=$row['Id'] ?>" <?php ($_SESSION['userperm']==$row["user"]? "selected" : "" ) ?>><?php echo $row["pname"].$row["name"]." ".$row["lastname"] ?></option>
+									<option value="<?=$row['Id'] ?>" <?=($_SESSION['userperm']==$row['user']? "selected" : "" )?>><?php echo $row["pname"].$row["name"]." ".$row["lastname"] ?></option>
 							<?php } ?>  
 						</select>
 					    </div>

@@ -1,26 +1,24 @@
 <?php
 	session_start();
 	require "../include/connect.php";
-	
-try{ 
-
 	 
-	 $sql = "INSERT INTO rent(citizenId,laptopId,rentlap,appointlap,staffId) 
- 	VALUES (:citizenId,:setlaptopId,:rentlap,:appointlap,:setstaffId)";
+
+	$sql = $db->prepare("INSERT INTO rent (citizenId,laptopId,rentlap,appointlap,staffId) 
+ 	VALUES (:citizenId,:setlaptopId,:rentlap,:appointlap,:setstaffId)");
 	
 	$setlaptopId = $_POST['laptopId'];
 	settype($setlaptopId, "integer");
 	$setstaffId = $_POST['staffId'];
 	settype($setstaffId, "integer");
-	
-	$stmp = $db->prepare($sql);
-	$stmp->bindValue("citizenId" , $_POST["citizenId"]);
-	$stmp->bindValue("setlaptopId" , $setlaptopId);
-	$stmp->bindValue("rentlap" , $_POST["rentlap"]);
-	$stmp->bindValue("appointlap" , $_POST["appointlap"]);
-	$stmp->bindValue("setstaffId" , $setstaffId);
-	
-	if ($stmp->execute()) {
+	echo "Before Execute";
+	$sql->execute(array(
+		"citizenId" => $_POST["citizenId"],
+		"setlaptopId" => $setlaptopId,
+		"rentlap" => $_POST["rentlap"],
+		"appointlap" => $_POST["appointlap"],
+		"setstaffId" => $setstaffId,
+		));
+
 		$sql = "UPDATE notebook SET nbStatus='rent' WHERE Id=:setlaptopId";
 
 		$setlaptopId = $_POST['laptopId'];
@@ -44,20 +42,13 @@ try{
 
 		 ?>
 			<script type="text/javascript">
-				var url = "agreement.php?Id=<?=$row['Id']?>";
-				window.open(url,'','height=900,width=1000');
-				window.location = 'index.php';
+				 var url = "agreement.php?Id=<?=$row['Id']?>";
+				 window.open(url,'','height=900,width=1000');
+			     window.location = 'index.php';
 			</script>
-		 <?
+		 <?php
 		}
-		?>
-
-<?php } 
+	
 
 	  // print_r($stmp->errorInfo());  
-
-}
-catch(PDOException $e) {
-  echo $e->getMessage();
-}
 ?>
