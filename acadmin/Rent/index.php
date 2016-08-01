@@ -32,7 +32,7 @@
 
 			<div class="container">
 				<div class="row">
-					<div class="col-xs-11" style="margin-left: 30px">						
+					<div class="col-xs-10" style="margin-left: 30px">						
 						<h1>รายการเช่า</h1>
 						
 		<br><table class="table table-bordered table-hover" id="TableRent">

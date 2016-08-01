@@ -113,9 +113,9 @@
 				      		$fine=$row["fee"];
 				      		$payment=$row["cost"];
 				      	}
-				    echo "<td align=\"center\">" .$fee."</td>"; 
-				    echo "<td align=\"center\">" .$fine."</td>"; 
-				    echo "<td align=\"center\">" .$payment."</td>"; 
+				    echo "<td align=\"right\">" .$fee."</td>"; 
+				    echo "<td align=\"right\">" .$fine."</td>"; 
+				    echo "<td align=\"right\">" .number_format($payment,2)."</td>"; 
 			      }
 			      echo "</tr>";
 
@@ -126,9 +126,9 @@
 			} 
 			      echo "<tr>";
 			      echo "<td style='border-top:2px double #000; padding-top:3px;'  colspan=\"6\">&nbsp;</td>"; 
-			      echo "<td style='border-top:2px double #000; padding-top:3px;' align=\"center\">".$sumfee."</td>";
-			      echo "<td style='border-top:2px double #000; padding-top:3px;' align=\"center\">".$sumfine."</td>";
-			      echo "<td style='border-top:2px double #000; padding-top:3px;' align=\"center\">".$sumpayment."</td>";
+			      echo "<td style='border-top:2px double #000; padding-top:3px;' align=\"right\">".number_format($sumfee,2)."</td>";
+			      echo "<td style='border-top:2px double #000; padding-top:3px;' align=\"right\">".number_format($sumfine,2)."</td>";
+			      echo "<td style='border-top:2px double #000; padding-top:3px;' align=\"right\">".number_format($sumpayment,2)."</td>";
 			      echo "</tr>";
 			      ?>			    
   			</table>		
@@ -188,9 +188,9 @@
 				      		$fine=$row["fee"];
 				      		$payment=$row["cost"];
 				      	}
-				    echo "<td align=\"center\">" .$fee."</td>"; 
-				    echo "<td align=\"center\">" .$fine."</td>"; 
-				    echo "<td align=\"center\">" .$payment."</td>"; 
+				    echo "<td align=\"right\">" .$fee."</td>"; 
+				    echo "<td align=\"right\">" .$fine."</td>"; 
+				    echo "<td align=\"right\">" .number_format($payment,2)."</td>"; 
 			      }
 			      echo "</tr>";
 			      
@@ -201,9 +201,9 @@
 			} 
 			      echo "<tr>";
 			      echo "<td style='border-top:2px double #000; padding-top:3px;'  colspan=\"6\">&nbsp;</td>"; 
-			      echo "<td style='border-top:2px double #000; padding-top:3px;' align=\"center\">".$sumfee."</td>";
-			      echo "<td style='border-top:2px double #000; padding-top:3px;' align=\"center\">".$sumfine."</td>";
-			      echo "<td style='border-top:2px double #000; padding-top:3px;' align=\"center\">".$sumpayment."</td>";
+			      echo "<td style='border-top:2px double #000; padding-top:3px;' align=\"right\">".number_format($sumfee,2)."</td>";
+			      echo "<td style='border-top:2px double #000; padding-top:3px;' align=\"right\">".number_format($sumfine,2)."</td>";
+			      echo "<td style='border-top:2px double #000; padding-top:3px;' align=\"right\">".number_format($sumpayment,2)."</td>";
 			      echo "</tr>";
 			      ?>			    
   			</table>		

@@ -61,6 +61,7 @@
 					</div>
 					<?php } ?>
 					<form class="form form-horizontal" action="validation.php" method="POST" role="form">
+					<!--<form class="form form-horizontal" action="setSession.php" method="POST" role="form">-->
 						<legend>Login</legend> 
 						<div class="form-group">
 							<label>Username</label> <input required type="text" class="form-control" name="username">
