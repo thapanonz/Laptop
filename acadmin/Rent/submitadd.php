@@ -3,22 +3,27 @@
 	require "../include/connect.php";
 	 
 
-	$sql = $db->prepare("INSERT INTO rent (citizenId,laptopId,rentlap,appointlap,staffId) 
- 	VALUES (:citizenId,:setlaptopId,:rentlap,:appointlap,:setstaffId)");
+ 	$sql = $db->prepare("INSERT INTO rent (citizenId,laptopId,rentlap,appointlap,staffId,staffUser) 
+ 	VALUES (:citizenId,:setlaptopId,:rentlap,:appointlap,:setstaffId,:staffUser)");
 	
 	$setlaptopId = $_POST['laptopId'];
 	settype($setlaptopId, "integer");
 	$setstaffId = $_POST['staffId'];
 	settype($setstaffId, "integer");
+	
 	echo "Before Execute";
-	$sql->execute(array(
+	$array = array(
 		"citizenId" => $_POST["citizenId"],
 		"setlaptopId" => $setlaptopId,
 		"rentlap" => $_POST["rentlap"],
 		"appointlap" => $_POST["appointlap"],
 		"setstaffId" => $setstaffId,
-		));
+		"staffUser" => $_POST['staffUser'],
+	);	
 
+	if($sql->execute($array))
+	{
+		
 		$sql = "UPDATE notebook SET nbStatus='rent' WHERE Id=:setlaptopId";
 
 		$setlaptopId = $_POST['laptopId'];
@@ -49,6 +54,11 @@
 		 <?php
 		}
 	
+	}
+	else
+	{
+		echo "บันทึกรายการเช่าไม่สำเร็จ";
+	}
 
 	  // print_r($stmp->errorInfo());  
 ?>

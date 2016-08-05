@@ -145,17 +145,11 @@
 					    </div>	
 
 					    <div class="form-group">
-					      <label>เจ้าหน้าที่รับบริการคืน:</label>
-					      <select class="form-control" name="returnstaffId">
-							<?php
-								$sql = $db->prepare("SELECT Id,user,pname,name,lastname FROM permission  
-									                 ORDER BY user");
-								$sql->execute();
-								$sql->setFetchMode(PDO::FETCH_ASSOC);
-								while ($row = $sql->fetch()) { ?>
-									<option value="<?=$row['Id'] ?>" <?=($_SESSION['userperm']==$row['user']? "selected" : "" )?>><?php echo $row["pname"].$row["name"]."&nbsp;".$row["lastname"] ?></option>
-							<?php } ?>  
-						</select>
+					      <label>เจ้าหน้าที่รับบริการคืน:</label>					      
+						  <select class="form-control" name="returnstaffId">
+							<option value="<?= $_SESSION['staffId'] ?>" ><?php echo $_SESSION['userfullname'] ?></option>							
+						  </select>
+						  <input type="hidden" class="form-control" name="returnstaffUser" value="<?= $_SESSION['userperm'] ?>"/>
 					    </div>
 				 					
 						<div style="text-align: center">

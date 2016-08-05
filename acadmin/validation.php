@@ -19,7 +19,7 @@ if (isset($_POST["btnSubmit"])) { //prevent null bind
 
 	//$user=$_POST["username"];
 
-	$sql = $db->prepare("SELECT Id,user,level FROM permission WHERE user='".$user."'");
+	$sql = $db->prepare("SELECT Id,user,level,pname,name,lastname FROM permission WHERE user='".$user."'");
 	$sql->execute();
 	$sql->setFetchMode(PDO::FETCH_ASSOC);
 	if ($row = $sql->fetch()) { 
@@ -30,6 +30,7 @@ if (isset($_POST["btnSubmit"])) { //prevent null bind
 			$_SESSION['staffId'] = $row['Id'];
 			$_SESSION['userperm'] = $user;
 			$_SESSION['userlevel'] = $row['level'];
+			$_SESSION['userfullname'] = $row['pname'].$row['name']." ".$row['lastname'];
 
 			//var_dump(gettype($row['level']));
 			//exit(0);
@@ -47,28 +48,27 @@ if (isset($_POST["btnSubmit"])) { //prevent null bind
 	else {
 
 		//include the class and create a connection
-		include (dirname(__FILE__) . "/src/adLDAP.php");
-		//include (dirname(__FILE__) . "/src/classes/adLDAPUsers.php");
+		include (dirname(__FILE__) . "/src/adLDAP.php");		
+
         try {
-		    $adldap = new adLDAP();
-		    //$adldapuser = new adLDAPUsers($adldap);	    		    
+		    $adldap = new adLDAP();		    		   
         }
         catch (adLDAPException $e) {
             echo $e;
-            //header('Location: login.php?error=1');
+            header('Location: login.php?error=1');
             exit();   
         }
 
         if ($adldap->authenticate($username, $password)){
-
-        	//$adldapuser = new adLDAPUsers($adldap);
-			//$ldapUser = $adldapuser->infoCollection($user);
-			//var_dump($ldapUser);exit(0);		
-			
-			//"samaccountname","mail","memberof","department","displayname","telephonenumber","primarygroupid","objectsid", "physicaldeliveryofficename"
-        	$userinfo = $adldap->user()->info($user, array("samaccountname","physicaldeliveryofficename"));
-
+        	
+        	//$userinfo = $adldap->user()->info($user, array("samaccountname","mail","memberof","department","displayname","telephonenumber","primarygroupid","objectsid", "physicaldeliveryofficename","description","personaltitle"));
+        	//var_dump($userinfo); exit(0);
+        				
+        	$userinfo = $adldap->user()->info($user, array("samaccountname","personaltitle","description","physicaldeliveryofficename"));
+        	        	
 			$accname = $userinfo[0]["samaccountname"][0];
+			$allname = $userinfo[0]["description"][0];
+			$fullname = $userinfo[0]["personaltitle"][0].$userinfo[0]["description"][0];
 			$officename = $userinfo[0]["physicaldeliveryofficename"][0];
 			$dnTxt = $userinfo[0]["dn"];			
 
@@ -99,9 +99,29 @@ if (isset($_POST["btnSubmit"])) { //prevent null bind
 					&& (strpos($officename, $office) !== false))
 				{
 
-					$_SESSION['staffId'] = "99";
-					$_SESSION['userperm'] = $userinfo[0]["samaccountname"][0];				
+					$_SESSION['staffId'] = 99;
+					$_SESSION['userperm'] = $accname;				
 					$_SESSION['userlevel'] = "user";
+					$_SESSION['userfullname'] = $fullname;
+
+
+					// Add to table: StaffOrAdmin
+					require "include/fnStaffOrAdmin.php";
+					$arr_allname = split(" ", $allname);
+					$id = 99;
+					$staffUser = $accname;
+					$name = $arr_allname[0];
+					$lastname = $arr_allname[1];
+
+					//echo $id . " | " . $staffUser . " | " . $name. " | " . $lastname; 
+					//exit(0);
+
+					$isExisting = isExist($id,$staffUser);					
+					//echo $isExisting;exit(0);
+					if ($isExisting == 0) {
+						add($id,$staffUser,$name,$lastname);
+					}
+
 					
 					// Log Statment
 					require "include/fnLogs.php";
@@ -113,6 +133,7 @@ if (isset($_POST["btnSubmit"])) { //prevent null bind
 
 					logs($_SESSION['staffId'],$menu,$desc);
 
+
 					session_write_close();
 					header('Location: index.php');
 				}
@@ -122,7 +143,7 @@ if (isset($_POST["btnSubmit"])) { //prevent null bind
 			}
 		}
 		else {				
-			header('Location: login.php?error=1');		
+			header('Location: login.php?error=4');		
 		}	
 	}
 }

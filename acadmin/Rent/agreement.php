@@ -121,7 +121,7 @@ require'../include/connect.php';
 <div style="float:left; width:51%; height: 167px; padding:0 0 0 3px; margin-left: 10px; border:0px solid #000;">
 <pre style="padding-left: 20px;">
 ลงชื่อ                                        
-<div style="padding-top: 7px; padding-left: 20px;"><div style="background-color:#CCC; text-align: center; padding: 2px 0 2px 0"><?php echo $row["pname"].$row["name"].' '.$row["lastname1"] ?></div></div><div style="padding-top: 4px; text-align:center">เจ้าหน้าที่ผู้ให้เช่า</div><div style="padding-top: 18px; padding-left: 20px; text-align:left">ลงชื่อ _________________________ เจ้าหน้าที่ผู้รับคืน</div><div style="padding-top: 17px; padding-left: 20px; text-align:left">วันที่ __________________________</div>
+<div style="padding-top: 7px; padding-left: 20px;"><div style="background-color:#CCC; text-align: center; padding: 2px 0 2px 0"><?php echo $_SESSION['userfullname'] ?></div></div><div style="padding-top: 4px; text-align:center">เจ้าหน้าที่ผู้ให้เช่า</div><div style="padding-top: 18px; padding-left: 20px; text-align:left">ลงชื่อ _________________________ เจ้าหน้าที่ผู้รับคืน</div><div style="padding-top: 17px; padding-left: 20px; text-align:left">วันที่ __________________________</div>
 </pre>
 			</div>
 		</div>

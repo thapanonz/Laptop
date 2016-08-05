@@ -8,6 +8,7 @@ try{
 	 isLate = :setisLate,
 	 cost = :setcost,
 	 returnstaffId = :setreturnstaffId,
+	 returnstaffUser = :returnstaffUser,
 	 isFine = :setisFine
 	 WHERE Id=:setId";
 	
@@ -32,6 +33,7 @@ try{
 	$stmp->bindValue("setcost" , $setcost);
 	$stmp->bindValue("setisFine" , $setisFine);
 	$stmp->bindValue("setreturnstaffId" , $setreturnstaffId);
+	$stmp->bindValue("returnstaffUser" , $_POST["returnstaffUser"]);	
 	$stmp->bindValue("setId" , $setId);
 	
 	if($stmp->execute()) {
